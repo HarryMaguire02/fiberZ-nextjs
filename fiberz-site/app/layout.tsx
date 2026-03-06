@@ -1,0 +1,48 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import ScrollHeader from "./components/header/ScrollHeader";
+import Footer from "./components/footer/Footer";
+
+const inter = Inter({
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://fiberz.com"),
+  title: "FiberZ - Premium Daily Soluble Fiber",
+  description: "FiberZ is a premium daily soluble fiber designed to support digestive health and help meet recommended daily fiber intake. Real benefits, backed by science.",
+  keywords: ["soluble fiber", "digestive health", "fiber supplement", "gut health", "fiberz"],
+  authors: [{ name: "FiberZ" }],
+  openGraph: {
+    title: "FiberZ - Premium Daily Soluble Fiber",
+    description: "Real benefits. Backed by science. Premium daily soluble fiber for digestive health.",
+    type: "website",
+    locale: "en_US",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className="h-full">
+      <body className={`${inter.variable} antialiased flex flex-col min-h-full`}>
+        <ScrollHeader />
+        <main className="pt-16 md:pt-20 grow">
+          {children}
+        </main>
+        <Footer />
+      </body>
+    </html>
+  );
+}

@@ -1,0 +1,112 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import Navigation from './Navigation';
+
+const navLinks = [
+  { href: '/', label: 'HOME' },
+  { href: '/product', label: 'PRODUCT' },
+  { href: '/benefits', label: 'BENEFITS' },
+  { href: '/blog', label: 'BLOG' },
+  { href: '/faq', label: 'FAQ' },
+  { href: '#contact', label: 'CONTACT', isContactButton: true },
+];
+
+export default function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
+  return (
+    <header className="w-full">
+      <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex items-center justify-between h-16 md:h-20">
+
+          {/* Logo */}
+          <Link href="/" className="flex items-center shrink-0">
+            <Image
+              src="/fiberZ-logo.png"
+              alt="FiberZ Logo"
+              width={120}
+              height={40}
+              className="h-9 md:h-10 w-auto"
+              priority
+            />
+          </Link>
+
+          {/* Desktop Navigation */}
+          <Navigation navLinks={navLinks} onContactClick={() => {}} />
+
+          {/* Mobile Hamburger */}
+          <button
+            onClick={toggleMobileMenu}
+            className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            <span
+              className={`block w-6 h-0.5 bg-primary transition-transform duration-300 ${
+                isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+              }`}
+            />
+            <span
+              className={`block w-6 h-0.5 bg-primary transition-opacity duration-300 ${
+                isMobileMenuOpen ? 'opacity-0' : ''
+              }`}
+            />
+            <span
+              className={`block w-6 h-0.5 bg-primary transition-transform duration-300 ${
+                isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+              }`}
+            />
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ${
+            isMobileMenuOpen ? 'max-h-screen pb-4' : 'max-h-0'
+          }`}
+        >
+          <nav className="flex flex-col space-y-1 border-t border-cream-dark pt-3">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+
+              if (link.isContactButton) {
+                return (
+                  <button
+                    key={link.href}
+                    onClick={closeMobileMenu}
+                    className="py-3 px-4 rounded-full text-sm font-semibold text-center text-white bg-brand hover:bg-brand-dark transition-colors"
+                  >
+                    {link.label}
+                  </button>
+                );
+              }
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeMobileMenu}
+                  className={`py-3 px-4 rounded-lg text-sm font-medium text-center transition-colors ${
+                    isActive
+                      ? 'text-brand font-semibold'
+                      : 'text-primary/70 hover:text-brand'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
+      </div>
+    </header>
+  );
+}
