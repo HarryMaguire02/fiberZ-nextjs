@@ -29,7 +29,7 @@ const steps = [
 
 export default function SimpleToAdd() {
   return (
-    <section className="py-20 lg:py-28 bg-cream">
+    <section className="py-12 lg:py-16 bg-linen">
       <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 

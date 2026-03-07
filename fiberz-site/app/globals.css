@@ -3,16 +3,14 @@
 @theme {
   --font-sans: var(--font-inter);
 
-  --color-primary: #2C1810;
-  --color-brand: #C49A3C;
-  --color-brand-dark: #A07C28;
-  --color-cream: #FDF6E9;
-  --color-cream-dark: #F0E0BA;
+  --color-brand: #D4AC77;
+  --color-brand-dark: #BD9D51;
   --color-linen: #F6F2EA;
-  --color-warm-brown: #6B3D1E;
+  --color-tag: #E6D6AE;
   --color-white: #FFFFFF;
-  --color-gray-text: #5C5C5C;
-  --color-gray-light: #F5F5F5;
+  --color-body: #3D3129;
+  --color-heading: #502C1E;
+  --color-oak: #A07546;
 
   /* Global content container width */
   --max-width-content: 1440px;
@@ -23,7 +21,7 @@
 
 :root {
   --background: #FFFFFF;
-  --foreground: #2C1810;
+  --foreground: #3D3129;
 }
 
 body {
@@ -34,6 +32,18 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+@utility font-montserrat {
+  font-family: var(--next-font-montserrat), 'Montserrat', sans-serif;
+}
+
+@utility font-roboto {
+  font-family: var(--next-font-roboto), 'Roboto', sans-serif;
+}
+
+@utility font-playfair {
+  font-family: var(--next-font-playfair), 'Playfair Display', serif;
 }
 
 .scrollbar-hide {

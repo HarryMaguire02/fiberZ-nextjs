@@ -25,7 +25,7 @@ const researchPoints = [
 
 export default function ResearchSection() {
   return (
-    <section className="py-20 lg:py-28 bg-white">
+    <section className="py-12 lg:py-16 bg-white">
       <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12">
         <div className="mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-primary leading-tight">

@@ -23,19 +23,19 @@ export default function Header() {
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <header className="w-full">
+    <header className="w-full font-montserrat">
       <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-16 md:h-20">
 
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
             <Image
-              src="/fiberZ-logo.png"
+              src="/fiberZ-logo-footer.png"
               alt="FiberZ Logo"
               width={120}
               height={40}
-              className="h-9 md:h-10 w-auto"
               priority
+              style={{ width: '120px', height: 'auto' }}
             />
           </Link>
 
@@ -50,17 +50,17 @@ export default function Header() {
             aria-expanded={isMobileMenuOpen}
           >
             <span
-              className={`block w-6 h-0.5 bg-primary transition-transform duration-300 ${
+              className={`block w-6 h-0.5 bg-brand transition-transform duration-300 ${
                 isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
               }`}
             />
             <span
-              className={`block w-6 h-0.5 bg-primary transition-opacity duration-300 ${
+              className={`block w-6 h-0.5 bg-brand transition-opacity duration-300 ${
                 isMobileMenuOpen ? 'opacity-0' : ''
               }`}
             />
             <span
-              className={`block w-6 h-0.5 bg-primary transition-transform duration-300 ${
+              className={`block w-6 h-0.5 bg-brand transition-transform duration-300 ${
                 isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
               }`}
             />
@@ -73,7 +73,7 @@ export default function Header() {
             isMobileMenuOpen ? 'max-h-screen pb-4' : 'max-h-0'
           }`}
         >
-          <nav className="flex flex-col space-y-1 border-t border-cream-dark pt-3">
+          <nav className="flex flex-col space-y-1 pt-3">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
 
@@ -94,10 +94,10 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={closeMobileMenu}
-                  className={`py-3 px-4 rounded-lg text-sm font-medium text-center transition-colors ${
+                  className={`py-3 px-4 rounded-lg text-sm font-medium text-center ${
                     isActive
                       ? 'text-brand font-semibold'
-                      : 'text-primary/70 hover:text-brand'
+                      : 'text-body'
                   }`}
                 >
                   {link.label}

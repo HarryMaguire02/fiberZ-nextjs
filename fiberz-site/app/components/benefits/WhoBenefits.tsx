@@ -18,7 +18,7 @@ const targetGroups = [
 
 export default function WhoBenefits() {
   return (
-    <section className="py-20 lg:py-28 bg-linen">
+    <section className="py-12 lg:py-16 bg-linen">
       <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12">
         <div className="text-center mb-14">
           <h2 className="text-3xl lg:text-4xl font-bold text-primary">

@@ -7,7 +7,7 @@ const stats = [
 
 export default function StatsBar() {
   return (
-    <section className="bg-brand">
+    <section className="bg-brand font-montserrat">
       <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12 py-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat) => (

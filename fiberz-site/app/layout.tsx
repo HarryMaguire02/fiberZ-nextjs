@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Montserrat, Roboto, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import ScrollHeader from "./components/header/ScrollHeader";
 import Footer from "./components/footer/Footer";
@@ -7,6 +7,28 @@ import Footer from "./components/footer/Footer";
 const inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--next-font-montserrat",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
+  variable: "--next-font-roboto",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--next-font-playfair",
   subsets: ["latin"],
   display: "swap",
 });
@@ -36,7 +58,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
-      <body className={`${inter.variable} antialiased flex flex-col min-h-full`}>
+      <body className={`${inter.variable} ${montserrat.variable} ${roboto.variable} ${playfair.variable} antialiased flex flex-col min-h-full`}>
         <ScrollHeader />
         <main className="pt-16 md:pt-20 grow">
           {children}

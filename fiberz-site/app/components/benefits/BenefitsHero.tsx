@@ -1,26 +1,33 @@
 export default function BenefitsHero() {
   return (
     <section
-      className="relative text-white py-24 lg:py-32 overflow-hidden"
+      className="relative text-white py-14 lg:py-20 overflow-hidden"
       style={{
         backgroundImage: 'url(/benefits-hero.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
-      <div className="absolute inset-0 bg-warm-brown/70" />
-      <div className="relative z-10 max-w-content mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="max-w-2xl">
-          <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6">
-            Real Benefits.<br />
-            <span className="text-brand">Backed by Science.</span>
-          </h1>
-          <p className="text-white/80 text-lg leading-relaxed">
-            Soluble fiber is one of the most studied nutrients in digestive health.
-            Here is what quality fiber supplementation can do for you — no
-            exaggeration, no miracle claims.
-          </p>
-        </div>
+      <div
+        className="absolute inset-0 backdrop-blur-sm"
+        style={{
+          background: 'linear-gradient(to right, rgba(80,44,30,1) 0%, rgba(80,44,30,1) 48%, rgba(61,49,41,0.7) 100%)',
+          opacity: 0.25,
+        }}
+      />
+      <div className="relative z-10 max-w-content mx-auto px-6 sm:px-8 lg:px-12 text-center">
+        <h1
+          className="font-playfair font-bold mb-6"
+          style={{ fontSize: '56px', lineHeight: '67.2px' }}
+        >
+          <span className="text-body block">Real Benefits.</span>
+          <span className="text-white italic block">Backed by Science.</span>
+        </h1>
+        <p className="font-montserrat text-white text-lg leading-relaxed max-w-xl mx-auto">
+          Soluble fiber is one of the most studied nutrients in digestive health.
+          Here is what daily fiber supplementation can do for you - no
+          exaggeration, no miracle claims.
+        </p>
       </div>
     </section>
   );
