@@ -29,7 +29,7 @@ export default function NavLink({ href, label, isContactButton, onContactClick }
     <Link
       href={href}
       className={`text-sm font-medium tracking-wide transition-colors ${
-        isActive ? 'text-brand' : 'text-primary/70 hover:text-brand'
+        isActive ? 'text-brand' : 'text-body/70 hover:text-brand'
       }`}
     >
       {label}

@@ -28,7 +28,7 @@ export default function ResearchSection() {
     <section className="py-12 lg:py-16 bg-white">
       <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12">
         <div className="mb-8">
-          <h2 className="text-3xl lg:text-5xl font-cormorant font-bold text-primary leading-tight">
+          <h2 className="text-3xl lg:text-5xl font-cormorant font-bold text-heading leading-tight">
             Fiber is One of<br />the Best-Studied Nutrients
           </h2>
           <p className="mt-4 font-montserrat text-gray-text text-sm max-w-lg leading-relaxed">

@@ -35,7 +35,7 @@ export default function SimpleToAdd() {
 
           {/* Left: Title + Steps */}
           <div>
-            <h2 className="font-cormorant text-3xl lg:text-5xl font-bold text-primary leading-tight mb-4">
+            <h2 className="font-cormorant text-3xl lg:text-5xl font-bold text-heading leading-tight mb-4">
               Simple to Add.<br />
               <span className="text-brand italic">Easy to Stay Consistent.</span>
             </h2>
@@ -54,7 +54,7 @@ export default function SimpleToAdd() {
                     {step.number}
                   </div>
                   <div>
-                    <h4 className="font-montserrat font-semibold text-primary mb-1">{step.title}</h4>
+                    <h4 className="font-montserrat font-semibold text-body mb-1">{step.title}</h4>
                     <p className="font-lato text-gray-text text-sm leading-relaxed">{step.description}</p>
                   </div>
                 </div>
@@ -63,16 +63,16 @@ export default function SimpleToAdd() {
           </div>
 
           {/* Right: Product image with circle background + floating labels */}
-          <div className="relative flex items-center justify-center min-h-[400px]">
+          <div className="relative flex items-center justify-center min-h-[400px] lg:min-h-[540px]">
 
             {/* Outermost decorative ring */}
-            <div className="absolute w-[380px] h-[380px] lg:w-[440px] lg:h-[440px] rounded-full border border-white" />
+            <div className="absolute w-[380px] h-[380px] lg:w-[540px] lg:h-[540px] rounded-full border border-white" />
 
             {/* Second decorative ring */}
-            <div className="absolute w-[320px] h-[320px] lg:w-[380px] lg:h-[380px] rounded-full border border-white" />
+            <div className="absolute w-[320px] h-[320px] lg:w-[470px] lg:h-[470px] rounded-full border border-white" />
 
             {/* Warm filled circle background */}
-            <div className="absolute w-[270px] h-[270px] lg:w-[320px] lg:h-[320px] rounded-full bg-[#F1ECE0]" />
+            <div className="absolute w-[270px] h-[270px] lg:w-[400px] lg:h-[400px] rounded-full bg-[#F1ECE0]" />
 
             {/* Product image */}
             <Image
@@ -80,7 +80,7 @@ export default function SimpleToAdd() {
               alt="FiberZ — 30 sachets of 4g soluble dietary fiber, neutral taste"
               width={420}
               height={420}
-              className="relative z-10 w-48 lg:w-[230px] h-auto"
+              className="relative z-10 w-48 lg:w-[300px] h-auto"
             />
 
             {/* Label: 4g per sachet — top left */}

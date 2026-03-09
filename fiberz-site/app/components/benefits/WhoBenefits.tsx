@@ -38,7 +38,6 @@ export default function WhoBenefits() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {targetGroups.map((group) => (
             <div key={group.title} className="bg-white rounded-2xl overflow-hidden shadow-sm">
-              <div className="h-44 bg-linen" />
               <div className="p-7">
                 <h3 className="font-montserrat font-semibold text-heading mb-3 text-center">{group.title}</h3>
                 <p className="font-lato text-body text-sm leading-relaxed text-center">{group.description}</p>
@@ -62,7 +61,7 @@ export default function WhoBenefits() {
           <h2 className="font-cormorant text-3xl lg:text-5xl font-bold text-heading leading-tight mb-2">
             Start Supporting Your
           </h2>
-          <h2 className="font-cormorant text-3xl lg:text-5xl font-bold text-brand italic leading-tight mb-6">
+          <h2 className="font-cormorant text-3xl lg:text-5xl font-bold text-brand leading-tight mb-6">
             Digestive Health Today
           </h2>
           <p className="font-montserrat text-body text-sm mb-8 leading-relaxed">
