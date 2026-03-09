@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat, Roboto, Playfair_Display } from "next/font/google";
+import { Inter, Montserrat, Roboto, Playfair_Display, Cormorant_Garamond, Lato } from "next/font/google";
 import "./globals.css";
 import ScrollHeader from "./components/header/ScrollHeader";
 import Footer from "./components/footer/Footer";
@@ -33,6 +33,21 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
+const lato = Lato({
+  weight: ["300", "400", "700"],
+  variable: "--next-font-lato",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--next-font-cormorant",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://fiberz.com"),
   title: "FiberZ - Premium Daily Soluble Fiber",
@@ -58,7 +73,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
-      <body className={`${inter.variable} ${montserrat.variable} ${roboto.variable} ${playfair.variable} antialiased flex flex-col min-h-full`}>
+      <body className={`${inter.variable} ${montserrat.variable} ${roboto.variable} ${playfair.variable} ${cormorant.variable} ${lato.variable} antialiased flex flex-col min-h-full`}>
         <ScrollHeader />
         <main className="pt-16 md:pt-20 grow">
           {children}

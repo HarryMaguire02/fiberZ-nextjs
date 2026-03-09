@@ -46,6 +46,14 @@ html {
   font-family: var(--next-font-playfair), 'Playfair Display', serif;
 }
 
+@utility font-cormorant {
+  font-family: var(--next-font-cormorant), 'Cormorant Garamond', serif;
+}
+
+@utility font-lato {
+  font-family: var(--next-font-lato), 'Lato', sans-serif;
+}
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;

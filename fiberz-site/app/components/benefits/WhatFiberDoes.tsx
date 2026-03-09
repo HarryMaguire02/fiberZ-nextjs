@@ -44,11 +44,11 @@ export default function WhatFiberDoes() {
   return (
     <section className="py-12 lg:py-16 bg-white">
       <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl lg:text-4xl font-bold text-heading font-playfair">
+        <div className="text-center mb-8">
+          <h2 className="font-cormorant text-3xl lg:text-5xl font-bold text-heading">
             What Soluble Fiber Does<br />for Your Body
           </h2>
-          <p className="mt-4 text-body max-w-xl mx-auto text-sm leading-relaxed">
+          <p className="font-montserrat mt-4 text-body max-w-xl mx-auto text-sm leading-relaxed">
             FiberZ contains resistant dextrin - a water-soluble dietary fiber with a
             well-documented role in supporting digestive function.
           </p>
@@ -61,7 +61,7 @@ export default function WhatFiberDoes() {
               className={`bg-linen rounded-2xl p-7 hover:shadow-md transition-shadow${benefit.wide ? ' lg:col-span-2' : ''}`}
             >
               <div className="flex items-start gap-4 mb-4">
-                <div className="w-14 h-14 rounded-full flex-shrink-0 flex items-center justify-center" style={{ background: 'linear-gradient(to right, #D4AC77, #A6813F)' }}>
+                <div className="w-14 h-14 rounded-full shrink-0 flex items-center justify-center" style={{ background: 'linear-gradient(to right, #D4AC77, #A6813F)' }}>
                   <Image
                     src="/what-fiber-does-icon.png"
                     alt=""
@@ -69,18 +69,18 @@ export default function WhatFiberDoes() {
                     height={40}
                   />
                 </div>
-                <h3 className="text-heading font-semibold text-lg leading-snug pt-2">
+                <h3 className="font-montserrat text-heading font-semibold text-lg leading-snug pt-2">
                   {benefit.title}
                 </h3>
               </div>
-              <p className="text-body/80 text-sm leading-relaxed mb-4">
+              <p className="font-lato text-body/80 text-sm leading-relaxed mb-4">
                 {benefit.description}
               </p>
               <div className="flex flex-wrap gap-2">
                 {benefit.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs bg-tag text-brown px-3 py-1 rounded-full"
+                    className="font-lato text-xs bg-tag text-oak px-3 py-1 rounded-full"
                   >
                     {tag}
                   </span>

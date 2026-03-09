@@ -5,7 +5,6 @@ import WhatFiberDoes from '../components/benefits/WhatFiberDoes';
 import SimpleToAdd from '../components/benefits/SimpleToAdd';
 import ResearchSection from '../components/benefits/ResearchSection';
 import WhoBenefits from '../components/benefits/WhoBenefits';
-import BenefitsCTA from '../components/benefits/BenefitsCTA';
 
 export const metadata: Metadata = {
   title: 'Benefits | FiberZ',
@@ -22,7 +21,6 @@ export default function BenefitsPage() {
       <SimpleToAdd />
       <ResearchSection />
       <WhoBenefits />
-      <BenefitsCTA />
     </>
   );
 }
