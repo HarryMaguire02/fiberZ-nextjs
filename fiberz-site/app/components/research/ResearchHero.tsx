@@ -6,7 +6,7 @@ export default function ResearchHero() {
 
       {/* Background image — fill + blur directly on the image */}
       <Image
-        src="/research-hero.png"
+        src="/backed-by-science-bg.png"
         alt=""
         fill
         priority

@@ -1,7 +1,30 @@
+import type { Metadata } from 'next';
+import HomeHero from './components/home/HomeHero';
+import WhatIsFiberZ from './components/home/WhatIsFiberZ';
+import KeyBenefits from './components/home/KeyBenefits';
+import ModernDietsLackFiber from './components/home/ModernDietsLackFiber';
+import HowToUse from './components/home/HowToUse';
+import Testimonials from './components/home/Testimonials';
+import BackedByScience from './components/home/BackedByScience';
+import FAQ from './components/home/FAQ';
+
+export const metadata: Metadata = {
+  title: 'FiberZ - Premium Daily Soluble Fiber',
+  description:
+    'FiberZ is a premium daily soluble fiber designed to support digestive health, stable blood sugar levels, and weight management.',
+};
+
 export default function HomePage() {
   return (
-    <div className="flex items-center justify-center min-h-[60vh] text-gray-text text-sm">
-      Home page — coming soon
-    </div>
+    <>
+      <HomeHero />
+      <ModernDietsLackFiber />
+      <WhatIsFiberZ />
+      <KeyBenefits />
+      <HowToUse />
+      <Testimonials />
+      <BackedByScience />
+      <FAQ />
+    </>
   );
 }
