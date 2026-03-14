@@ -15,11 +15,22 @@ npm run lint     # Run ESLint
 
 **Next.js 16 App Router** marketing site for FiberZ (a dietary fiber product).
 
-- **Routing:** File-based App Router. Current routes: `/` (home), `/benefits`, `/research`. Nav also references `/product`, `/blog`, `/faq`, `/how-it-works` (not yet built).
-- **Components:** Feature-grouped under `app/components/` — `header/`, `footer/`, `home/`, `benefits/`, `research/`. Pages are thin composers that import and sequence these section components.
-- **Server components by default.** Client components (`'use client'`) only where interactivity is needed (Header, ScrollHeader, FAQ accordion, Testimonials scroll).
+- **Routing:** File-based App Router. Current routes: `/` (home), `/benefits`, `/research`, `/blog`. Nav also references `/product`, `/faq`, `/how-it-works` (not yet built).
+- **Components:** Feature-grouped under `app/components/` — `header/`, `footer/`, `home/`, `benefits/`, `research/`, `blog/`. Pages are thin composers that import and sequence these section components.
+- **Server components by default.** Client components (`'use client'`) only where interactivity is needed (Header, ScrollHeader, FAQ accordion, Testimonials scroll, BlogListingSection).
 - **Layout:** `app/layout.tsx` wraps all pages with `ScrollHeader` (fixed nav) + `Footer`. Main content has `pt-16 md:pt-20` to account for the fixed header height.
 - **Home hero overlaps header:** The home hero uses `-mt-16 md:-mt-20` to extend behind the header. ScrollHeader detects `pathname === '/'` and renders transparent bg when not scrolled (other pages keep white bg).
+
+## Blog
+
+- **Content storage:** MDX files with frontmatter in `content/blog/posts/`. No CMS — posts are added by editing files and deploying. Can migrate to a headless CMS (e.g. Sanity) later if the client needs independence.
+- **Data layer:** `content/blog/types.ts` (BlogPost, BlogCategory, BlogFilterCategory types), `content/blog/utils.ts` (server-only, reads files with `fs` + `gray-matter`), `content/blog/helpers.ts` (client-safe: searchPosts, paginatePosts, formatDate).
+- **Important:** `utils.ts` uses `fs` and can only be imported in server components. `helpers.ts` is safe for client components. Never mix them.
+- **Categories:** Nutrition, Digestion, Recipes, Health, Lifestyle, Tips. `BlogFilterCategory` adds `'ALL'` for the filter UI.
+- **Blog listing page sections:** BlogHero → BlogListingSection (client, manages search/filter/pagination state) → CategoryCards (server) → NewsletterSignup (reused from research).
+- **BlogListingSection** derives `activeCategory` from URL search params (`useSearchParams`), not from state. Category changes use `router.replace()` to update the URL. Wrapped in `<Suspense>` in the page composer.
+- **Individual blog post page** (`/blog/[slug]`) is not yet built — planned as a separate task.
+- **Blog images:** Stored in `public/blog/` as `.png` files. Category icons in `public/` with `category-` prefix (except Digestion which uses `icon-microbiota.png`).
 
 ## Styling
 
@@ -28,15 +39,23 @@ npm run lint     # Run ESLint
 - **Custom breakpoint:** `xs` at 500px (in addition to standard Tailwind breakpoints).
 - **Fonts:** 6 Google fonts loaded in layout (Inter, Montserrat, Roboto, Playfair Display, Lato, Cormorant Garamond) exposed as CSS variables + `.font-*` utility classes in globals.css.
 - **Section titles:** Always use `text-3xl lg:text-5xl` for h2 headings. Use `font-cormorant` for section titles.
-- **Gold gradient for icon circles:** `linear-gradient(to right, #D4AC77, #A6813F)` — used in KeyBenefits, KeyScientificFindings, HowToUse step numbers.
+- **Gold gradient for icon circles:** `linear-gradient(to right, #D4AC77, #A6813F)` — used in KeyBenefits, KeyScientificFindings, HowToUse step numbers, CategoryCards.
 - Complex backgrounds/overlays use inline `style` props; layout and spacing use Tailwind classes.
 
 ## Images
 
 - All static assets are in `public/`. Use Next.js `<Image>` component.
 - For small icons (inside circles, icon grids), use fixed `width`/`height` props — do NOT use `sizes="100vw"` as it causes icons to shrink on mobile.
-- Hero sections use background images via inline `style` with `backgroundSize: 'cover'`.
-- For responsive hero height, use `height: 'clamp(min, vw-based, max)'` rather than `aspect-ratio` with min/max constraints (they conflict).
+- For card images, use `fill` + `object-cover` inside a container with a fixed aspect ratio, and provide accurate `sizes` prop (e.g. `"(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 350px"`). Avoid `unoptimized` — if images look blurry, provide larger source files or better `sizes` hints instead.
+- Hero sections use `<Image fill>` with gradient overlays.
+- For responsive hero height, use `height: 'clamp(min, vw-based, max)'` or `min-h-*` classes rather than `aspect-ratio` with min/max constraints (they conflict).
+
+## Components — Patterns & Gotchas
+
+- **NewsletterSignup** (`app/components/research/NewsletterSignup.tsx`) is shared across pages (research, blog). It does NOT include an `<hr>` divider — pages that need one (research) add it in their own page composer.
+- **Disabled pagination buttons:** Do NOT use `disabled` attribute on pagination arrows — it blocks hover styles. Instead, use opacity classes for visual styling and guard clicks in the handler (`if (page < 1 || page > totalPages) return`).
+- **Avoid `useEffect` for syncing URL params to state** — Next.js strict mode triggers "setState in effect" errors. Instead, derive values directly from `useSearchParams()`.
+- **`JSX.Element` type** doesn't exist in this project's TS config. Use `React.ReactNode` instead.
 
 ## Deployment & SEO
 
@@ -49,6 +68,7 @@ Strict mode enabled. Path alias `@/*` maps to the project root.
 
 ## TODO
 
+- [ ] Create individual blog post page (`/blog/[slug]`)
 - [ ] Create product page (`/product`)
 - [ ] Integrate payment (checkout flow)
 - [ ] Integrate email sending (transactional emails)

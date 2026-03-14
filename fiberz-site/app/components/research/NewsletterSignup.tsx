@@ -15,9 +15,7 @@ export default function NewsletterSignup() {
     <section className="bg-linen">
       <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12">
 
-        <hr className="border-brand mb-12" />
-
-        <div className="text-center pb-12 lg:pb-16">
+        <div className="text-center pb-12 lg:pb-16 pt-12 lg:pt-16">
           <h2 className="font-cormorant text-3xl lg:text-5xl font-bold text-heading leading-tight mb-4">
             Stay Up to Date with the Latest Articles
           </h2>

@@ -20,6 +20,11 @@ export default function ResearchPage() {
       <WhyFiberZScienceBased />
       <KeyScientificFindings />
       <FeaturedClinicalStudies />
+      <div className="bg-linen">
+        <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12">
+          <hr className="border-brand" />
+        </div>
+      </div>
       <NewsletterSignup />
     </>
   );
