@@ -90,7 +90,7 @@ export default function Footer() {
               </h3>
               <div className="space-y-2 text-sm text-body">
                 <p className="font-semibold text-heading">Fidelinka Skrob d.o.o.</p>
-                <p>Cantavirski Put 1, Subtoica, Serbia</p>
+                <p>Cantavirski Put 1, Subotica, Serbia</p>
                 <p>
                   Email:{' '}
                   <a href="mailto:info@fiberz.com" className="hover:text-body/70 transition-colors">

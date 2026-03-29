@@ -15,8 +15,9 @@ npm run lint     # Run ESLint
 
 **Next.js 16 App Router** marketing site for FiberZ (a dietary fiber product).
 
-- **Routing:** File-based App Router. Current routes: `/` (home), `/benefits`, `/research`, `/blog`. Nav also references `/product`, `/faq`, `/how-it-works` (not yet built).
-- **Components:** Feature-grouped under `app/components/` — `header/`, `footer/`, `home/`, `benefits/`, `research/`, `blog/`. Pages are thin composers that import and sequence these section components.
+- **Routing:** File-based App Router. Current routes: `/` (home), `/benefits`, `/research`, `/blog`, `/faq`. Nav also references `/product`, `/how-it-works` (not yet built).
+- **Components:** Feature-grouped under `app/components/` — `header/`, `footer/`, `home/`, `benefits/`, `research/`, `blog/`, `faq/`. Pages are thin composers that import and sequence these section components.
+- **API Routes:** `app/api/newsletter/subscribe/` and `app/api/newsletter/unsubscribe/` — handle newsletter subscription via Resend.
 - **Server components by default.** Client components (`'use client'`) only where interactivity is needed (Header, ScrollHeader, FAQ accordion, Testimonials scroll, BlogListingSection).
 - **Layout:** `app/layout.tsx` wraps all pages with `ScrollHeader` (fixed nav) + `Footer`. Main content has `pt-16 md:pt-20` to account for the fixed header height.
 - **Home hero overlaps header:** The home hero uses `-mt-16 md:-mt-20` to extend behind the header. ScrollHeader detects `pathname === '/'` and renders transparent bg when not scrolled (other pages keep white bg).
@@ -52,10 +53,24 @@ npm run lint     # Run ESLint
 
 ## Components — Patterns & Gotchas
 
-- **NewsletterSignup** (`app/components/research/NewsletterSignup.tsx`) is shared across pages (research, blog). It does NOT include an `<hr>` divider — pages that need one (research) add it in their own page composer.
+- **NewsletterSignup** (`app/components/research/NewsletterSignup.tsx`) is shared across pages (research, blog, faq). It does NOT include an `<hr>` divider — pages that need one (research) add it in their own page composer. Wired up to `/api/newsletter/subscribe` with loading/success/error states, honeypot spam protection, and auto-clearing status messages after 5 seconds.
 - **Disabled pagination buttons:** Do NOT use `disabled` attribute on pagination arrows — it blocks hover styles. Instead, use opacity classes for visual styling and guard clicks in the handler (`if (page < 1 || page > totalPages) return`).
 - **Avoid `useEffect` for syncing URL params to state** — Next.js strict mode triggers "setState in effect" errors. Instead, derive values directly from `useSearchParams()`.
 - **`JSX.Element` type** doesn't exist in this project's TS config. Use `React.ReactNode` instead.
+
+## Newsletter
+
+- **Provider:** Resend — handles email sending, subscriber management (Audiences), and campaign sending (Broadcasts).
+- **No database** — Resend Audiences is the sole subscriber store. No Vercel Postgres or other DB needed.
+- **Subscribe flow:** `NewsletterSignup` component → `POST /api/newsletter/subscribe` → validates email, checks honeypot, rate limits (5 req/min/IP) → adds contact to Resend Audience → sends welcome email via React Email template.
+- **Unsubscribe flow:** Welcome email contains unsubscribe link → `GET /api/newsletter/unsubscribe?email=...` → marks contact as `unsubscribed: true` in Resend Audience (soft unsubscribe, preserves record) → shows HTML confirmation page.
+- **Sending campaigns:** Done entirely through the Resend dashboard (Broadcasts). No code changes needed. The client creates a broadcast, picks the audience, uses the branded HTML template from `emails/broadcast-template.html`, and sends.
+- **Resend Audiences API:** `contacts.create()` is idempotent — duplicate emails don't error, they return the existing contact. No need to check existence before creating.
+- **Welcome email template:** `emails/WelcomeEmail.tsx` — React Email component branded with FiberZ colors.
+- **Broadcast template:** `emails/broadcast-template.html` — standalone HTML template for pasting into Resend's broadcast editor. Uses `{{{RESEND_UNSUBSCRIBE_URL}}}` variable for the unsubscribe link.
+- **Spam protection:** Honeypot field (`_website`) + in-memory rate limiter in `app/lib/validation.ts`. No CAPTCHA.
+- **Resend client:** Lazily initialized via `getResend()` function in route handlers to avoid build-time errors when env vars aren't set.
+- **Environment variables:** `RESEND_API_KEY`, `RESEND_AUDIENCE_ID`, and optionally `RESEND_FROM_EMAIL` (defaults to `onboarding@resend.dev` for testing). Must verify domain in Resend before production sending — unverified domains land in spam.
 
 ## Deployment & SEO
 
@@ -71,5 +86,8 @@ Strict mode enabled. Path alias `@/*` maps to the project root.
 - [ ] Create individual blog post page (`/blog/[slug]`)
 - [ ] Create product page (`/product`)
 - [ ] Integrate payment (checkout flow)
-- [ ] Integrate email sending (transactional emails)
-- [ ] Newsletter signup integration
+- [ ] Verify domain in Resend and update `RESEND_FROM_EMAIL` env var for production email delivery
+- [ ] Add unsubscribe link (`{{{RESEND_UNSUBSCRIBE_URL}}}`) to broadcast template footer
+- [ ] Contact form integration (FAQ page — currently mailto/tel links only)
+- [x] Newsletter signup integration
+- [x] Integrate email sending (transactional welcome email via Resend)
