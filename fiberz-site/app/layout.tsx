@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat, Roboto, Playfair_Display, Cormorant_Garamond, Lato } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import ScrollHeader from "./components/header/ScrollHeader";
 import Footer from "./components/footer/Footer";
@@ -79,6 +81,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

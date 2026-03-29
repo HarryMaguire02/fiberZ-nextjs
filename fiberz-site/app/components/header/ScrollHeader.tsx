@@ -6,6 +6,7 @@ import Header from './Header';
 
 export default function ScrollHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
 
@@ -19,7 +20,7 @@ export default function ScrollHeader() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const headerBg = isScrolled
+  const headerBg = isScrolled || isMobileMenuOpen
     ? 'bg-white/95 backdrop-blur-sm shadow-md'
     : isHome
       ? 'bg-transparent'
@@ -29,7 +30,7 @@ export default function ScrollHeader() {
     <div
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}
     >
-      <Header />
+      <Header isMobileMenuOpen={isMobileMenuOpen} onMobileMenuToggle={setIsMobileMenuOpen} />
     </div>
   );
 }

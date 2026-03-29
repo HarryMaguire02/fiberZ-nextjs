@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -16,12 +15,16 @@ const navLinks = [
   { href: '#contact', label: 'CONTACT', isContactButton: true },
 ];
 
-export default function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+interface HeaderProps {
+  isMobileMenuOpen: boolean;
+  onMobileMenuToggle: (open: boolean) => void;
+}
+
+export default function Header({ isMobileMenuOpen, onMobileMenuToggle }: HeaderProps) {
   const pathname = usePathname();
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+  const toggleMobileMenu = () => onMobileMenuToggle(!isMobileMenuOpen);
+  const closeMobileMenu = () => onMobileMenuToggle(false);
 
   return (
     <header className="w-full font-montserrat">
