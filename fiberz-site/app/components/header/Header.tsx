@@ -18,13 +18,19 @@ const navLinks = [
 interface HeaderProps {
   isMobileMenuOpen: boolean;
   onMobileMenuToggle: (open: boolean) => void;
+  onContactClick: () => void;
 }
 
-export default function Header({ isMobileMenuOpen, onMobileMenuToggle }: HeaderProps) {
+export default function Header({ isMobileMenuOpen, onMobileMenuToggle, onContactClick }: HeaderProps) {
   const pathname = usePathname();
 
   const toggleMobileMenu = () => onMobileMenuToggle(!isMobileMenuOpen);
   const closeMobileMenu = () => onMobileMenuToggle(false);
+
+  const handleContactClick = () => {
+    closeMobileMenu();
+    onContactClick();
+  };
 
   return (
     <header className="w-full font-montserrat">
@@ -44,7 +50,7 @@ export default function Header({ isMobileMenuOpen, onMobileMenuToggle }: HeaderP
           </Link>
 
           {/* Desktop Navigation */}
-          <Navigation navLinks={navLinks} onContactClick={() => {}} />
+          <Navigation navLinks={navLinks} onContactClick={onContactClick} />
 
           {/* Mobile Hamburger */}
           <button
@@ -85,7 +91,7 @@ export default function Header({ isMobileMenuOpen, onMobileMenuToggle }: HeaderP
                 return (
                   <button
                     key={link.href}
-                    onClick={closeMobileMenu}
+                    onClick={handleContactClick}
                     className="py-3 px-4 rounded-full text-sm font-semibold text-center text-white bg-brand hover:bg-brand-dark transition-colors"
                   >
                     {link.label}

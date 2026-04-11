@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { COMPANY } from '@/app/lib/company';
+import PaymentMethods from './PaymentMethods';
 
 export default function Footer() {
   return (
@@ -37,6 +39,9 @@ export default function Footer() {
               <p className="mt-4 text-sm text-body leading-relaxed max-w-xs">
                 Premium daily soluble fiber designed to support digestive health and help meet recommended daily fiber intake.
               </p>
+              <div className="mt-6">
+                <PaymentMethods />
+              </div>
             </div>
 
             {/* Shop & Learn */}
@@ -68,7 +73,6 @@ export default function Footer() {
               </h3>
               <ul className="space-y-3">
                 {[
-                  { href: '#contact', label: 'Contact Us' },
                   { href: '/shipping', label: 'Shipping & Returns' },
                   { href: '/terms-of-use', label: 'Terms of Service' },
                   { href: '/privacy-policy', label: 'Privacy Policy' },
@@ -88,18 +92,28 @@ export default function Footer() {
               <h3 className="text-sm font-semibold text-heading uppercase tracking-wider mb-5">
                 Contact
               </h3>
-              <div className="space-y-2 text-sm text-body">
-                <p className="font-semibold text-heading">Fidelinka Skrob d.o.o.</p>
-                <p>Cantavirski Put 1, Subotica, Serbia</p>
+              <address className="not-italic space-y-2 text-sm text-body">
+                <p className="font-semibold text-heading">{COMPANY.legalName}</p>
+                <p>{COMPANY.addressLine}, {COMPANY.postalCode} {COMPANY.city}, {COMPANY.country}</p>
                 <p>
                   Email:{' '}
-                  <a href="mailto:info@fiberz.com" className="hover:text-body/70 transition-colors">
-                    info@fiberz.com
+                  <a href={`mailto:${COMPANY.email}`} className="hover:text-body/70 transition-colors">
+                    {COMPANY.email}
                   </a>
                 </p>
-                <p>Phone: +381 63 10777 08</p>
-                <p>Mon-Fri: 9:00 - 17:00</p>
-              </div>
+                <p>
+                  Phone:{' '}
+                  <a href={`tel:${COMPANY.phoneHref}`} className="hover:text-body/70 transition-colors">
+                    {COMPANY.phone}
+                  </a>
+                </p>
+                <p>{COMPANY.workingHours}</p>
+                <p className="pt-2 text-xs">
+                  PIB: {COMPANY.pib}
+                  <br />
+                  Matični broj: {COMPANY.matBr}
+                </p>
+              </address>
             </div>
 
           </div>
@@ -109,7 +123,7 @@ export default function Footer() {
         <div className="max-w-content mx-auto border-t border-body">
           <div className="px-6 sm:px-8 lg:px-12 py-5">
             <p className="text-center text-xs text-body">
-              &copy; All rights reserved. FiberZ
+              &copy; {new Date().getFullYear()} {COMPANY.legalName}. All rights reserved.
             </p>
           </div>
         </div>

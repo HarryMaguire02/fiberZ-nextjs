@@ -3,10 +3,12 @@
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Header from './Header';
+import ContactPopup from './ContactPopup';
 
 export default function ScrollHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
 
@@ -27,10 +29,17 @@ export default function ScrollHeader() {
       : 'bg-white shadow-sm';
 
   return (
-    <div
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}
-    >
-      <Header isMobileMenuOpen={isMobileMenuOpen} onMobileMenuToggle={setIsMobileMenuOpen} />
-    </div>
+    <>
+      <div
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}
+      >
+        <Header
+          isMobileMenuOpen={isMobileMenuOpen}
+          onMobileMenuToggle={setIsMobileMenuOpen}
+          onContactClick={() => setIsContactOpen(true)}
+        />
+      </div>
+      <ContactPopup isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+    </>
   );
 }

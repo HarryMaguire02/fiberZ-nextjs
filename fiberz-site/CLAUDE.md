@@ -15,12 +15,13 @@ npm run lint     # Run ESLint
 
 **Next.js 16 App Router** marketing site for FiberZ (a dietary fiber product).
 
-- **Routing:** File-based App Router. Current routes: `/` (home), `/benefits`, `/research`, `/blog`, `/faq`. Nav also references `/product`, `/how-it-works` (not yet built).
-- **Components:** Feature-grouped under `app/components/` — `header/`, `footer/`, `home/`, `benefits/`, `research/`, `blog/`, `faq/`. Pages are thin composers that import and sequence these section components.
+- **Routing:** File-based App Router. Current routes: `/` (home), `/benefits`, `/research`, `/blog`, `/faq`, `/terms-of-use`, `/privacy-policy`, `/shipping`, `/disclaimer`. Nav also references `/product`, `/how-it-works` (not yet built).
+- **Components:** Feature-grouped under `app/components/` — `header/`, `footer/`, `home/`, `benefits/`, `research/`, `blog/`, `faq/`, `legal/`. Pages are thin composers that import and sequence these section components.
 - **API Routes:** `app/api/newsletter/subscribe/` and `app/api/newsletter/unsubscribe/` — handle newsletter subscription via Resend.
-- **Server components by default.** Client components (`'use client'`) only where interactivity is needed (Header, ScrollHeader, FAQ accordion, Testimonials scroll, BlogListingSection).
-- **Layout:** `app/layout.tsx` wraps all pages with `ScrollHeader` (fixed nav) + `Footer`. Main content has `pt-16 md:pt-20` to account for the fixed header height.
+- **Server components by default.** Client components (`'use client'`) only where interactivity is needed (Header, ScrollHeader, ContactPopup, FAQ accordion, Testimonials scroll, BlogListingSection).
+- **Layout:** `app/layout.tsx` wraps all pages with `ScrollHeader` (fixed nav) + `Footer` + `<Analytics />` + `<SpeedInsights />`. Main content has `pt-16 md:pt-20` to account for the fixed header height.
 - **Home hero overlaps header:** The home hero uses `-mt-16 md:-mt-20` to extend behind the header. ScrollHeader detects `pathname === '/'` and renders transparent bg when not scrolled (other pages keep white bg).
+- **Company info:** Single source of truth in `app/lib/company.ts` (`COMPANY` constant — legal name, address, PIB, MB, email, phone, hours). Used by Footer, ContactPopup, and all legal pages. **Update here, not in components**, when company details change.
 
 ## Blog
 
@@ -57,6 +58,16 @@ npm run lint     # Run ESLint
 - **Disabled pagination buttons:** Do NOT use `disabled` attribute on pagination arrows — it blocks hover styles. Instead, use opacity classes for visual styling and guard clicks in the handler (`if (page < 1 || page > totalPages) return`).
 - **Avoid `useEffect` for syncing URL params to state** — Next.js strict mode triggers "setState in effect" errors. Instead, derive values directly from `useSearchParams()`.
 - **`JSX.Element` type** doesn't exist in this project's TS config. Use `React.ReactNode` instead.
+- **ContactPopup** (`app/components/header/ContactPopup.tsx`) is opened from the header CONTACT button. Open state lives in `ScrollHeader` and is passed down to `Header → Navigation → NavLink`. Closes on Escape, backdrop click, or × button. Locks body scroll while open.
+
+## Legal Pages
+
+- **Pages:** `/terms-of-use`, `/privacy-policy`, `/shipping`, `/disclaimer`. All four are statically prerendered server components.
+- **Shared layout:** `app/components/legal/LegalPageLayout.tsx` provides a branded gold-gradient hero + a constrained `max-w-3xl` prose container. New legal pages should reuse this layout for consistency.
+- **Prose styling:** `.legal-prose` class in `globals.css` styles `h2`, `h3`, `p`, `ul`, `a`, `strong` inside legal content. Don't restyle these inline — extend `.legal-prose` if new elements are needed.
+- **Content language:** Currently English. References Serbian laws by name (Zakon o zaštiti potrošača, ZZPL, Zakon o fiskalizaciji). **A Serbian lawyer should review before going live** — the content is template language drafted from legal requirements, not lawyer-validated.
+- **`Last updated` dates** are hardcoded in each page. Update them whenever content changes.
+- **SEO:** Every legal page exports full Metadata with explicit `alternates.canonical`, `robots: { index: true, follow: true }`, and OpenGraph URL. Required for Google Search Console submission.
 
 ## Newsletter
 
@@ -75,19 +86,86 @@ npm run lint     # Run ESLint
 ## Deployment & SEO
 
 - **Deployed to Vercel** with a custom domain. All code must be production-ready.
-- **SEO optimized:** Every page needs proper Metadata exports (title, description, OpenGraph). Use semantic HTML, proper heading hierarchy, alt text on images, and structured data where appropriate.
+- **SEO optimized:** Every page needs proper Metadata exports (title, description, OpenGraph, `alternates.canonical`, explicit `robots: { index: true, follow: true }`). Use semantic HTML, proper heading hierarchy (single h1 per page), alt text on images, and structured data where appropriate.
+- **Pages will be submitted to Google Search Console.** Every new route should be indexable from day one — no `noindex` on marketing or legal pages.
+- **Vercel Web Analytics + Speed Insights** are loaded directly in `layout.tsx`. Both are cookieless and GDPR-compliant without consent — no cookie banner needed. Both are named explicitly in the Privacy Policy. If a cookie-based tool is added later, a consent banner would need to be introduced.
+
+## Payments (planned — AllSecure)
+
+- **Provider:** AllSecure (Belgrade office). Chosen because Stripe is not available in Serbia, and AllSecure already has live Apple Pay + Google Pay support and a Belgrade-based team.
+- **Status:** Pre-onboarding. The website is being prepared for AllSecure's merchant review (legal pages, contact info, PIB/MB visible, payment method icons in footer).
+- **Payment method icons** in `app/components/footer/PaymentMethods.tsx` are currently **text placeholders**. Swap them for the official Visa/Mastercard/Maestro/DinaCard/Apple Pay/Google Pay logos provided by AllSecure after onboarding.
+- **Fiscalization (V-PFR)** is a **separate, mandatory** integration with the Serbian Tax Administration. AllSecure does not handle fiscal receipts — they must be generated server-side after every successful payment, in accordance with the Serbian Law on Fiscalization (Zakon o fiskalizaciji). Plan: integrate a certified ESIR provider's API (e.g. Younify, eFiskal, Fiskalko, Fiscal.rs) rather than building a custom ESIR.
 
 ## TypeScript
 
 Strict mode enabled. Path alias `@/*` maps to the project root.
 
+## Important Things to Know
+
+- **Legal page content is template English** drafted from Serbian law requirements. **Have a Serbian lawyer review** Terms of Service, Privacy Policy, Shipping & Returns, and Disclaimer before going live. Acquirers (like AllSecure) don't legally validate content — that's on you.
+- **Payment method icons in the footer are text placeholders.** AllSecure provides an official brand kit with Visa/Mastercard/Maestro/DinaCard/Apple Pay/Google Pay logos after onboarding — swap them in then.
+- **All "Last updated" dates in legal pages are hardcoded** (currently 2026-04-07). Update them whenever you change the content.
+- **No cookie banner** is currently needed. Vercel Web Analytics and Speed Insights are both cookieless. If a cookie-based tool is added later (e.g. advertising pixels), a consent banner must be introduced at that point.
+- **`/product`, `/how-it-works`, and the checkout flow do not exist yet.** The footer links to them; clicking those links 404s. This must be resolved before AllSecure's merchant review or they will reject the application.
+- **Fiscalization (V-PFR) is a separate, mandatory integration** from the payment gateway. AllSecure does not handle fiscal receipts — you must integrate a certified ESIR provider's API after each successful payment.
+
 ## TODO
 
+### Before AllSecure merchant review (blockers)
+
+- [ ] Build `/product` page with real product, RSD pricing, and a working "Buy" entry point (placeholder checkout is fine for legal review)
+- [ ] Build `/how-it-works` page (or remove the link from footer/header)
+- [ ] **Have a Serbian lawyer review** all four legal pages (Terms of Service, Privacy Policy, Shipping & Returns, Disclaimer)
+- [ ] Translate legal pages to Serbian (recommended for Serbian consumer base)
+- [ ] Add an "About Us" page or section with company history (Fidelinka has long history — leverage for trust during review)
+
+### AllSecure onboarding & integration
+
+- [ ] Initial sales meeting with AllSecure — get written quote, confirm Apple Pay availability, settlement period, supported currencies
+- [ ] Submit KYC documents (APR izvod, PIB, MB, business bank account, beneficial owner ID)
+- [ ] Sign merchant agreement
+- [ ] Receive sandbox credentials and integrate hosted payment page (HPP) or drop-in widget
+- [ ] Configure Apple Pay (Merchant ID + domain verification file in `public/.well-known/`)
+- [ ] Configure Google Pay (Google Pay Console registration + SDK integration)
+- [ ] Replace placeholder payment icons in `PaymentMethods.tsx` with official AllSecure brand assets
+- [ ] PCI SAQ A submission via AllSecure
+- [ ] Switch to production credentials and smoke test with real low-value purchase
+
+### Fiscalization (V-PFR) — mandatory by Serbian law
+
+- [ ] Register with Poreska uprava as e-commerce taxpayer
+- [ ] Apply for Bezbednosni element (security certificate)
+- [ ] Choose certified ESIR provider (Younify / eFiskal / Fiskalko / Fiscal.rs) and integrate their API
+- [ ] Wire ESIR call into the post-payment flow so a fiscal receipt with QR code is sent to the customer
+
+### Blog & content
+
 - [ ] Create individual blog post page (`/blog/[slug]`)
-- [ ] Create product page (`/product`)
-- [ ] Integrate payment (checkout flow)
+
+### Newsletter / email
+
 - [ ] Verify domain in Resend and update `RESEND_FROM_EMAIL` env var for production email delivery
 - [ ] Add unsubscribe link (`{{{RESEND_UNSUBSCRIBE_URL}}}`) to broadcast template footer
-- [ ] Contact form integration (FAQ page — currently mailto/tel links only)
+- [ ] Contact form integration (FAQ page — currently mailto/tel links and ContactPopup only)
+
+### Nice-to-have
+
+- [ ] Sitemap (`app/sitemap.ts`) for Google Search Console
+- [ ] `robots.txt` (`app/robots.ts`)
+- [ ] Structured data (JSON-LD) for product, organization, breadcrumbs
+
+### Done
+
 - [x] Newsletter signup integration
 - [x] Integrate email sending (transactional welcome email via Resend)
+- [x] Add PIB and Matični broj to footer
+- [x] Build Terms of Service page
+- [x] Build Privacy Policy page (with Vercel Web Analytics + Speed Insights named)
+- [x] Build Shipping & Returns page (with 14-day right of withdrawal)
+- [x] Build Disclaimer page (food supplement)
+- [x] Header CONTACT button popup
+- [x] ~~Cookie consent banner~~ — removed (Vercel Analytics + Speed Insights are cookieless, no banner needed)
+- [x] Payment method placeholder badges in footer
+- [x] Shared `LegalPageLayout` and `.legal-prose` styles
+- [x] Centralized company info in `app/lib/company.ts`
