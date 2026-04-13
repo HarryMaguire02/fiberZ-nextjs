@@ -108,10 +108,11 @@ export default function Footer() {
                   </a>
                 </p>
                 <p>{COMPANY.workingHours}</p>
-                <p className="pt-2 text-xs">
-                  PIB: {COMPANY.pib}
-                  <br />
-                  Matični broj: {COMPANY.matBr}
+                <p>
+                  Tax ID: {COMPANY.pib}
+                </p>
+                <p>  
+                  Registration No: {COMPANY.matBr}
                 </p>
               </address>
             </div>

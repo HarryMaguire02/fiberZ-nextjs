@@ -8,7 +8,7 @@
 export const COMPANY = {
   legalName: 'Fidelinka Skrob d.o.o.',
   brandName: 'FiberZ',
-  addressLine: 'Cantavirski Put 1',
+  addressLine: 'Čantavirski put 1',
   city: 'Subotica',
   postalCode: '24000',
   country: 'Serbia',

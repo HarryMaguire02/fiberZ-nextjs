@@ -15,8 +15,8 @@ npm run lint     # Run ESLint
 
 **Next.js 16 App Router** marketing site for FiberZ (a dietary fiber product).
 
-- **Routing:** File-based App Router. Current routes: `/` (home), `/benefits`, `/research`, `/blog`, `/faq`, `/product`, `/terms-of-use`, `/privacy-policy`, `/shipping`, `/disclaimer`. Nav also references `/how-it-works` (not yet built).
-- **Components:** Feature-grouped under `app/components/` — `header/`, `footer/`, `home/`, `benefits/`, `research/`, `blog/`, `faq/`, `legal/`, `product/`. Pages are thin composers that import and sequence these section components.
+- **Routing:** File-based App Router. Current routes: `/` (home), `/benefits`, `/research`, `/research/resistant-dextrin`, `/blog`, `/faq`, `/product`, `/how-it-works`, `/terms-of-use`, `/privacy-policy`, `/shipping`, `/disclaimer`.
+- **Components:** Feature-grouped under `app/components/` — `header/`, `footer/`, `home/`, `benefits/`, `research/`, `blog/`, `faq/`, `legal/`, `product/`, `how-it-works/`. Pages are thin composers that import and sequence these section components.
 - **API Routes:** `app/api/newsletter/subscribe/` and `app/api/newsletter/unsubscribe/` — handle newsletter subscription via Resend.
 - **Server components by default.** Client components (`'use client'`) only where interactivity is needed (Header, ScrollHeader, ContactPopup, ProductHero, FAQ accordion, Testimonials scroll, BlogListingSection).
 - **Layout:** `app/layout.tsx` wraps all pages with `ScrollHeader` (fixed nav) + `Footer` + `<Analytics />` + `<SpeedInsights />`. Main content has `pt-16 md:pt-20` to account for the fixed header height.
@@ -101,6 +101,46 @@ npm run lint     # Run ESLint
 - **Pages will be submitted to Google Search Console.** Every new route should be indexable from day one — no `noindex` on marketing or legal pages.
 - **Vercel Web Analytics + Speed Insights** are loaded directly in `layout.tsx`. Both are cookieless and GDPR-compliant without consent — no cookie banner needed. Both are named explicitly in the Privacy Policy. If a cookie-based tool is added later, a consent banner would need to be introduced.
 
+## How It Works Page
+
+- **Page:** `app/how-it-works/page.tsx` — thin composer sequencing 6 sections: HowItWorksHero → SimpleToAdd (reused from benefits/) → HowToUse (reused from home/) → WhenToTake → FAQ (reused, `variant="linen"`) → CTASection.
+- **New components** in `app/components/how-it-works/`: `HowItWorksHero`, `WhenToTake`, `CTASection`.
+- **Reused components:** `SimpleToAdd` (benefits/), `HowToUse` (home/), `FAQ` (home/) — no modifications needed.
+
+## Research
+
+- **Research listing page:** `app/research/page.tsx` — sequences ResearchHero → ResearchStats → WhyFiberZScienceBased → KeyScientificFindings → FeaturedClinicalStudies → NewsletterSignup.
+- **Research article page:** `app/research/resistant-dextrin/page.tsx` — full research article on resistant dextrin as a prebiotic, covering 7 sections (prebiotics definition, SCFA mechanisms, production/properties, clinical evidence, synergistic effects, about FiberZ, conclusion) with references, nutritional tables, flowchart diagram, and product image. Uses `.research-prose` styles (defined in `globals.css`).
+- **FeaturedClinicalStudies** (`app/components/research/FeaturedClinicalStudies.tsx`) — displays 4 real peer-reviewed studies from the research PDF references (Cai 2018, Włodarczyk 2021, Yoshida 2024, Hu 2020). Links to the full article page.
+- **KeyScientificFindings** (`app/components/research/KeyScientificFindings.tsx`) — 4 findings backed by real citations from the research PDF.
+- **Research data source:** `public/research/research.pdf` (original research document). Product image at `public/research/fiberz-research.jpg`.
+- **Nutritional data** in `app/lib/productData.ts` updated to match research PDF values (Energy: 48 kJ/11 kcal, Fiber: 2.1g per sachet, plus saturates/sugars/salt rows).
+
+## SEO
+
+- **Sitemap:** `app/sitemap.ts` — dynamic sitemap covering all 12 public routes. Base URL from `NEXT_PUBLIC_SITE_URL` env var.
+- **Robots:** `app/robots.ts` — allows all crawlers, references `/sitemap.xml`.
+- **JSON-LD structured data** in `app/lib/jsonLd.ts` — shared utility exporting `getOrganizationJsonLd()`, `getProductJsonLd()`, `getFAQJsonLd()`, `getBreadcrumbJsonLd()`. Added to:
+  - Home page (`/`) — Organization schema
+  - Product page (`/product`) — Product schema (all packages with RSD pricing) + BreadcrumbList
+  - FAQ page (`/faq`) — FAQPage schema (all questions from `faqData.ts`) + BreadcrumbList
+  - Research article (`/research/resistant-dextrin`) — BreadcrumbList
+
+## Styling
+
+- **`.legal-prose`** in `globals.css` — typographic styles for legal pages (h2, h3, p, ul, a, strong). Wrapped in `@layer base` for Tailwind v4 specificity.
+- **`.research-prose`** in `globals.css` — similar to `legal-prose` but uses Roboto for h2 and scopes `ul` styles to direct children (`> ul`) to avoid conflicts with nested components like the flowchart diagram.
+
+## Security
+
+- **HTTP security headers** configured in `next.config.ts` via `headers()`. Applied to all routes (`/(.*)`):
+  - `X-Content-Type-Options: nosniff` — prevents MIME-type sniffing
+  - `X-Frame-Options: DENY` — blocks iframe embedding (clickjacking protection)
+  - `X-XSS-Protection: 1; mode=block` — legacy XSS filter
+  - `Referrer-Policy: strict-origin-when-cross-origin` — controls referrer info sent to other sites
+  - `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload` — forces HTTPS
+  - `Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()` — restricts browser APIs
+
 ## Payments (planned — AllSecure)
 
 - **Provider:** AllSecure (Belgrade office). Chosen because Stripe is not available in Serbia, and AllSecure already has live Apple Pay + Google Pay support and a Belgrade-based team.
@@ -118,14 +158,14 @@ Strict mode enabled. Path alias `@/*` maps to the project root.
 - **Payment method icons in the footer are text placeholders.** AllSecure provides an official brand kit with Visa/Mastercard/Maestro/DinaCard/Apple Pay/Google Pay logos after onboarding — swap them in then.
 - **All "Last updated" dates in legal pages are hardcoded** (currently 2026-04-07). Update them whenever you change the content.
 - **No cookie banner** is currently needed. Vercel Web Analytics and Speed Insights are both cookieless. If a cookie-based tool is added later (e.g. advertising pixels), a consent banner must be introduced at that point.
-- **`/how-it-works` and the checkout flow do not exist yet.** The footer/header links to `/how-it-works`; clicking it 404s. This must be resolved before AllSecure's merchant review or they will reject the application.
+- **The checkout flow does not exist yet.** Will be built after AllSecure onboarding provides sandbox credentials.
 - **Fiscalization (V-PFR) is a separate, mandatory integration** from the payment gateway. AllSecure does not handle fiscal receipts — you must integrate a certified ESIR provider's API after each successful payment.
 
 ## TODO
 
 ### Before AllSecure merchant review (blockers)
 
-- [ ] Build `/how-it-works` page (or remove the link from footer/header)
+- [x] ~~Build `/how-it-works` page~~ — done (reuses `SimpleToAdd`, `HowToUse`, `FAQ` components + 3 new: `HowItWorksHero`, `WhenToTake`, `CTASection`)
 - [ ] **Have a Serbian lawyer review** all four legal pages (Terms of Service, Privacy Policy, Shipping & Returns, Disclaimer)
 - [ ] Translate legal pages to Serbian (recommended for Serbian consumer base)
 - [ ] Add an "About Us" page or section with company history (Fidelinka has long history — leverage for trust during review)
@@ -161,9 +201,7 @@ Strict mode enabled. Path alias `@/*` maps to the project root.
 
 ### Nice-to-have
 
-- [ ] Sitemap (`app/sitemap.ts`) for Google Search Console
-- [ ] `robots.txt` (`app/robots.ts`)
-- [ ] Structured data (JSON-LD) for product, organization, breadcrumbs
+- [x] ~~Structured data (JSON-LD) for product, organization, breadcrumbs~~ — done (home, product, FAQ pages)
 
 ### Done
 
@@ -182,3 +220,11 @@ Strict mode enabled. Path alias `@/*` maps to the project root.
 - [x] Build `/product` page with RSD pricing, package selection, ORDER NOW placeholder, and 8 sections
 - [x] Centralized product data in `app/lib/productData.ts`
 - [x] Testimonials and FAQ variant props for reuse across pages with different bg colors
+- [x] Build `/how-it-works` page (reuses `SimpleToAdd`, `HowToUse`, `FAQ` + 3 new components)
+- [x] Sitemap (`app/sitemap.ts`) and `robots.txt` (`app/robots.ts`)
+- [x] Footer PIB/MB labels translated to English (Tax ID / Registration No)
+- [x] Security headers in `next.config.ts` (HSTS, X-Frame-Options, CSP, etc.)
+- [x] JSON-LD structured data — Organization (home), Product (product), FAQPage (faq), BreadcrumbList
+- [x] Research article page (`/research/resistant-dextrin`) with full PDF content, flowchart, nutritional tables, and product image
+- [x] Updated `FeaturedClinicalStudies` and `KeyScientificFindings` with real peer-reviewed study data
+- [x] Updated nutritional data in `productData.ts` to match research PDF values

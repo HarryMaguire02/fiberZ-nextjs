@@ -2,6 +2,7 @@ const features = [
   {
     title: '4g Per Pack',
     description: 'Each serving provides 4 grams of soluble fiber',
+    icon: '✓',
   },
   {
     title: '30 Sachets Per Box',
@@ -11,14 +12,18 @@ const features = [
   {
     title: 'Dissolves Easily',
     description: 'Mix into water, yogurt, oatmeal, or smoothies',
+    icon: '✓',
   },
   {
     title: 'Neutral Taste',
     description: 'Does not alter the flavor of your beverages or food',
+    icon: '✓',
+
   },
   {
     title: '1-3 Sachets Daily',
     description: 'Flexible dosing to meet your individual needs',
+    icon: '✓',
   },
 ];
 

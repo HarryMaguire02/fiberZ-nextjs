@@ -7,6 +7,7 @@ import TrustCards from '@/app/components/product/TrustCards';
 import ScientificallyProvenStats from '@/app/components/product/ScientificallyProvenStats';
 import NutritionalInfo from '@/app/components/product/NutritionalInfo';
 import FAQ from '@/app/components/home/FAQ';
+import { getProductJsonLd, getBreadcrumbJsonLd } from '@/app/lib/jsonLd';
 
 export const metadata: Metadata = {
   title: 'Shop FiberZ | Premium Soluble Fiber Supplement',
@@ -26,6 +27,21 @@ export const metadata: Metadata = {
 export default function ProductPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getProductJsonLd()) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            getBreadcrumbJsonLd([
+              { name: 'Home', href: '/' },
+              { name: 'Shop FiberZ', href: '/product' },
+            ])
+          ),
+        }}
+      />
       <PromoBanner />
       <ProductHero />
       <WhatIsFiberZProduct />

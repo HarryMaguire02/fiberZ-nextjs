@@ -4,6 +4,7 @@ import FAQCategoryCards from '@/app/components/faq/FAQCategoryCards';
 import FAQAccordionSection from '@/app/components/faq/FAQAccordionSection';
 import StillHaveQuestions from '@/app/components/faq/StillHaveQuestions';
 import NewsletterSignup from '@/app/components/research/NewsletterSignup';
+import { getFAQJsonLd, getBreadcrumbJsonLd } from '@/app/lib/jsonLd';
 
 export const metadata: Metadata = {
   title: 'FAQ | FiberZ',
@@ -18,6 +19,21 @@ export const metadata: Metadata = {
 export default function FAQPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getFAQJsonLd()) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            getBreadcrumbJsonLd([
+              { name: 'Home', href: '/' },
+              { name: 'FAQ', href: '/faq' },
+            ])
+          ),
+        }}
+      />
       <FAQHero />
       <FAQCategoryCards />
       <FAQAccordionSection />

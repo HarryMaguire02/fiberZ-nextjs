@@ -7,6 +7,7 @@ import HowToUse from './components/home/HowToUse';
 import Testimonials from './components/home/Testimonials';
 import BackedByScience from './components/home/BackedByScience';
 import FAQ from './components/home/FAQ';
+import { getOrganizationJsonLd } from './lib/jsonLd';
 
 export const metadata: Metadata = {
   title: 'FiberZ - Premium Daily Soluble Fiber',
@@ -17,6 +18,10 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getOrganizationJsonLd()) }}
+      />
       <HomeHero />
       <ModernDietsLackFiber />
       <WhatIsFiberZ />

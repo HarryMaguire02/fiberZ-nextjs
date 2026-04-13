@@ -20,7 +20,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
     items: [
       {
         question: 'What is FiberZ and what is it made of?',
-        answer: 'FiberZ is a premium dietary fiber supplement made from resistant dextrin, a soluble fiber derived from non-GMO corn starch. Each sachet contains a precisely measured dose of fiber designed to help you meet your recommended daily intake easily and conveniently.',
+        answer: 'FiberZ is a premium dietary fiber supplement made from resistant dextrin, a soluble fiber derived from non-GMO wheat starch. Each sachet contains a precisely measured dose of fiber designed to help you meet your recommended daily intake easily and conveniently.',
       },
       {
         question: 'Where is FiberZ produced?',
@@ -28,7 +28,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
       },
       {
         question: 'Does FiberZ contain GMO?',
-        answer: 'No, FiberZ is made from non-GMO corn starch. We are committed to using only high-quality, non-genetically modified ingredients in our products.',
+        answer: 'No, FiberZ is made from non-GMO wheat starch. We are committed to using only high-quality, non-genetically modified ingredients in our products.',
       },
       {
         question: 'Does FiberZ contain allergens?',
@@ -36,7 +36,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
       },
       {
         question: 'What is the shelf life of FiberZ?',
-        answer: 'FiberZ has a shelf life of 24 months from the date of production when stored in a cool, dry place away from direct sunlight. Each package is clearly labeled with an expiration date for your convenience.',
+        answer: 'FiberZ has a shelf life of 12 months from the date of production when stored in a cool, dry place away from direct sunlight. Each package is clearly labeled with an expiration date for your convenience.',
       },
       {
         question: 'Is FiberZ suitable for vegans and vegetarians?',
@@ -52,7 +52,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
     items: [
       {
         question: 'What is the recommended daily dose of FiberZ?',
-        answer: 'The recommended daily dose is 1-2 sachets per day. We suggest starting with one sachet daily and gradually increasing to two if needed. Each sachet provides a significant portion of your recommended daily fiber intake.',
+        answer: 'The recommended daily dose is 1-3 sachets per day. We suggest starting with one sachet daily and gradually increasing to three if needed. Each sachet provides a significant portion of your recommended daily fiber intake.',
       },
       {
         question: 'How do you prepare FiberZ?',
@@ -131,12 +131,8 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
         answer: 'Research suggests that soluble fiber, including resistant dextrin, may help support healthy cholesterol levels as part of a balanced diet. FiberZ can be a convenient way to increase your soluble fiber intake.',
       },
       {
-        question: 'Is FiberZ gluten-free?',
-        answer: 'Yes, FiberZ is gluten-free. It is derived from corn starch and contains no wheat, barley, rye, or other gluten-containing grains.',
-      },
-      {
         question: 'Can FiberZ cause allergic reactions?',
-        answer: 'Allergic reactions to resistant dextrin are extremely rare. FiberZ is free from common allergens. If you experience any unusual symptoms, discontinue use and consult your healthcare provider.',
+        answer: 'Allergic reactions to resistant dextrin are extremely rare. FiberZ contains in small amount gluten as allergen. Not suitable for people with gluten allergy. If you experience any unusual symptoms, discontinue use and consult your healthcare provider.',
       },
       {
         question: 'Does FiberZ interact with blood thinners?',

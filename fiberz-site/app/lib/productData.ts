@@ -86,15 +86,17 @@ export const TRUST_CARDS_DATA = [
 ];
 
 export const NUTRITION_ACTIVE_INGREDIENT = [
-  { name: 'Resistant dextrin', perSachet: '4g' },
+  { name: 'Resistant wheat dextrin powder', perSachet: '4g' },
 ];
 
 export const NUTRITION_VALUES = [
-  { name: 'Energy', perSachet: '15 kJ / 3.6 kcal' },
-  { name: 'Fat', perSachet: '0g' },
-  { name: 'Carbohydrates', perSachet: '0.9g' },
-  { name: 'Protein', perSachet: '0g' },
-  { name: 'Fiber', perSachet: '4g' },
+  { name: 'Energy', perSachet: '48 kJ / 11 kcal' },
+  { name: 'Fat', perSachet: '0.02g' },
+  { name: 'Carbohydrates', perSachet: '1.8g' },
+  { name: 'of which sugars', perSachet: '0.1g' },
+  { name: 'Fiber', perSachet: '2.1g' },
+  { name: 'Protein', perSachet: '0.02g' },
+  { name: 'Salt', perSachet: '< 0.0004g' },
 ];
 
 export const STATS = [

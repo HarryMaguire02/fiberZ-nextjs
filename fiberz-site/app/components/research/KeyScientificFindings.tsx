@@ -2,28 +2,28 @@ import Image from 'next/image';
 
 const findings = [
   {
-    title: 'Improved Digestive Function',
+    title: 'Prebiotic Fermentation & SCFA Production',
     description:
-      'Clinical studies show that regular use of resistant dextrin significantly improves stool frequency and consistency. 78% of participants reported improvement within 2 weeks.',
-    source: 'Journal of Nutritional Science, 2018',
+      'Resistant dextrins are fermented in the colon, producing short-chain fatty acids (SCFAs) — butyrate, propionate, and acetate — which regulate appetite, stimulate immune cells, and enhance fatty acid oxidation in muscle tissue.',
+    source: 'Włodarczyk & Śliżewska, Nutrients, 2021',
   },
   {
-    title: 'Gut Microbiome Support',
+    title: 'Improved Insulin Sensitivity',
     description:
-      'Research confirms that resistant dextrin selectively stimulates the growth of beneficial gut bacteria, particularly Bifidobacterium and Lactobacillus strains.',
-    source: 'Nutrients, 2020',
+      'In clinical trials involving women with type 2 diabetes, 10g of daily resistant dextrin supplementation significantly decreased fasting insulin levels and reduced markers of inflammation and oxidative stress.',
+    source: 'Hu F. et al., 2020',
   },
   {
-    title: 'Blood Sugar Regulation',
+    title: 'Gut Microbiota Modulation',
     description:
-      'Studies indicate that resistant dextrin slows glucose absorption and improves post-meal insulin response in individuals with prediabetes.',
-    source: 'European Journal of Clinical Nutrition, 2019',
+      'Resistant dextrin specifically increases the abundance of metabolically beneficial bacteria such as Prevotella and Akkermansia — primary drivers behind systemic improvements in glucose and lipid metabolism.',
+    source: 'Hu F. et al., 2020; Włodarczyk & Śliżewska, 2021',
   },
   {
-    title: 'Cardiovascular Health',
+    title: 'Cardiovascular & Blood Pressure Benefits',
     description:
-      'A meta-analysis shows that soluble fiber intake helps lower LDL ("bad") cholesterol levels and reduce the risk of heart disease.',
-    source: 'American Journal of Clinical Nutrition, 2017',
+      'A 12-week randomized, double-blind, placebo-controlled trial in elderly T2DM patients showed significant reductions in both systolic and diastolic blood pressure, as well as improved postprandial glucose levels.',
+    source: 'Cai X. et al., 2018',
   },
 ];
 
