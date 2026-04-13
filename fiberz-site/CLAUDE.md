@@ -15,10 +15,10 @@ npm run lint     # Run ESLint
 
 **Next.js 16 App Router** marketing site for FiberZ (a dietary fiber product).
 
-- **Routing:** File-based App Router. Current routes: `/` (home), `/benefits`, `/research`, `/blog`, `/faq`, `/terms-of-use`, `/privacy-policy`, `/shipping`, `/disclaimer`. Nav also references `/product`, `/how-it-works` (not yet built).
-- **Components:** Feature-grouped under `app/components/` — `header/`, `footer/`, `home/`, `benefits/`, `research/`, `blog/`, `faq/`, `legal/`. Pages are thin composers that import and sequence these section components.
+- **Routing:** File-based App Router. Current routes: `/` (home), `/benefits`, `/research`, `/blog`, `/faq`, `/product`, `/terms-of-use`, `/privacy-policy`, `/shipping`, `/disclaimer`. Nav also references `/how-it-works` (not yet built).
+- **Components:** Feature-grouped under `app/components/` — `header/`, `footer/`, `home/`, `benefits/`, `research/`, `blog/`, `faq/`, `legal/`, `product/`. Pages are thin composers that import and sequence these section components.
 - **API Routes:** `app/api/newsletter/subscribe/` and `app/api/newsletter/unsubscribe/` — handle newsletter subscription via Resend.
-- **Server components by default.** Client components (`'use client'`) only where interactivity is needed (Header, ScrollHeader, ContactPopup, FAQ accordion, Testimonials scroll, BlogListingSection).
+- **Server components by default.** Client components (`'use client'`) only where interactivity is needed (Header, ScrollHeader, ContactPopup, ProductHero, FAQ accordion, Testimonials scroll, BlogListingSection).
 - **Layout:** `app/layout.tsx` wraps all pages with `ScrollHeader` (fixed nav) + `Footer` + `<Analytics />` + `<SpeedInsights />`. Main content has `pt-16 md:pt-20` to account for the fixed header height.
 - **Home hero overlaps header:** The home hero uses `-mt-16 md:-mt-20` to extend behind the header. ScrollHeader detects `pathname === '/'` and renders transparent bg when not scrolled (other pages keep white bg).
 - **Company info:** Single source of truth in `app/lib/company.ts` (`COMPANY` constant — legal name, address, PIB, MB, email, phone, hours). Used by Footer, ContactPopup, and all legal pages. **Update here, not in components**, when company details change.
@@ -41,7 +41,7 @@ npm run lint     # Run ESLint
 - **Custom breakpoint:** `xs` at 500px (in addition to standard Tailwind breakpoints).
 - **Fonts:** 6 Google fonts loaded in layout (Inter, Montserrat, Roboto, Playfair Display, Lato, Cormorant Garamond) exposed as CSS variables + `.font-*` utility classes in globals.css.
 - **Section titles:** Always use `text-3xl lg:text-5xl` for h2 headings. Use `font-cormorant` for section titles.
-- **Gold gradient for icon circles:** `linear-gradient(to right, #D4AC77, #A6813F)` — used in KeyBenefits, KeyScientificFindings, HowToUse step numbers, CategoryCards.
+- **Gold gradient for icon circles:** `linear-gradient(to right, #D4AC77, #A6813F)` — used in KeyBenefits, KeyScientificFindings, HowToUse step numbers, CategoryCards, TrustCards.
 - Complex backgrounds/overlays use inline `style` props; layout and spacing use Tailwind classes.
 
 ## Images
@@ -52,6 +52,15 @@ npm run lint     # Run ESLint
 - Hero sections use `<Image fill>` with gradient overlays.
 - For responsive hero height, use `height: 'clamp(min, vw-based, max)'` or `min-h-*` classes rather than `aspect-ratio` with min/max constraints (they conflict).
 
+## Product Page
+
+- **Page:** `app/product/page.tsx` — thin composer sequencing 8 sections: PromoBanner → ProductHero → WhatIsFiberZProduct → Testimonials → TrustCards → ScientificallyProvenStats → NutritionalInfo → FAQ.
+- **Product data:** All product constants live in `app/lib/productData.ts` — packages (pricing in RSD), benefits, nutrition tables, promo banner text, trust card data, stat data, product images, and `formatRSD()` helper. **Update here, not in components**, when product details change.
+- **ProductHero** (`app/components/product/ProductHero.tsx`) is the only client component — handles image gallery, package selection (radio), quantity stepper, dynamic price calculation, and ORDER NOW button.
+- **ORDER NOW button:** Currently shows an inline notice ("Online ordering is coming soon") with contact email/phone from `company.ts`. This satisfies AllSecure's merchant review requirement. Replace with real checkout flow after payment integration.
+- **PromoBanner** (`app/components/product/PromoBanner.tsx`) — thin `bg-oak` bar with promo text. Toggleable via `PROMO.active` flag in `productData.ts`. Renders nothing when `active === false`.
+- **Reused components:** Testimonials and FAQ are imported from `app/components/home/` with `variant="linen"` prop for different background colors on the product page.
+
 ## Components — Patterns & Gotchas
 
 - **NewsletterSignup** (`app/components/research/NewsletterSignup.tsx`) is shared across pages (research, blog, faq). It does NOT include an `<hr>` divider — pages that need one (research) add it in their own page composer. Wired up to `/api/newsletter/subscribe` with loading/success/error states, honeypot spam protection, and auto-clearing status messages after 5 seconds.
@@ -59,6 +68,8 @@ npm run lint     # Run ESLint
 - **Avoid `useEffect` for syncing URL params to state** — Next.js strict mode triggers "setState in effect" errors. Instead, derive values directly from `useSearchParams()`.
 - **`JSX.Element` type** doesn't exist in this project's TS config. Use `React.ReactNode` instead.
 - **ContactPopup** (`app/components/header/ContactPopup.tsx`) is opened from the header CONTACT button. Open state lives in `ScrollHeader` and is passed down to `Header → Navigation → NavLink`. Closes on Escape, backdrop click, or × button. Locks body scroll while open.
+- **Testimonials variant prop:** `variant?: "default" | "linen"`. `"default"` = white bg with linen-to-beige card gradient (home page). `"linen"` = linen bg with white-to-linen card gradient (product page). Same pattern used by FAQ.
+- **FAQ variant prop:** `variant?: "default" | "linen"`. `"default"` = white bg, linen closed items. `"linen"` = linen bg, white closed items. FAQ is centered with `max-w-3xl` (no product image beside it).
 
 ## Legal Pages
 
@@ -107,14 +118,13 @@ Strict mode enabled. Path alias `@/*` maps to the project root.
 - **Payment method icons in the footer are text placeholders.** AllSecure provides an official brand kit with Visa/Mastercard/Maestro/DinaCard/Apple Pay/Google Pay logos after onboarding — swap them in then.
 - **All "Last updated" dates in legal pages are hardcoded** (currently 2026-04-07). Update them whenever you change the content.
 - **No cookie banner** is currently needed. Vercel Web Analytics and Speed Insights are both cookieless. If a cookie-based tool is added later (e.g. advertising pixels), a consent banner must be introduced at that point.
-- **`/product`, `/how-it-works`, and the checkout flow do not exist yet.** The footer links to them; clicking those links 404s. This must be resolved before AllSecure's merchant review or they will reject the application.
+- **`/how-it-works` and the checkout flow do not exist yet.** The footer/header links to `/how-it-works`; clicking it 404s. This must be resolved before AllSecure's merchant review or they will reject the application.
 - **Fiscalization (V-PFR) is a separate, mandatory integration** from the payment gateway. AllSecure does not handle fiscal receipts — you must integrate a certified ESIR provider's API after each successful payment.
 
 ## TODO
 
 ### Before AllSecure merchant review (blockers)
 
-- [ ] Build `/product` page with real product, RSD pricing, and a working "Buy" entry point (placeholder checkout is fine for legal review)
 - [ ] Build `/how-it-works` page (or remove the link from footer/header)
 - [ ] **Have a Serbian lawyer review** all four legal pages (Terms of Service, Privacy Policy, Shipping & Returns, Disclaimer)
 - [ ] Translate legal pages to Serbian (recommended for Serbian consumer base)
@@ -169,3 +179,6 @@ Strict mode enabled. Path alias `@/*` maps to the project root.
 - [x] Payment method placeholder badges in footer
 - [x] Shared `LegalPageLayout` and `.legal-prose` styles
 - [x] Centralized company info in `app/lib/company.ts`
+- [x] Build `/product` page with RSD pricing, package selection, ORDER NOW placeholder, and 8 sections
+- [x] Centralized product data in `app/lib/productData.ts`
+- [x] Testimonials and FAQ variant props for reuse across pages with different bg colors

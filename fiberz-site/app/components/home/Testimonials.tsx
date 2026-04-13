@@ -33,9 +33,26 @@ const testimonials = [
   },
 ];
 
-export default function Testimonials() {
+const VARIANTS = {
+  default: {
+    sectionBg: 'bg-white',
+    cardGradient: 'linear-gradient(to bottom, #F6F2EA, #EDE5D5)',
+  },
+  linen: {
+    sectionBg: 'bg-linen',
+    cardGradient: 'linear-gradient(to bottom, #FFFFFF, #F6F2EA)',
+  },
+};
+
+interface TestimonialsProps {
+  variant?: keyof typeof VARIANTS;
+}
+
+export default function Testimonials({ variant = 'default' }: TestimonialsProps) {
+  const { sectionBg, cardGradient } = VARIANTS[variant];
+
   return (
-    <section className="py-12 lg:py-16 bg-white">
+    <section className={`py-12 lg:py-16 ${sectionBg}`}>
       <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12">
         <h2
           className="font-cormorant text-heading font-bold text-3xl lg:text-5xl text-center mb-10"
@@ -48,9 +65,7 @@ export default function Testimonials() {
             <div
               key={i}
               className="shrink-0 w-65 rounded-2xl p-6 flex flex-col justify-between"
-              style={{
-                background: 'linear-gradient(to bottom, #F6F2EA, #EDE5D5)',
-              }}
+              style={{ background: cardGradient }}
             >
               <div>
                 <div className="text-brand text-lg mb-3 tracking-wider">
