@@ -1,9 +1,9 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import Navigation from './Navigation';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const navLinks = [
   { href: '/', label: 'HOME' },
@@ -50,7 +50,10 @@ export default function Header({ isMobileMenuOpen, onMobileMenuToggle, onContact
           </Link>
 
           {/* Desktop Navigation */}
-          <Navigation navLinks={navLinks} onContactClick={onContactClick} />
+          <div className="hidden md:flex items-center gap-4">
+            <Navigation navLinks={navLinks} onContactClick={onContactClick} />
+            <LanguageSwitcher />
+          </div>
 
           {/* Mobile Hamburger */}
           <button
@@ -114,6 +117,9 @@ export default function Header({ isMobileMenuOpen, onMobileMenuToggle, onContact
                 </Link>
               );
             })}
+            <div className="flex justify-center pt-2 pb-1">
+              <LanguageSwitcher />
+            </div>
           </nav>
         </div>
       </div>

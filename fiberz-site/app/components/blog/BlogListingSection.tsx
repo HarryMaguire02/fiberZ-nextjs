@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import { BlogPost, BlogFilterCategory } from '@/content/blog/types';
 import { searchPosts, paginatePosts } from '@/content/blog/helpers';
 import SearchAndFilters from './SearchAndFilters';
@@ -56,7 +57,7 @@ export default function BlogListingSection({ allPosts, featuredPost }: BlogListi
     } else {
       params.set('category', category);
     }
-    router.replace(`/blog?${params.toString()}`, { scroll: false });
+    router.replace({ pathname: '/blog', query: Object.fromEntries(params) }, { scroll: false });
     setCurrentPage(1);
   };
 

@@ -13,7 +13,7 @@ interface NavigationProps {
 
 export default function Navigation({ navLinks, onContactClick }: NavigationProps) {
   return (
-    <nav className="hidden md:flex items-center gap-8 lg:gap-10">
+    <nav className="flex items-center gap-8 lg:gap-10">
       {navLinks.map((link) => (
         <NavLink
           key={link.href}

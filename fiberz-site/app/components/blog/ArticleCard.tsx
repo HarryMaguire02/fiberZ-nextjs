@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { BlogPost } from '@/content/blog/types';
 import { formatDate } from '@/content/blog/helpers';
 

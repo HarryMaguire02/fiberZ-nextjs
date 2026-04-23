@@ -1,0 +1,899 @@
+{
+  "Nav": {
+    "home": "HOME",
+    "product": "PRODUCT",
+    "benefits": "BENEFITS",
+    "research": "RESEARCH",
+    "blog": "BLOG",
+    "faq": "FAQ",
+    "contact": "CONTACT"
+  },
+  "Footer": {
+    "tagline": "Premium daily soluble fiber designed to support digestive health and help meet recommended daily fiber intake.",
+    "shopAndLearn": "Shop & Learn",
+    "support": "Support",
+    "contact": "Contact",
+    "links": {
+      "shopFiberZ": "Shop FiberZ",
+      "howItWorks": "How It Works",
+      "scientificResearch": "Scientific Research",
+      "faqs": "FAQs",
+      "blog": "Blog",
+      "shippingReturns": "Shipping & Returns",
+      "termsOfService": "Terms of Service",
+      "privacyPolicy": "Privacy Policy",
+      "disclaimer": "Disclaimer"
+    },
+    "email": "Email",
+    "phone": "Phone",
+    "taxId": "Tax ID",
+    "registrationNo": "Registration No",
+    "allRightsReserved": "All rights reserved."
+  },
+  "ContactPopup": {
+    "title": "Get in Touch",
+    "subtitle": "We're here to help — reach out any time.",
+    "email": "Email",
+    "phone": "Phone",
+    "workingHours": "Working Hours",
+    "address": "Address",
+    "close": "Close"
+  },
+  "Home": {
+    "Hero": {
+      "title": "Premium Dietary Fiber",
+      "subtitle": "FiberZ is a soluble plant-based fiber that supports digestion, stable blood sugar levels, and weight management. With a neutral taste and mild sweetness, it is ideal for everyday use.",
+      "cta1": "Buy Now",
+      "cta2": "Learn How It Works"
+    },
+    "ModernDiets": {
+      "title": "Modern Diets Lack Fiber",
+      "subtitle": "Most adults do not meet recommended daily fiber intake, which affects digestive regularity and overall gut health.",
+      "items": [
+        {
+          "title": "Bloating",
+          "description": "Low fiber intake can lead to uncomfortable digestive bloating"
+        },
+        {
+          "title": "Irregular Digestion",
+          "description": "Inconsistent digestive patterns affect daily comfort"
+        },
+        {
+          "title": "Low Fiber Intake",
+          "description": "Average adult consumes only 15g of the recommended 25-38g daily"
+        },
+        {
+          "title": "Gut Microbiome",
+          "description": "Insufficient fiber fails to support healthy gut bacteria"
+        }
+      ]
+    },
+    "WhatIsFiberZ": {
+      "title": "What is FiberZ?",
+      "subtitle": "FiberZ is a water-soluble fiber supplement made from resistant dextrin, designed to help you meet your daily fiber needs with ease and convenience.",
+      "features": [
+        {
+          "title": "4g Per Pack",
+          "description": "Each serving provides 4 grams of soluble fiber"
+        },
+        {
+          "title": "30 Sachets Per Box",
+          "description": "One month supply for consistent daily use"
+        },
+        {
+          "title": "Dissolves Easily",
+          "description": "Mix into water, yogurt, oatmeal, or smoothies"
+        },
+        {
+          "title": "Neutral Taste",
+          "description": "Does not alter the flavor of your beverages or food"
+        },
+        {
+          "title": "1-3 Sachets Daily",
+          "description": "Flexible dosing to meet your individual needs"
+        }
+      ]
+    },
+    "KeyBenefits": {
+      "title": "Key Benefit",
+      "subtitle": "Science-backed support for your digestive health and daily wellness",
+      "items": [
+        {
+          "title": "Supports Digestive Regularity",
+          "description": "Helps maintain consistent and comfortable digestive patterns"
+        },
+        {
+          "title": "Healthy Gut Microbiota",
+          "description": "Supports beneficial bacteria for optimal gut health"
+        },
+        {
+          "title": "Daily Fiber Intake",
+          "description": "Helps you reach recommended fiber goals easily"
+        },
+        {
+          "title": "Easy Integration",
+          "description": "Dissolves completely without altering taste or texture"
+        }
+      ]
+    },
+    "HowToUse": {
+      "title": "How to Use FiberZ",
+      "subtitle": "Simple integration into your daily routine",
+      "steps": [
+        {
+          "title": "Start Small",
+          "description": "Begin with 1 sachet per day to allow your digestive system to adjust gradually"
+        },
+        {
+          "title": "Mix & Dissolve",
+          "description": "Add to water, smoothies, yogurt, or oatmeal. Stir until completely dissolved"
+        },
+        {
+          "title": "Build Up",
+          "description": "Gradually increase to 1-3 sachets daily based on your fiber needs and tolerance"
+        }
+      ]
+    },
+    "Testimonials": {
+      "title": "What Our Customers Say",
+      "badge": "100+ Satisfied Customers",
+      "items": [
+        {
+          "quote": "\"As someone who struggles to get enough fiber from diet alone, FiberZ has been a game-changer. It dissolves completely in my morning coffee.\"",
+          "author": "— Michael R."
+        },
+        {
+          "quote": "\"As someone who struggles to get enough fiber from diet alone, FiberZ has been a game-changer. It dissolves completely in my morning coffee.\"",
+          "author": "— Michael R."
+        },
+        {
+          "quote": "\"As someone who struggles to get enough fiber from diet alone, FiberZ has been a game-changer. It dissolves completely in my morning coffee.\"",
+          "author": "— Michael R."
+        },
+        {
+          "quote": "\"As someone who struggles to get enough fiber from diet alone, FiberZ has been a game-changer. It dissolves completely in my morning coffee.\"",
+          "author": "— Michael R."
+        },
+        {
+          "quote": "\"As someone who struggles to get enough fiber from diet alone, FiberZ has been a game-changer. It dissolves completely in my morning coffee.\"",
+          "author": "— Michael R."
+        }
+      ]
+    },
+    "BackedByScience": {
+      "title": "Backed by Science",
+      "subtitle": "Dietary fiber plays a crucial role in digestive health, supporting regular bowel movements, promoting beneficial gut bacteria, and contributing to overall wellness. FiberZ uses resistant dextrin, a clinically studied form of soluble fiber that is well-tolerated and effective.",
+      "cta": "View Scientific Research"
+    },
+    "FAQ": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "Is FiberZ safe for daily use?",
+          "answer": "Yes, FiberZ is made from resistant dextrin, a well-studied and safe form of soluble fiber. It is suitable for daily consumption as part of a balanced diet."
+        },
+        {
+          "question": "Can FiberZ cause bloating?",
+          "answer": "When starting any fiber supplement, some people may experience mild bloating. We recommend starting with one sachet per day and gradually increasing to allow your digestive system to adjust."
+        },
+        {
+          "question": "Can I take FiberZ with medication?",
+          "answer": "FiberZ is generally safe to take alongside most medications. However, we recommend consulting your healthcare provider if you are on prescription medication, as fiber can affect absorption rates."
+        },
+        {
+          "question": "When will I notice effects?",
+          "answer": "Many users report improved digestive regularity within the first week. For optimal results, consistent daily use over 2-4 weeks is recommended."
+        },
+        {
+          "question": "How much fiber do I need daily?",
+          "answer": "Dietary fiber plays a crucial role in digestive health, supporting regular bowel movements, promoting beneficial gut bacteria, and contributing to overall wellness. FiberZ uses resistant dextrin, a clinically studied form of soluble fiber that is well tolerated and effective."
+        }
+      ]
+    }
+  },
+  "Benefits": {
+    "Hero": {
+      "line1": "Real Benefits.",
+      "line2": "Backed by Science.",
+      "subtitle": "Soluble fiber is one of the most studied nutrients in digestive health. Here is what daily fiber supplementation can do for you - no exaggeration, no miracle claims."
+    },
+    "StatsBar": {
+      "items": [
+        { "label": "Of soluble fiber per sachet" },
+        { "label": "Sachets per box" },
+        { "label": "Daily fiber recommended by WHO" },
+        { "label": "Of adults fall short of fiber goals" }
+      ]
+    },
+    "WhatFiberDoes": {
+      "title": "What Soluble Fiber Does for Your Body",
+      "subtitle": "FiberZ contains resistant dextrin - a water-soluble dietary fiber with a well-documented role in supporting digestive function.",
+      "items": [
+        {
+          "title": "Supports Digestive Regularity",
+          "description": "Soluble fiber dissolves in water to form a gel-like substance in the digestive tract. This softens stool and supports regular bowel movements - one of the most widely recognized benefits of adequate dietary fiber intake. Consistent daily fiber intake helps maintain a predictable, comfortable digestive rhythm without harsh stimulants or laxatives.",
+          "tags": ["Regularity", "Gut comfort", "Natural function"]
+        },
+        {
+          "title": "Supports a Healthy Gut Microbiome",
+          "description": "Soluble fibers like resistant dextrin act as prebiotics - they serve as a food source for beneficial gut bacteria. A well-nourished microbiome is associated with improved digestive comfort and overall gut health. Supporting your microbiome with daily fiber is a foundational, evidence-based approach.",
+          "tags": ["Prebiotic effect", "Microbiome"]
+        },
+        {
+          "title": "Contributes to Your Daily Fiber Intake",
+          "description": "Health authorities including EFSA and WHO recommend 25-38g of fiber per day for adults. The average person consumes significantly less. Each FiberZ sachet provides 4g of fiber, offering a simple, tasteless way to meaningfully close that gap alongside a balanced diet.",
+          "tags": ["EFSA guideline", "WHO recommended"]
+        },
+        {
+          "title": "Dissolves Completely Without Altering Taste",
+          "description": "Resistant dextrin dissolves fully in water, coffee, yogurt, oatmeal, or any beverage - leaving no texture, no clumps, and no noticeable flavor. This makes it easy to incorporate into any part of your day, consistently, without modifying what you enjoy eating or drinking.",
+          "tags": ["Neutral taste", "Versatile", "Easy habit"]
+        },
+        {
+          "title": "Supports Feelings of Satiety",
+          "description": "Soluble fiber forms a viscous gel in the stomach, which may slow gastric emptying and contribute to a prolonged feeling of fullness. This makes fiber a natural and well-studied component of a balanced approach to appetite management - without appetite suppressants or stimulants.",
+          "tags": ["Satiety", "Natural support"]
+        },
+        {
+          "title": "Simple, Clean Formulation",
+          "description": "FiberZ contains resistant dextrin - and nothing unnecessary. No artificial flavors, no fillers, no added sugars. Just soluble fiber in a clean sachet format that fits easily into any routine. Transparency in formulation is a core part of what we stand for.",
+          "tags": ["Clean label", "No additives", "Transparent"]
+        }
+      ]
+    },
+    "SimpleToAdd": {
+      "title": "Simple to Add.",
+      "titleItalic": "Easy to Stay Consistent.",
+      "subtitle": "The most effective supplement is the one you actually take. FiberZ is designed to make daily fiber intake effortless.",
+      "labels": {
+        "perSachet": "4g per sachet",
+        "sachets": "30 sachets",
+        "neutralTaste": "Neutral taste"
+      },
+      "steps": [
+        {
+          "title": "Open One Sachet",
+          "description": "The most effective supplement is the one you actually take. FiberZ is designed to make daily fiber intake effortless."
+        },
+        {
+          "title": "Mix Into Any Drink or Food",
+          "description": "Stir into water, coffee, tea, smoothie, yogurt, or oatmeal. It dissolves completely — no residue, no change in texture or taste. Any time of day works."
+        },
+        {
+          "title": "Increase Gradually if Needed",
+          "description": "Up to 1–3 sachets per day. Gradual increases allow your gut microbiome to adapt comfortably and help minimize any initial digestive adjustment."
+        },
+        {
+          "title": "Stay Consistent",
+          "description": "Fiber benefits build with consistency. Most users notice improvements in digestive regularity and comfort within 1–3 weeks of daily use. Drink adequate water throughout the day."
+        }
+      ]
+    },
+    "ResearchSection": {
+      "title": "Fiber is One of the Best-Studied Nutrients",
+      "subtitle": "Decades of peer-reviewed research support the role of dietary fiber in digestive health. Here are some key reference points.",
+      "ctaTitle": "Want the Full Research Picture?",
+      "ctaBody": "Our Science & Research page compiles peer-reviewed studies, EFSA and WHO guidelines, and detailed explanations of how soluble fiber and resistant dextrin work — with citations for every claim.",
+      "ctaResearch": "View Scientific Research",
+      "ctaFAQ": "Read Our FAQ",
+      "points": [
+        {
+          "title": "EFSA Recommendation",
+          "description": "The European Food Safety Authority recommends 25g of dietary fiber per day for normal bowel function in healthy adults."
+        },
+        {
+          "title": "Prebiotic Properties",
+          "description": "Resistant dextrin has been studied for its ability to selectively stimulate beneficial gut bacteria, supporting a healthy microbiome environment."
+        },
+        {
+          "title": "The Fiber Gap Is Real",
+          "description": "Studies consistently find that most adults in developed countries consume 50-70% less fiber than recommended by health authorities."
+        },
+        {
+          "title": "Resistant Dextrin Safety",
+          "description": "Resistant dextrin has a well-established safety profile and is generally recognized as safe (GRAS) for use as a dietary fiber supplement."
+        }
+      ]
+    },
+    "WhoBenefits": {
+      "title": "What Soluble Fiber Does for Your Body",
+      "subtitle": "Anyone looking to support their digestive health through consistent, adequate fiber intake can benefit from FiberZ as part of a balanced diet.",
+      "disclaimer": "Note: If you are pregnant, breastfeeding, taking medication, or have a digestive health condition, please consult your doctor before starting any supplement. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+      "ctaLine1": "Start Supporting Your",
+      "ctaLine2": "Digestive Health Today",
+      "ctaBody": "4g of soluble fiber per sachet. 30 sachets per box.\nSimple to use. Backed by science.",
+      "ctaBuy": "Buy FiberZ Now",
+      "ctaResearch": "View Research",
+      "groups": [
+        {
+          "title": "People with Low Dietary Fiber",
+          "description": "If your diet is low in fruits, vegetables, or whole grains, FiberZ provides a practical daily supplement to help close the fiber gap without overhauling your entire diet."
+        },
+        {
+          "title": "Active & Health-Conscious Adults",
+          "description": "Those focused on gut health, digestive comfort, and overall wellness often prioritize fiber intake. FiberZ makes it easy to meet daily targets regardless of training or meal timing."
+        },
+        {
+          "title": "Busy People with Irregular Eating",
+          "description": "Travel, work schedules, and irregular meals can disrupt fiber intake and digestive regularity. FiberZ fits into any routine without requiring dietary change — just add it to whatever you're drinking."
+        }
+      ]
+    }
+  },
+  "Research": {
+    "Hero": {
+      "title": "Backed by Science",
+      "subtitle": "FiberZ is supported by decades of scientific research on the benefits of dietary fiber. Discover clinically proven effects."
+    },
+    "Stats": {
+      "items": [
+        { "label": "Clinical studies", "sub": "Peer-reviewed research" },
+        { "label": "Participants", "sub": "In clinical trials" },
+        { "label": "Years", "sub": "Of scientific research" },
+        { "label": "Tolerance", "sub": "Without side effects" }
+      ]
+    },
+    "WhyScienceBased": {
+      "title": "Why Is FiberZ Science-Based?",
+      "subtitle": "Resistant dextrin, the active component of FiberZ, is one of the most thoroughly researched forms of dietary fiber. It is recognized and approved by leading health organizations worldwide."
+    },
+    "KeyFindings": {
+      "title": "Key Scientific Findings",
+      "sourcePrefix": "Source:",
+      "items": [
+        {
+          "title": "Prebiotic Fermentation & SCFA Production",
+          "description": "Resistant dextrins are fermented in the colon, producing short-chain fatty acids (SCFAs) — butyrate, propionate, and acetate — which regulate appetite, stimulate immune cells, and enhance fatty acid oxidation in muscle tissue.",
+          "source": "Włodarczyk & Śliżewska, Nutrients, 2021"
+        },
+        {
+          "title": "Improved Insulin Sensitivity",
+          "description": "In clinical trials involving women with type 2 diabetes, 10g of daily resistant dextrin supplementation significantly decreased fasting insulin levels and reduced markers of inflammation and oxidative stress.",
+          "source": "Hu F. et al., 2020"
+        },
+        {
+          "title": "Gut Microbiota Modulation",
+          "description": "Resistant dextrin specifically increases the abundance of metabolically beneficial bacteria such as Prevotella and Akkermansia — primary drivers behind systemic improvements in glucose and lipid metabolism.",
+          "source": "Hu F. et al., 2020; Włodarczyk & Śliżewska, 2021"
+        },
+        {
+          "title": "Cardiovascular & Blood Pressure Benefits",
+          "description": "A 12-week randomized, double-blind, placebo-controlled trial in elderly T2DM patients showed significant reductions in both systolic and diastolic blood pressure, as well as improved postprandial glucose levels.",
+          "source": "Cai X. et al., 2018"
+        }
+      ]
+    },
+    "FeaturedStudies": {
+      "title": "Featured Clinical Studies",
+      "keyResults": "Key Results:",
+      "readFullArticle": "READ FULL RESEARCH ARTICLE",
+      "studies": [
+        {
+          "title": "Milk Powder Co-supplemented with Inulin and Resistant Dextrin Improves Glycemic Control and Insulin Resistance in Elderly Type 2 Diabetes Mellitus",
+          "participants": "Elderly T2DM patients",
+          "duration": "12 weeks",
+          "description": "A randomized, double-blind, placebo-controlled trial examining the effects of milk powder co-supplemented with inulin and resistant dextrin (MPCIR) on glycemic control in elderly patients with type 2 diabetes mellitus.",
+          "results": [
+            "Significant reductions in both systolic and diastolic blood pressure",
+            "Improved postprandial glucose levels",
+            "Enhanced insulin sensitivity markers"
+          ],
+          "citation": "Cai X., Yu H., Liu L., Lu T., Li J., Ji Y., Le Z., Bao L., Ma W., Xiao R., Yang Y. (2018)"
+        },
+        {
+          "title": "Efficiency of Resistant Starch and Dextrins as Prebiotics: A Review of the Existing Evidence and Clinical Trials",
+          "participants": "Comprehensive review",
+          "duration": "Multi-study",
+          "description": "A comprehensive review evaluating the prebiotic efficiency of resistant starch and dextrins, their mechanisms of action through SCFA production, and their role in metabolic regulation, immune support, and fat oxidation.",
+          "results": [
+            "SCFAs from fermentation regulate appetite via PYY and GLP-1 hormones",
+            "Stimulation of immune cells including T-helper cells and macrophages",
+            "Butyrate enhances fatty acid oxidation, reducing insulin resistance",
+            "~75% of resistant dextrin reaches the large intestine for fermentation",
+            "Better tolerated than other fibers with less gas and bloating"
+          ],
+          "citation": "Włodarczyk M., Śliżewska K. Nutrients (2021)"
+        },
+        {
+          "title": "Combination of Inulin and Resistant Dextrin Has Superior Prebiotic Effects and Reduces Gas Production During In Vitro Fermentation",
+          "participants": "Fecal samples from older adults",
+          "duration": "In vitro",
+          "description": "An in vitro fermentation study using fecal samples from older people to evaluate the synergistic prebiotic effects of combining inulin with resistant dextrin, focusing on gas production and microbiota diversity.",
+          "results": [
+            "Combined inulin + resistant dextrin significantly reduced gas production",
+            "Maintained or increased microbiota diversity",
+            "Stimulated Bifidobacterium growth while minimizing bloating",
+            "Superior prebiotic effect compared to either fiber alone"
+          ],
+          "citation": "Yoshida K., Kokubo E., Morita S., Sonoki H., Miyaji K. (2024)"
+        },
+        {
+          "title": "Resistant Dextrin Improves High-Fat-High-Fructose Diet Induced Insulin Resistance",
+          "participants": "Animal model + T2DM patients",
+          "duration": "Multi-phase",
+          "description": "A study examining how resistant dextrin ameliorates insulin resistance induced by high-fat-high-fructose diets, with clinical validation in women with type 2 diabetes using 10g daily supplementation.",
+          "results": [
+            "Decreased fasting insulin levels in women with T2DM",
+            "Reduced markers of inflammation and oxidative stress",
+            "Promoted fatty acid β-oxidation in the liver",
+            "Reduced triglyceride (TG) and total cholesterol (TC) levels",
+            "Increased abundance of beneficial bacteria (Prevotella, Akkermansia)"
+          ],
+          "citation": "Hu F., Niu Y., Xu X., Hu Q., Su Q., Zhang H. (2020)"
+        }
+      ]
+    },
+    "Newsletter": {
+      "title": "Stay Up to Date with the Latest Articles",
+      "subtitle": "Subscribe to our newsletter and receive the best tips directly in your inbox",
+      "placeholder": "Enter your email address",
+      "button": "Subscribe",
+      "subscribing": "Subscribing...",
+      "errorDefault": "We are having trouble connecting to the server. Please try again later."
+    }
+  },
+  "FAQ": {
+    "Hero": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Find answers to the most common questions about FiberZ, dietary fiber, and digestive health."
+    },
+    "questionsCount": "{count} {count, plural, one {question} other {questions}}",
+    "StillHaveQuestions": {
+      "title": "Still Have Questions?",
+      "emailSupport": {
+        "title": "Email Support",
+        "body": "Send us an email and we'll respond within 24 hours.",
+        "cta": "Send Email"
+      },
+      "callUs": {
+        "title": "Call Us",
+        "body": "Weekdays from 9:00 AM to 5:00 PM.",
+        "cta": "Call"
+      }
+    },
+    "categories": {
+      "about-the-product": {
+        "name": "About the Product",
+        "description": "Everything about the ingredients, quality, and production of FiberZ.",
+        "items": [
+          {
+            "question": "What is FiberZ and what is it made of?",
+            "answer": "FiberZ is a premium dietary fiber supplement made from resistant dextrin, a soluble fiber derived from non-GMO wheat starch. Each sachet contains a precisely measured dose of fiber designed to help you meet your recommended daily intake easily and conveniently."
+          },
+          {
+            "question": "Where is FiberZ produced?",
+            "answer": "FiberZ is produced in Serbia by Fidelinka Skrob d.o.o., a company with decades of experience in starch and fiber processing. Our production facility follows strict quality control standards to ensure every sachet meets the highest safety and purity requirements."
+          },
+          {
+            "question": "Does FiberZ contain GMO?",
+            "answer": "No, FiberZ is made from non-GMO wheat starch. We are committed to using only high-quality, non-genetically modified ingredients in our products."
+          },
+          {
+            "question": "Does FiberZ contain allergens?",
+            "answer": "FiberZ is free from the most common allergens including gluten, dairy, soy, nuts, and eggs. It is suitable for people with most food sensitivities. However, if you have specific allergies, we recommend reviewing the full ingredient list on the packaging."
+          },
+          {
+            "question": "What is the shelf life of FiberZ?",
+            "answer": "FiberZ has a shelf life of 12 months from the date of production when stored in a cool, dry place away from direct sunlight. Each package is clearly labeled with an expiration date for your convenience."
+          },
+          {
+            "question": "Is FiberZ suitable for vegans and vegetarians?",
+            "answer": "Yes, FiberZ is 100% plant-based and suitable for both vegans and vegetarians. It contains no animal-derived ingredients or by-products."
+          }
+        ]
+      },
+      "usage": {
+        "name": "Usage",
+        "description": "How, when, and how much FiberZ to use.",
+        "items": [
+          {
+            "question": "What is the recommended daily dose of FiberZ?",
+            "answer": "The recommended daily dose is 1-3 sachets per day. We suggest starting with one sachet daily and gradually increasing to three if needed. Each sachet provides a significant portion of your recommended daily fiber intake."
+          },
+          {
+            "question": "How do you prepare FiberZ?",
+            "answer": "Simply dissolve one sachet of FiberZ in a glass of water (200-300ml), juice, or any beverage of your choice. Stir well until fully dissolved. FiberZ is tasteless and odorless, so it won't change the flavor of your drink."
+          },
+          {
+            "question": "When is the best time to take FiberZ?",
+            "answer": "FiberZ can be taken at any time of day. Many users prefer taking it with breakfast or before meals to support digestive comfort. The most important thing is to take it consistently at a time that fits your routine."
+          },
+          {
+            "question": "How long can I use FiberZ continuously?",
+            "answer": "FiberZ is safe for continuous, long-term daily use. Resistant dextrin is a well-studied dietary fiber with an excellent safety profile. Consistent daily use is recommended for the best results."
+          },
+          {
+            "question": "Do I need to drink more water while using FiberZ?",
+            "answer": "While FiberZ dissolves completely in water, maintaining good hydration is always beneficial when increasing your fiber intake. We recommend drinking at least 6-8 glasses of water throughout the day."
+          },
+          {
+            "question": "Can I mix FiberZ with hot beverages?",
+            "answer": "Yes, FiberZ can be mixed with both hot and cold beverages. It dissolves easily in coffee, tea, smoothies, and other drinks without affecting their taste or texture."
+          },
+          {
+            "question": "Can I add FiberZ to food?",
+            "answer": "Absolutely! FiberZ can be added to soups, yogurt, oatmeal, sauces, and many other foods. Its neutral taste means it blends seamlessly into your meals."
+          },
+          {
+            "question": "Can children take FiberZ?",
+            "answer": "FiberZ is formulated for adults. For children, we recommend consulting with a pediatrician before introducing any fiber supplement to their diet."
+          },
+          {
+            "question": "Can pregnant or nursing women use FiberZ?",
+            "answer": "While FiberZ contains only natural dietary fiber, we recommend that pregnant or nursing women consult their healthcare provider before starting any new supplement."
+          },
+          {
+            "question": "Is it better to take FiberZ in the morning or in the evening?",
+            "answer": "Both times work well. Taking it in the morning can help set a healthy routine, while taking it in the evening may help with overnight digestion. Choose whichever time is most convenient for you."
+          }
+        ]
+      },
+      "health-and-safety": {
+        "name": "Health & Safety",
+        "description": "Questions about health effects and contraindications.",
+        "items": [
+          {
+            "question": "Who should not use FiberZ?",
+            "answer": "People with bowel obstruction, acute inflammatory bowel conditions, or those who have been advised by their doctor to follow a low-fiber diet should not use FiberZ without medical consultation."
+          },
+          {
+            "question": "Can FiberZ cause side effects?",
+            "answer": "FiberZ is generally well-tolerated. Some people may experience mild bloating or gas when first starting, which typically resolves within a few days as your digestive system adjusts. Starting with a lower dose can help minimize these effects."
+          },
+          {
+            "question": "Can I use FiberZ if I have diabetes?",
+            "answer": "Resistant dextrin has been studied for its potential to help manage blood sugar levels. However, if you have diabetes, we recommend consulting your healthcare provider before starting FiberZ, as it may affect how your body processes glucose."
+          },
+          {
+            "question": "Can FiberZ help with weight loss?",
+            "answer": "Dietary fiber can support weight management by promoting feelings of fullness and supporting healthy digestion. While FiberZ is not a weight loss product, incorporating adequate fiber into your diet is a recognized part of a healthy weight management strategy."
+          },
+          {
+            "question": "Can I take FiberZ with medications?",
+            "answer": "Fiber can potentially affect the absorption of certain medications. We recommend taking FiberZ at least 2 hours before or after taking medications. Always consult your healthcare provider if you are on prescription medication."
+          },
+          {
+            "question": "Does FiberZ affect nutrient absorption?",
+            "answer": "Resistant dextrin, the type of fiber in FiberZ, does not significantly interfere with the absorption of vitamins and minerals when taken as directed. It is one of the best-tolerated forms of supplemental fiber."
+          },
+          {
+            "question": "Is FiberZ safe for people with IBS?",
+            "answer": "Many people with IBS find soluble fiber beneficial. However, since IBS symptoms vary widely, we recommend starting with a small dose and consulting your gastroenterologist before use."
+          },
+          {
+            "question": "Can FiberZ help with cholesterol?",
+            "answer": "Research suggests that soluble fiber, including resistant dextrin, may help support healthy cholesterol levels as part of a balanced diet. FiberZ can be a convenient way to increase your soluble fiber intake."
+          },
+          {
+            "question": "Can FiberZ cause allergic reactions?",
+            "answer": "Allergic reactions to resistant dextrin are extremely rare. FiberZ contains in small amount gluten as allergen. Not suitable for people with gluten allergy. If you experience any unusual symptoms, discontinue use and consult your healthcare provider."
+          },
+          {
+            "question": "Does FiberZ interact with blood thinners?",
+            "answer": "There are no known interactions between resistant dextrin and blood thinners. However, as with any supplement, we recommend discussing with your doctor if you take anticoagulant medications."
+          },
+          {
+            "question": "Can FiberZ improve gut health?",
+            "answer": "Yes, resistant dextrin acts as a prebiotic, feeding beneficial gut bacteria and supporting a healthy microbiome. Regular use can contribute to improved digestive health and overall wellbeing."
+          }
+        ]
+      },
+      "shipping-and-payment": {
+        "name": "Shipping & Payment",
+        "description": "Information about ordering and delivery.",
+        "items": [
+          {
+            "question": "How long does delivery take?",
+            "answer": "Standard delivery within Serbia takes 2-4 business days. For international orders, delivery typically takes 5-10 business days depending on the destination country and customs processing."
+          },
+          {
+            "question": "How much does shipping cost?",
+            "answer": "Shipping costs vary depending on your location and order size. We offer free shipping on orders above a certain threshold. Exact shipping costs are calculated at checkout based on your delivery address."
+          },
+          {
+            "question": "What payment methods are available?",
+            "answer": "We accept all major credit and debit cards (Visa, MasterCard, Maestro), bank transfers, and cash on delivery for orders within Serbia. Additional payment options may be available at checkout."
+          },
+          {
+            "question": "Do you ship internationally?",
+            "answer": "Yes, we ship to most European countries. International shipping rates and delivery times vary by destination. Check our shipping page for a full list of supported countries and estimated delivery times."
+          },
+          {
+            "question": "Can I track my order?",
+            "answer": "Yes, once your order is shipped, you will receive a tracking number via email. You can use this number to track your package through our courier partner's website."
+          },
+          {
+            "question": "What happens if my package is damaged during shipping?",
+            "answer": "If your package arrives damaged, please contact our support team within 48 hours of delivery with photos of the damage. We will arrange a replacement or refund at no additional cost to you."
+          }
+        ]
+      },
+      "returns-and-guarantee": {
+        "name": "Returns & Guarantee",
+        "description": "Our customer satisfaction policy.",
+        "items": [
+          {
+            "question": "What is your return policy?",
+            "answer": "We offer a 30-day satisfaction guarantee. If you are not happy with your purchase, you can return unopened products within 30 days of delivery for a full refund, minus shipping costs."
+          },
+          {
+            "question": "How do I initiate a return?",
+            "answer": "To initiate a return, contact our customer support team at info@fiberz.com with your order number. We will provide you with return instructions and a return authorization number."
+          },
+          {
+            "question": "Can I return opened products?",
+            "answer": "For hygiene and safety reasons, we can only accept returns of unopened, sealed products. If you received a defective product, please contact us and we will arrange a replacement."
+          },
+          {
+            "question": "How long does it take to process a refund?",
+            "answer": "Once we receive your returned product, refunds are processed within 5-7 business days. The refund will be credited to your original payment method."
+          },
+          {
+            "question": "Do you offer a money-back guarantee?",
+            "answer": "Yes, we stand behind the quality of FiberZ. If you are not satisfied with your purchase for any reason, contact us within 30 days and we will work with you to resolve the issue."
+          }
+        ]
+      },
+      "tips-and-recommendations": {
+        "name": "Tips & Recommendations",
+        "description": "Expert tips for the best results.",
+        "items": [
+          {
+            "question": "How can I maximize the effects of FiberZ?",
+            "answer": "For the best results, take FiberZ consistently every day, stay well-hydrated, and pair it with a balanced diet rich in fruits, vegetables, and whole grains. Regular physical activity also supports healthy digestion."
+          },
+          {
+            "question": "What foods pair well with FiberZ?",
+            "answer": "FiberZ pairs well with smoothies, yogurt, oatmeal, soups, and juices. Since it's tasteless and odorless, it can be added to virtually any food or drink without altering the flavor."
+          },
+          {
+            "question": "How can I prevent bloating?",
+            "answer": "Start with one sachet per day and gradually increase to the full recommended dose over a week. Drink plenty of water throughout the day and avoid taking FiberZ with carbonated beverages to minimize bloating."
+          },
+          {
+            "question": "Is it better to take FiberZ in the morning or in the evening?",
+            "answer": "Both options work equally well. Morning intake can help kickstart your digestion for the day, while evening intake may support overnight digestive processes. Choose the time that best fits your daily routine."
+          },
+          {
+            "question": "Can I take FiberZ before exercise?",
+            "answer": "Yes, taking FiberZ 30-60 minutes before exercise is fine. It dissolves quickly and should not cause any discomfort during physical activity. Stay hydrated as you normally would during your workout."
+          },
+          {
+            "question": "How do I store FiberZ properly?",
+            "answer": "Store FiberZ in a cool, dry place away from direct sunlight and moisture. Keep the sachets sealed until use. There is no need to refrigerate the product."
+          },
+          {
+            "question": "Can I take FiberZ while intermittent fasting?",
+            "answer": "FiberZ contains minimal calories and can generally be consumed during a fasting window without breaking your fast. However, check with your healthcare provider if you follow a strict fasting protocol."
+          }
+        ]
+      }
+    }
+  },
+  "Blog": {
+    "Hero": {
+      "title": "FiberZ Blog",
+      "subtitle": "Most adults do not meet recommended daily fiber intake, which affects digestive regularity and overall gut health."
+    },
+    "Listing": {
+      "title": "Latest Articles",
+      "subtitle": "Explore our expert tips and guidelines for a better life"
+    },
+    "CategoryCards": {
+      "title": "Browse by Categories",
+      "subtitle": "Find the articles that interest you the most",
+      "articleCount": "{count, plural, one {# article} other {# articles}}"
+    },
+    "SearchAndFilters": {
+      "searchPlaceholder": "Search articles...",
+      "all": "All"
+    },
+    "FeaturedArticle": {
+      "label": "Featured",
+      "cta": "Read the Article"
+    },
+    "ArticleCard": {
+      "readMore": "Read more",
+      "minRead": "min read"
+    }
+  },
+  "HowItWorks": {
+    "Hero": {
+      "title": "How to Use FiberZ",
+      "subtitle": "A simple, step-by-step guide to making FiberZ part of your daily routine for better digestive health."
+    },
+    "WhenToTake": {
+      "title": "Tips for Best Results",
+      "titleItalic": "Best Results",
+      "subtitle": "Getting the most out of FiberZ is easy. Here are a few practical tips to help you build a lasting habit.",
+      "tips": [
+        {
+          "title": "Any Time of Day",
+          "description": "Morning, afternoon, or evening — FiberZ works whenever it fits your schedule. Many users prefer taking it with breakfast to start the day right."
+        },
+        {
+          "title": "Mix With Anything",
+          "description": "Water, coffee, tea, smoothies, yogurt, oatmeal, or soup. FiberZ dissolves completely with no change in taste, texture, or color."
+        },
+        {
+          "title": "Stay Hydrated",
+          "description": "Drink plenty of water throughout the day. Adequate hydration helps soluble fiber work effectively and supports overall digestive comfort."
+        },
+        {
+          "title": "Be Consistent",
+          "description": "Fiber benefits build over time. Most users notice improvements in digestive regularity within 1-3 weeks of consistent daily use."
+        }
+      ]
+    },
+    "CTA": {
+      "title": "Ready to Get Started?",
+      "subtitle": "Start your journey to better digestive health today. Choose the package that fits your needs.",
+      "cta": "SHOP FIBERZ"
+    }
+  },
+  "Product": {
+    "PromoBanner": {
+      "text": "20% welcome discount on all orders until March 11."
+    },
+    "Hero": {
+      "subtitle": "Soluble dietary fiber powder",
+      "benefitsTitle": "Proven formula for visible results:",
+      "choosePackage": "Choose a package:",
+      "adjustQuantity": "Adjust number of boxes:",
+      "savings": "savings",
+      "discount": "Discount",
+      "shipping": "Shipping",
+      "total": "TOTAL",
+      "orderNow": "Order Now",
+      "recommended": "Recommended",
+      "comingSoonTitle": "Online ordering is coming soon",
+      "comingSoonBody": "To place an order now, contact us at {email} or call {phone}",
+      "productView": "Product view {index}"
+    },
+    "WhatIsFiberZ": {
+      "title": "What Is FiberZ?",
+      "intro": "FiberZ is a soluble dietary fiber supplement made from resistant dextrin, designed to help you meet your daily fiber needs with ease and convenience.",
+      "simplyPut": "Simply put:",
+      "points": [
+        "If you struggle with irregular digestion, FiberZ helps restore regularity.",
+        "If you experience bloating and discomfort after meals, FiberZ helps support smoother digestion.",
+        "If you're not getting enough fiber from your diet, FiberZ helps you bridge the gap in a simple way.",
+        "Unlike synthetic products, FiberZ is natural, works gently, and gradually helps your body find balance — without harsh chemicals."
+      ]
+    },
+    "TrustCards": {
+      "title": "Why Do Over {count} People Trust FiberZ?"
+    },
+    "ScientificallyProven": {
+      "title": "Scientifically Proven"
+    },
+    "NutritionalInfo": {
+      "title": "Nutritional Information",
+      "activeIngredient": "Active Ingredient Content",
+      "nutritionalValues": "Nutritional Values",
+      "ingredient": "Ingredient",
+      "perSachet": "Per sachet"
+    },
+    "packages": {
+      "single": {
+        "label": "1 box / 30 days of use"
+      },
+      "triple": {
+        "label": "3 boxes / 90 days of use",
+        "extras": "+shaker",
+        "recommended": "Recommended"
+      },
+      "six-pack": {
+        "label": "6 boxes / 120 days of use",
+        "extras": "+shaker"
+      }
+    },
+    "benefits": [
+      "Supports digestive regularity",
+      "Helps maintain a healthy gut microbiome",
+      "Contributes to your daily fiber intake",
+      "Neutral taste and odor"
+    ],
+    "trustCards": [
+      {
+        "title": "Scientifically Proven",
+        "description": "Uses clinically tested resistant dextrin with proven benefits for digestive health."
+      },
+      {
+        "title": "Easy to Use",
+        "description": "Dissolves in any drink or food without changing the taste or texture."
+      },
+      {
+        "title": "Premium Quality",
+        "description": "Produced to the highest quality standards, without artificial additives or preservatives."
+      }
+    ],
+    "stats": [
+      {
+        "label": "Per sachet",
+        "sublabel": "Optimal dose for daily use"
+      },
+      {
+        "label": "Sachets",
+        "sublabel": "Monthly supply for regular use"
+      },
+      {
+        "label": "Soluble",
+        "sublabel": "In drinks or food"
+      }
+    ],
+    "nutritionRows": [
+      "Resistant wheat dextrin powder",
+      "Energy",
+      "Fat",
+      "Carbohydrates",
+      "of which sugars",
+      "Fiber",
+      "Protein",
+      "Salt"
+    ]
+  },
+  "Newsletter": {
+    "unsubscribe": {
+      "title": "You've been unsubscribed",
+      "body": "You will no longer receive newsletter emails from FiberZ.",
+      "back": "Back to FiberZ"
+    }
+  },
+  "Metadata": {
+    "home": {
+      "title": "FiberZ - Premium Daily Soluble Fiber",
+      "description": "FiberZ is a premium daily soluble fiber designed to support digestive health, stable blood sugar levels, and weight management."
+    },
+    "product": {
+      "title": "Shop FiberZ | Premium Soluble Fiber Supplement",
+      "description": "Order FiberZ premium soluble dietary fiber powder. 100% natural resistant dextrin. Supports digestive health. Free shipping. Prices from 3,300 RSD.",
+      "ogTitle": "Shop FiberZ | Premium Soluble Fiber Supplement",
+      "ogDescription": "Order FiberZ premium soluble dietary fiber powder. 100% natural resistant dextrin. Free shipping."
+    },
+    "benefits": {
+      "title": "Benefits | FiberZ",
+      "description": "Discover the real, science-backed benefits of FiberZ soluble fiber for digestive health, gut microbiome, and daily fiber intake."
+    },
+    "research": {
+      "title": "Scientific Research | FiberZ",
+      "description": "Explore the peer-reviewed research behind FiberZ. Resistant dextrin, fiber science, and clinical evidence for digestive health."
+    },
+    "resistantDextrin": {
+      "title": "Resistant Dextrin as a Prebiotic | FiberZ Research",
+      "description": "A comprehensive review of resistant dextrin's role as a prebiotic fiber. Clinical evidence, mechanism of action, and digestive health benefits."
+    },
+    "blog": {
+      "title": "Blog | FiberZ",
+      "description": "Expert tips and articles on fiber, nutrition, digestive health, and wellness. Stay informed with the latest insights from FiberZ.",
+      "ogTitle": "Blog | FiberZ",
+      "ogDescription": "Expert tips and articles on fiber, nutrition, digestive health, and wellness."
+    },
+    "faq": {
+      "title": "FAQ | FiberZ",
+      "description": "Find answers to frequently asked questions about FiberZ, dietary fiber, usage, shipping, and more.",
+      "ogTitle": "FAQ | FiberZ",
+      "ogDescription": "Find answers to frequently asked questions about FiberZ."
+    },
+    "howItWorks": {
+      "title": "How It Works | FiberZ",
+      "description": "Learn how to use FiberZ soluble fiber supplement for the best digestive health results. Step-by-step guide and tips."
+    },
+    "termsOfUse": {
+      "title": "Terms of Service | FiberZ",
+      "description": "Read FiberZ's Terms of Service covering purchases, returns, user rights, and our policies."
+    },
+    "privacyPolicy": {
+      "title": "Privacy Policy | FiberZ",
+      "description": "Read how FiberZ collects, uses, and protects your personal data in accordance with GDPR."
+    },
+    "shipping": {
+      "title": "Shipping & Returns | FiberZ",
+      "description": "Learn about FiberZ's shipping options, delivery times, return policy, and 14-day right of withdrawal."
+    },
+    "disclaimer": {
+      "title": "Disclaimer | FiberZ",
+      "description": "Important health and liability disclaimers for FiberZ dietary fiber supplement."
+    }
+  }
+}

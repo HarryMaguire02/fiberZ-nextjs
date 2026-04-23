@@ -11,183 +11,197 @@ npm run start    # Start production server
 npm run lint     # Run ESLint
 ```
 
+---
+
 ## Architecture
 
 **Next.js 16 App Router** marketing site for FiberZ (a dietary fiber product).
 
-- **Routing:** File-based App Router. Current routes: `/` (home), `/benefits`, `/research`, `/research/resistant-dextrin`, `/blog`, `/faq`, `/product`, `/how-it-works`, `/terms-of-use`, `/privacy-policy`, `/shipping`, `/disclaimer`.
+- **Routing:** All pages live under `app/[locale]/` — Serbian is the default locale (no URL prefix, e.g. `/product`), English uses `/en/` prefix (e.g. `/en/product`). Routes: `/`, `/product`, `/benefits`, `/research`, `/research/resistant-dextrin`, `/blog`, `/faq`, `/how-it-works`, `/terms-of-use`, `/privacy-policy`, `/shipping`, `/disclaimer`.
 - **Components:** Feature-grouped under `app/components/` — `header/`, `footer/`, `home/`, `benefits/`, `research/`, `blog/`, `faq/`, `legal/`, `product/`, `how-it-works/`. Pages are thin composers that import and sequence these section components.
-- **API Routes:** `app/api/newsletter/subscribe/` and `app/api/newsletter/unsubscribe/` — handle newsletter subscription via Resend.
-- **Server components by default.** Client components (`'use client'`) only where interactivity is needed (Header, ScrollHeader, ContactPopup, ProductHero, FAQ accordion, Testimonials scroll, BlogListingSection).
-- **Layout:** `app/layout.tsx` wraps all pages with `ScrollHeader` (fixed nav) + `Footer` + `<Analytics />` + `<SpeedInsights />`. Main content has `pt-16 md:pt-20` to account for the fixed header height.
-- **Home hero overlaps header:** The home hero uses `-mt-16 md:-mt-20` to extend behind the header. ScrollHeader detects `pathname === '/'` and renders transparent bg when not scrolled (other pages keep white bg).
-- **Company info:** Single source of truth in `app/lib/company.ts` (`COMPANY` constant — legal name, address, PIB, MB, email, phone, hours). Used by Footer, ContactPopup, and all legal pages. **Update here, not in components**, when company details change.
+- **API Routes:** `app/api/newsletter/subscribe/` and `app/api/newsletter/unsubscribe/` — handle newsletter subscription via Resend. API routes do NOT use the `[locale]` prefix.
+- **Server components by default.** Client components (`'use client'`) only where interactivity is needed (Header, ScrollHeader, ContactPopup, ProductHero, FAQ accordion, Testimonials scroll, BlogListingSection, LanguageSwitcher).
+- **Layout:** `app/layout.tsx` is a passthrough (`return children`). `app/[locale]/layout.tsx` is the real shell — it sets `lang={locale}`, loads fonts, wraps content in `NextIntlClientProvider`, and renders `ScrollHeader` + `Footer` + `Analytics` + `SpeedInsights`.
+- **Home hero overlaps header:** The home hero uses `-mt-16 md:-mt-20` to extend behind the header. `ScrollHeader` detects `pathname === '/'` (via `usePathname` from `@/i18n/navigation`, which strips the locale prefix) and renders transparent bg when not scrolled.
+- **Company info:** Single source of truth in `app/lib/company.ts` (`COMPANY` constant — legal name, address, PIB, MB, email, phone, hours). **Update here, not in components**, when company details change.
+
+---
+
+## Localization (next-intl)
+
+- **Library:** `next-intl` v4 with App Router support.
+- **Locales:** `sr` (Serbian, default — no URL prefix) and `en` (English — `/en/` prefix). Configured via `localePrefix: 'as-needed'` in `i18n/routing.ts`.
+- **Config files:**
+  - `i18n/routing.ts` — `defineRouting({ locales, defaultLocale, localePrefix })`
+  - `i18n/request.ts` — `getRequestConfig`, loads `messages/[locale].json`
+  - `i18n/navigation.ts` — `createNavigation` exports locale-aware `Link`, `useRouter`, `usePathname`
+- **Proxy (middleware):** `proxy.ts` at the project root — `createMiddleware(routing)` from next-intl. Handles locale detection and redirects. Named `proxy.ts` (Next.js 16 renamed `middleware.ts` → `proxy.ts`).
+- **Messages:** `messages/en.json` and `messages/sr.json` — namespace-structured translation files. **`sr.json` is currently a placeholder copy of `en.json`** — real Serbian translations still need to be added.
+- **CRITICAL — always import from `@/i18n/navigation`:** Never import `Link`, `usePathname`, or `useRouter` from `next/link` or `next/navigation` in components — always use `@/i18n/navigation`. This is what makes links locale-aware. `useSearchParams` is the only exception (kept from `next/navigation`).
+- **`usePathname` strips the locale prefix** — `pathname === '/'` correctly matches both `/` (SR) and `/en/` (EN).
+- **Server components** use `const t = await getTranslations('Namespace')` (must be `async`).
+- **Client components** use `const t = useTranslations('Namespace')`.
+- **`t.raw()`** returns `unknown` — always cast to the expected type.
+- **Translation namespaces in `messages/*.json`:** `Nav`, `Footer`, `ContactPopup`, `Home` (Hero/ModernDiets/WhatIsFiberZ/KeyBenefits/HowToUse/Testimonials/BackedByScience/FAQ), `Benefits`, `Research`, `FAQ` (all 6 categories + 50+ Q&A), `Blog`, `HowItWorks`, `Product` (packages/benefits/trustCards/stats/nutritionRows), `Newsletter`, `Metadata` (all 12 pages).
+- **Long-prose pages (legal + research article)** keep their content as JSX components, not in JSON — too much embedded markup (`<Link>`, `COMPANY` constants, tables, figures). Each locale page (`app/[locale]/terms-of-use/page.tsx` etc.) is a thin wrapper that renders the content component.
+- **`LanguageSwitcher`** (`app/components/header/LanguageSwitcher.tsx`) — pill button with globe icon (`/localization.png`), current locale name, `›` chevron. Toggles between SR and EN. Added to both desktop nav and mobile menu in `Header.tsx`.
+
+---
 
 ## Blog
 
-- **Content storage:** MDX files with frontmatter in `content/blog/posts/`. No CMS — posts are added by editing files and deploying. Can migrate to a headless CMS (e.g. Sanity) later if the client needs independence.
+- **Content storage:** MDX files with frontmatter in `content/blog/posts/`. No CMS — posts are added by editing files and deploying.
 - **Data layer:** `content/blog/types.ts` (BlogPost, BlogCategory, BlogFilterCategory types), `content/blog/utils.ts` (server-only, reads files with `fs` + `gray-matter`), `content/blog/helpers.ts` (client-safe: searchPosts, paginatePosts, formatDate).
 - **Important:** `utils.ts` uses `fs` and can only be imported in server components. `helpers.ts` is safe for client components. Never mix them.
 - **Categories:** Nutrition, Digestion, Recipes, Health, Lifestyle, Tips. `BlogFilterCategory` adds `'ALL'` for the filter UI.
 - **Blog listing page sections:** BlogHero → BlogListingSection (client, manages search/filter/pagination state) → CategoryCards (server) → NewsletterSignup (reused from research).
-- **BlogListingSection** derives `activeCategory` from URL search params (`useSearchParams`), not from state. Category changes use `router.replace()` to update the URL. Wrapped in `<Suspense>` in the page composer.
+- **BlogListingSection** derives `activeCategory` from URL search params (`useSearchParams`), not from state. Category changes use `router.replace({ pathname, query })` (object form required by next-intl's `useRouter`). Wrapped in `<Suspense>` in the page composer.
 - **Individual blog post page** (`/blog/[slug]`) is not yet built — planned as a separate task.
 - **Blog images:** Stored in `public/blog/` as `.png` files. Category icons in `public/` with `category-` prefix (except Digestion which uses `icon-microbiota.png`).
+
+---
 
 ## Styling
 
 - **Tailwind CSS v4** — config lives in `app/globals.css` via `@theme` block, not a separate `tailwind.config.*` file.
 - **Custom color tokens:** `--color-brand` (#D4AC77), `--color-brand-dark`, `--color-linen`, `--color-body`, `--color-heading`, `--color-oak`, `--color-tag`.
 - **Custom breakpoint:** `xs` at 500px (in addition to standard Tailwind breakpoints).
-- **Fonts:** 6 Google fonts loaded in layout (Inter, Montserrat, Roboto, Playfair Display, Lato, Cormorant Garamond) exposed as CSS variables + `.font-*` utility classes in globals.css.
+- **Fonts:** 6 Google fonts loaded in `app/[locale]/layout.tsx` (Inter, Montserrat, Roboto, Playfair Display, Lato, Cormorant Garamond) exposed as CSS variables + `.font-*` utility classes in globals.css.
 - **Section titles:** Always use `text-3xl lg:text-5xl` for h2 headings. Use `font-cormorant` for section titles.
 - **Gold gradient for icon circles:** `linear-gradient(to right, #D4AC77, #A6813F)` — used in KeyBenefits, KeyScientificFindings, HowToUse step numbers, CategoryCards, TrustCards.
+- **`.legal-prose`** in `globals.css` — typographic styles for legal pages (h2, h3, p, ul, a, strong).
+- **`.research-prose`** in `globals.css` — similar to `legal-prose` but uses Roboto for h2 and scopes `ul` styles to direct children to avoid conflicts with nested components.
 - Complex backgrounds/overlays use inline `style` props; layout and spacing use Tailwind classes.
+
+---
 
 ## Images
 
 - All static assets are in `public/`. Use Next.js `<Image>` component.
 - For small icons (inside circles, icon grids), use fixed `width`/`height` props — do NOT use `sizes="100vw"` as it causes icons to shrink on mobile.
-- For card images, use `fill` + `object-cover` inside a container with a fixed aspect ratio, and provide accurate `sizes` prop (e.g. `"(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 350px"`). Avoid `unoptimized` — if images look blurry, provide larger source files or better `sizes` hints instead.
+- For card images, use `fill` + `object-cover` inside a container with a fixed aspect ratio, and provide accurate `sizes` prop. Avoid `unoptimized`.
 - Hero sections use `<Image fill>` with gradient overlays.
 - For responsive hero height, use `height: 'clamp(min, vw-based, max)'` or `min-h-*` classes rather than `aspect-ratio` with min/max constraints (they conflict).
 
+---
+
 ## Product Page
 
-- **Page:** `app/product/page.tsx` — thin composer sequencing 8 sections: PromoBanner → ProductHero → WhatIsFiberZProduct → Testimonials → TrustCards → ScientificallyProvenStats → NutritionalInfo → FAQ.
-- **Product data:** All product constants live in `app/lib/productData.ts` — packages (pricing in RSD), benefits, nutrition tables, promo banner text, trust card data, stat data, product images, and `formatRSD()` helper. **Update here, not in components**, when product details change.
-- **ProductHero** (`app/components/product/ProductHero.tsx`) is the only client component — handles image gallery, package selection (radio), quantity stepper, dynamic price calculation, and ORDER NOW button.
-- **ORDER NOW button:** Currently shows an inline notice ("Online ordering is coming soon") with contact email/phone from `company.ts`. This satisfies AllSecure's merchant review requirement. Replace with real checkout flow after payment integration.
-- **PromoBanner** (`app/components/product/PromoBanner.tsx`) — thin `bg-oak` bar with promo text. Toggleable via `PROMO.active` flag in `productData.ts`. Renders nothing when `active === false`.
-- **Reused components:** Testimonials and FAQ are imported from `app/components/home/` with `variant="linen"` prop for different background colors on the product page.
+- **Page:** `app/[locale]/product/page.tsx` — thin composer: PromoBanner → ProductHero → WhatIsFiberZProduct → Testimonials → TrustCards → ScientificallyProvenStats → NutritionalInfo → FAQ.
+- **Product data:** All product constants in `app/lib/productData.ts` — packages (RSD pricing), benefits, nutrition tables, promo text, trust cards, stats, images, `formatRSD()`. **Update here, not in components.**
+- **ProductHero** (`app/components/product/ProductHero.tsx`) — only client component on this page. Handles image gallery, package selection, quantity stepper, dynamic price calculation, ORDER NOW button.
+- **ORDER NOW button:** Shows "Online ordering is coming soon" with contact info from `company.ts`. Replace with real checkout after AllSecure integration.
+- **PromoBanner** — toggleable via `PROMO.active` in `productData.ts`. Renders nothing when `active === false`.
+- **Reused components:** Testimonials and FAQ use `variant="linen"` prop for linen background on this page.
+
+---
 
 ## Components — Patterns & Gotchas
 
-- **NewsletterSignup** (`app/components/research/NewsletterSignup.tsx`) is shared across pages (research, blog, faq). It does NOT include an `<hr>` divider — pages that need one (research) add it in their own page composer. Wired up to `/api/newsletter/subscribe` with loading/success/error states, honeypot spam protection, and auto-clearing status messages after 5 seconds.
-- **Disabled pagination buttons:** Do NOT use `disabled` attribute on pagination arrows — it blocks hover styles. Instead, use opacity classes for visual styling and guard clicks in the handler (`if (page < 1 || page > totalPages) return`).
-- **Avoid `useEffect` for syncing URL params to state** — Next.js strict mode triggers "setState in effect" errors. Instead, derive values directly from `useSearchParams()`.
-- **`JSX.Element` type** doesn't exist in this project's TS config. Use `React.ReactNode` instead.
-- **ContactPopup** (`app/components/header/ContactPopup.tsx`) is opened from the header CONTACT button. Open state lives in `ScrollHeader` and is passed down to `Header → Navigation → NavLink`. Closes on Escape, backdrop click, or × button. Locks body scroll while open.
-- **Testimonials variant prop:** `variant?: "default" | "linen"`. `"default"` = white bg with linen-to-beige card gradient (home page). `"linen"` = linen bg with white-to-linen card gradient (product page). Same pattern used by FAQ.
-- **FAQ variant prop:** `variant?: "default" | "linen"`. `"default"` = white bg, linen closed items. `"linen"` = linen bg, white closed items. FAQ is centered with `max-w-3xl` (no product image beside it).
+- **NewsletterSignup** (`app/components/research/NewsletterSignup.tsx`) — shared across research, blog, faq pages. Does NOT include an `<hr>` divider — pages that need one add it themselves.
+- **Disabled pagination buttons:** Do NOT use `disabled` attribute on arrows — blocks hover styles. Use opacity classes and guard clicks in the handler instead.
+- **Avoid `useEffect` for syncing URL params** — Next.js strict mode triggers errors. Derive values directly from `useSearchParams()`.
+- **`JSX.Element` type** doesn't exist in this TS config. Use `React.ReactNode` instead.
+- **ContactPopup** — opened from header CONTACT button. Open state lives in `ScrollHeader`, passed down to `Header → Navigation → NavLink`. Closes on Escape, backdrop click, or × button.
+- **Testimonials / FAQ variant prop:** `variant?: "default" | "linen"` — controls background color for reuse on different pages.
+- **`router.replace` in next-intl** requires object form for URLs with query params: `router.replace({ pathname: '/blog', query: Object.fromEntries(params) }, { scroll: false })` — string URL form is not supported.
+
+---
 
 ## Legal Pages
 
-- **Pages:** `/terms-of-use`, `/privacy-policy`, `/shipping`, `/disclaimer`. All four are statically prerendered server components.
-- **Shared layout:** `app/components/legal/LegalPageLayout.tsx` provides a branded gold-gradient hero + a constrained `max-w-3xl` prose container. New legal pages should reuse this layout for consistency.
-- **Prose styling:** `.legal-prose` class in `globals.css` styles `h2`, `h3`, `p`, `ul`, `a`, `strong` inside legal content. Don't restyle these inline — extend `.legal-prose` if new elements are needed.
-- **Content language:** Currently English. References Serbian laws by name (Zakon o zaštiti potrošača, ZZPL, Zakon o fiskalizaciji). **A Serbian lawyer should review before going live** — the content is template language drafted from legal requirements, not lawyer-validated.
-- **`Last updated` dates** are hardcoded in each page. Update them whenever content changes.
-- **SEO:** Every legal page exports full Metadata with explicit `alternates.canonical`, `robots: { index: true, follow: true }`, and OpenGraph URL. Required for Google Search Console submission.
+- **Pages:** `app/[locale]/terms-of-use`, `app/[locale]/privacy-policy`, `app/[locale]/shipping`, `app/[locale]/disclaimer`.
+- **Content components:** Each legal page has a shared content component in `app/components/legal/[section]/` (e.g. `TermsContent.tsx`). The page file is a thin wrapper that renders the content + exports `generateMetadata`.
+- **Shared layout:** `app/components/legal/LegalPageLayout.tsx` — branded gold-gradient hero + `max-w-3xl` prose container.
+- **Prose styling:** `.legal-prose` class in `globals.css`. Don't restyle inline — extend `.legal-prose` if needed.
+- **Content language:** Currently English only. References Serbian laws by name. **A Serbian lawyer should review before going live.**
+- **`Last updated` dates** are hardcoded in each content component. Update them whenever content changes.
 
-## Newsletter
-
-- **Provider:** Resend — handles email sending, subscriber management (Audiences), and campaign sending (Broadcasts).
-- **No database** — Resend Audiences is the sole subscriber store. No Vercel Postgres or other DB needed.
-- **Subscribe flow:** `NewsletterSignup` component → `POST /api/newsletter/subscribe` → validates email, checks honeypot, rate limits (5 req/min/IP) → adds contact to Resend Audience → sends welcome email via React Email template.
-- **Unsubscribe flow:** Welcome email contains unsubscribe link → `GET /api/newsletter/unsubscribe?email=...` → marks contact as `unsubscribed: true` in Resend Audience (soft unsubscribe, preserves record) → shows HTML confirmation page.
-- **Sending campaigns:** Done entirely through the Resend dashboard (Broadcasts). No code changes needed. The client creates a broadcast, picks the audience, uses the branded HTML template from `emails/broadcast-template.html`, and sends.
-- **Resend Audiences API:** `contacts.create()` is idempotent — duplicate emails don't error, they return the existing contact. No need to check existence before creating.
-- **Welcome email template:** `emails/WelcomeEmail.tsx` — React Email component branded with FiberZ colors.
-- **Broadcast template:** `emails/broadcast-template.html` — standalone HTML template for pasting into Resend's broadcast editor. Uses `{{{RESEND_UNSUBSCRIBE_URL}}}` variable for the unsubscribe link.
-- **Spam protection:** Honeypot field (`_website`) + in-memory rate limiter in `app/lib/validation.ts`. No CAPTCHA.
-- **Resend client:** Lazily initialized via `getResend()` function in route handlers to avoid build-time errors when env vars aren't set.
-- **Environment variables:** `RESEND_API_KEY`, `RESEND_AUDIENCE_ID`, and optionally `RESEND_FROM_EMAIL` (defaults to `onboarding@resend.dev` for testing). Must verify domain in Resend before production sending — unverified domains land in spam.
-
-## Deployment & SEO
-
-- **Deployed to Vercel** with a custom domain. All code must be production-ready.
-- **SEO optimized:** Every page needs proper Metadata exports (title, description, OpenGraph, `alternates.canonical`, explicit `robots: { index: true, follow: true }`). Use semantic HTML, proper heading hierarchy (single h1 per page), alt text on images, and structured data where appropriate.
-- **Pages will be submitted to Google Search Console.** Every new route should be indexable from day one — no `noindex` on marketing or legal pages.
-- **Vercel Web Analytics + Speed Insights** are loaded directly in `layout.tsx`. Both are cookieless and GDPR-compliant without consent — no cookie banner needed. Both are named explicitly in the Privacy Policy. If a cookie-based tool is added later, a consent banner would need to be introduced.
-
-## How It Works Page
-
-- **Page:** `app/how-it-works/page.tsx` — thin composer sequencing 6 sections: HowItWorksHero → SimpleToAdd (reused from benefits/) → HowToUse (reused from home/) → WhenToTake → FAQ (reused, `variant="linen"`) → CTASection.
-- **New components** in `app/components/how-it-works/`: `HowItWorksHero`, `WhenToTake`, `CTASection`.
-- **Reused components:** `SimpleToAdd` (benefits/), `HowToUse` (home/), `FAQ` (home/) — no modifications needed.
+---
 
 ## Research
 
-- **Research listing page:** `app/research/page.tsx` — sequences ResearchHero → ResearchStats → WhyFiberZScienceBased → KeyScientificFindings → FeaturedClinicalStudies → NewsletterSignup.
-- **Research article page:** `app/research/resistant-dextrin/page.tsx` — full research article on resistant dextrin as a prebiotic, covering 7 sections (prebiotics definition, SCFA mechanisms, production/properties, clinical evidence, synergistic effects, about FiberZ, conclusion) with references, nutritional tables, flowchart diagram, and product image. Uses `.research-prose` styles (defined in `globals.css`).
-- **FeaturedClinicalStudies** (`app/components/research/FeaturedClinicalStudies.tsx`) — displays 4 real peer-reviewed studies from the research PDF references (Cai 2018, Włodarczyk 2021, Yoshida 2024, Hu 2020). Links to the full article page.
-- **KeyScientificFindings** (`app/components/research/KeyScientificFindings.tsx`) — 4 findings backed by real citations from the research PDF.
-- **Research data source:** `public/research/research.pdf` (original research document). Product image at `public/research/fiberz-research.jpg`.
-- **Nutritional data** in `app/lib/productData.ts` updated to match research PDF values (Energy: 48 kJ/11 kcal, Fiber: 2.1g per sachet, plus saturates/sugars/salt rows).
+- **Listing page:** `app/[locale]/research/page.tsx` — sequences ResearchHero → ResearchStats → WhyFiberZScienceBased → KeyScientificFindings → FeaturedClinicalStudies → NewsletterSignup.
+- **Article page:** `app/[locale]/research/resistant-dextrin/page.tsx` — thin wrapper rendering `ResistantDextrinArticleContent` from `app/components/research/article/`. Full article content with 7 sections, flowchart diagram, nutritional tables, references.
+- **Research data source:** `public/research/research.pdf`. Product image at `public/research/fiberz-research.jpg`.
+
+---
 
 ## SEO
 
-- **Sitemap:** `app/sitemap.ts` — dynamic sitemap covering all 12 public routes. Base URL from `NEXT_PUBLIC_SITE_URL` env var.
+- **Sitemap:** `app/sitemap.ts` — generates two entries per route (SR without prefix + EN with `/en/`), each with `alternates.languages: { sr, en }`. Base URL from `NEXT_PUBLIC_SITE_URL`.
 - **Robots:** `app/robots.ts` — allows all crawlers, references `/sitemap.xml`.
-- **JSON-LD structured data** in `app/lib/jsonLd.ts` — shared utility exporting `getOrganizationJsonLd()`, `getProductJsonLd()`, `getFAQJsonLd()`, `getBreadcrumbJsonLd()`. Added to:
-  - Home page (`/`) — Organization schema
-  - Product page (`/product`) — Product schema (all packages with RSD pricing) + BreadcrumbList
-  - FAQ page (`/faq`) — FAQPage schema (all questions from `faqData.ts`) + BreadcrumbList
-  - Research article (`/research/resistant-dextrin`) — BreadcrumbList
+- **JSON-LD structured data** in `app/lib/jsonLd.ts` — `getOrganizationJsonLd()` (home), `getProductJsonLd()` (product), `getFAQJsonLd()` (faq), `getBreadcrumbJsonLd()` (product, faq, research article).
+- **`generateMetadata`** on every `app/[locale]/*/page.tsx` includes `alternates.canonical` + `alternates.languages` + `openGraph.locale` based on the `locale` param.
 
-## Styling
+---
 
-- **`.legal-prose`** in `globals.css` — typographic styles for legal pages (h2, h3, p, ul, a, strong). Wrapped in `@layer base` for Tailwind v4 specificity.
-- **`.research-prose`** in `globals.css` — similar to `legal-prose` but uses Roboto for h2 and scopes `ul` styles to direct children (`> ul`) to avoid conflicts with nested components like the flowchart diagram.
+## Newsletter
+
+- **Provider:** Resend — subscriber management (Audiences), transactional email, campaign broadcasting.
+- **No database** — Resend Audiences is the sole subscriber store.
+- **Subscribe flow:** `NewsletterSignup` → `POST /api/newsletter/subscribe` → validates email, checks honeypot, rate limits → adds to Audience → sends welcome email.
+- **Unsubscribe flow:** Welcome email link → `GET /api/newsletter/unsubscribe?email=...` → marks contact as `unsubscribed: true` → shows HTML confirmation.
+- **Campaigns:** Done through Resend dashboard (Broadcasts). Template at `emails/broadcast-template.html`.
+- **Welcome email:** `emails/WelcomeEmail.tsx` — React Email component.
+- **Spam protection:** Honeypot (`_website`) + in-memory rate limiter in `app/lib/validation.ts`.
+- **Environment variables:** `RESEND_API_KEY`, `RESEND_AUDIENCE_ID`, `RESEND_FROM_EMAIL` (defaults to `onboarding@resend.dev`). Must verify domain before production.
+
+---
 
 ## Security
 
-- **HTTP security headers** configured in `next.config.ts` via `headers()`. Applied to all routes (`/(.*)`):
-  - `X-Content-Type-Options: nosniff` — prevents MIME-type sniffing
-  - `X-Frame-Options: DENY` — blocks iframe embedding (clickjacking protection)
-  - `X-XSS-Protection: 1; mode=block` — legacy XSS filter
-  - `Referrer-Policy: strict-origin-when-cross-origin` — controls referrer info sent to other sites
-  - `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload` — forces HTTPS
-  - `Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()` — restricts browser APIs
+- **HTTP security headers** in `next.config.ts` — `X-Content-Type-Options`, `X-Frame-Options: DENY`, `X-XSS-Protection`, `Referrer-Policy`, `Strict-Transport-Security`, `Permissions-Policy`. Applied to all routes.
+
+---
 
 ## Payments (planned — AllSecure)
 
-- **Provider:** AllSecure (Belgrade office). Chosen because Stripe is not available in Serbia, and AllSecure already has live Apple Pay + Google Pay support and a Belgrade-based team.
-- **Status:** Pre-onboarding. The website is being prepared for AllSecure's merchant review (legal pages, contact info, PIB/MB visible, payment method icons in footer).
-- **Payment method icons** in `app/components/footer/PaymentMethods.tsx` are currently **text placeholders**. Swap them for the official Visa/Mastercard/Maestro/DinaCard/Apple Pay/Google Pay logos provided by AllSecure after onboarding.
-- **Fiscalization (V-PFR)** is a **separate, mandatory** integration with the Serbian Tax Administration. AllSecure does not handle fiscal receipts — they must be generated server-side after every successful payment, in accordance with the Serbian Law on Fiscalization (Zakon o fiskalizaciji). Plan: integrate a certified ESIR provider's API (e.g. Younify, eFiskal, Fiskalko, Fiscal.rs) rather than building a custom ESIR.
+- **Provider:** AllSecure (Belgrade). Stripe not available in Serbia.
+- **Status:** Pre-onboarding. Site being prepared for AllSecure merchant review.
+- **Payment method icons** in `app/components/footer/PaymentMethods.tsx` are text placeholders — swap for official logos after onboarding.
+- **Fiscalization (V-PFR):** Separate mandatory integration with Serbian Tax Administration. Integrate a certified ESIR provider API (Younify / eFiskal / Fiskalko / Fiscal.rs) server-side after each successful payment.
+
+---
 
 ## TypeScript
 
 Strict mode enabled. Path alias `@/*` maps to the project root.
 
+---
+
 ## Important Things to Know
 
-- **Legal page content is template English** drafted from Serbian law requirements. **Have a Serbian lawyer review** Terms of Service, Privacy Policy, Shipping & Returns, and Disclaimer before going live. Acquirers (like AllSecure) don't legally validate content — that's on you.
-- **Payment method icons in the footer are text placeholders.** AllSecure provides an official brand kit with Visa/Mastercard/Maestro/DinaCard/Apple Pay/Google Pay logos after onboarding — swap them in then.
-- **All "Last updated" dates in legal pages are hardcoded** (currently 2026-04-07). Update them whenever you change the content.
-- **No cookie banner** is currently needed. Vercel Web Analytics and Speed Insights are both cookieless. If a cookie-based tool is added later (e.g. advertising pixels), a consent banner must be introduced at that point.
-- **The checkout flow does not exist yet.** Will be built after AllSecure onboarding provides sandbox credentials.
-- **Fiscalization (V-PFR) is a separate, mandatory integration** from the payment gateway. AllSecure does not handle fiscal receipts — you must integrate a certified ESIR provider's API after each successful payment.
+- **`sr.json` translations are placeholder English.** The routing and switcher work, but both locales show English content until Serbian strings are added to `messages/sr.json`.
+- **Components still use hardcoded strings.** `messages/en.json` and `sr.json` exist, but `useTranslations()` / `getTranslations()` have not yet been wired into components — that is the next major localization task.
+- **Legal page content is template English** drafted from Serbian law requirements. **Have a Serbian lawyer review** before going live.
+- **Payment method icons in the footer are text placeholders.** Swap after AllSecure onboarding.
+- **"Last updated" dates in legal pages are hardcoded** (currently 2026-04-07). Update whenever content changes.
+- **No cookie banner** needed. Vercel Analytics + Speed Insights are cookieless.
+- **Checkout flow does not exist yet.** Built after AllSecure sandbox credentials.
+- **Fiscalization (V-PFR) is a separate mandatory integration** — AllSecure does not handle fiscal receipts.
+
+---
 
 ## TODO
 
-### Before AllSecure merchant review (blockers)
+### Localization — wiring translations (next priority)
 
-- [x] ~~Build `/how-it-works` page~~ — done (reuses `SimpleToAdd`, `HowToUse`, `FAQ` components + 3 new: `HowItWorksHero`, `WhenToTake`, `CTASection`)
+- [ ] Wire `useTranslations()` / `getTranslations()` into all components — messages files exist but components still render hardcoded English strings
+- [ ] Add real Serbian translations to `messages/sr.json` (currently a placeholder copy of `en.json`)
+- [ ] Move blog posts from `content/blog/posts/*.mdx` → `content/blog/posts/sr/*.mdx`, create `content/blog/posts/en/` copies
+- [ ] Update `content/blog/utils.ts` — add `locale: string` param to all functions, change posts directory path
+- [ ] Update `content/blog/helpers.ts` — add optional `locale` param to `formatDate()` for Serbian date formatting
+- [ ] Update `NewsletterSignup.tsx` — send `locale` in POST body using `useLocale()`
+- [ ] Update `app/api/newsletter/subscribe/route.ts` — include `?locale=` in unsubscribe URL
+- [ ] Update `app/api/newsletter/unsubscribe/route.ts` — render Serbian or English HTML based on `?locale=` param
+- [ ] Update `app/lib/jsonLd.ts` — accept pre-translated strings as params instead of importing directly from productData/faqData
+
+### Before AllSecure merchant review
+
 - [ ] **Have a Serbian lawyer review** all four legal pages (Terms of Service, Privacy Policy, Shipping & Returns, Disclaimer)
-- [ ] Translate legal pages to Serbian (recommended for Serbian consumer base)
-- [ ] Add an "About Us" page or section with company history (Fidelinka has long history — leverage for trust during review)
-
-### AllSecure onboarding & integration
-
-- [ ] Initial sales meeting with AllSecure — get written quote, confirm Apple Pay availability, settlement period, supported currencies
-- [ ] Submit KYC documents (APR izvod, PIB, MB, business bank account, beneficial owner ID)
-- [ ] Sign merchant agreement
-- [ ] Receive sandbox credentials and integrate hosted payment page (HPP) or drop-in widget
-- [ ] Configure Apple Pay (Merchant ID + domain verification file in `public/.well-known/`)
-- [ ] Configure Google Pay (Google Pay Console registration + SDK integration)
-- [ ] Replace placeholder payment icons in `PaymentMethods.tsx` with official AllSecure brand assets
-- [ ] PCI SAQ A submission via AllSecure
-- [ ] Switch to production credentials and smoke test with real low-value purchase
-
-### Fiscalization (V-PFR) — mandatory by Serbian law
-
-- [ ] Register with Poreska uprava as e-commerce taxpayer
-- [ ] Apply for Bezbednosni element (security certificate)
-- [ ] Choose certified ESIR provider (Younify / eFiskal / Fiskalko / Fiscal.rs) and integrate their API
-- [ ] Wire ESIR call into the post-payment flow so a fiscal receipt with QR code is sent to the customer
+- [ ] Translate legal pages to Serbian
+- [ ] Add an "About Us" page or section with company history
 
 ### Blog & content
 
@@ -195,36 +209,59 @@ Strict mode enabled. Path alias `@/*` maps to the project root.
 
 ### Newsletter / email
 
-- [ ] Verify domain in Resend and update `RESEND_FROM_EMAIL` env var for production email delivery
+- [ ] Verify domain in Resend and update `RESEND_FROM_EMAIL` env var for production
 - [ ] Add unsubscribe link (`{{{RESEND_UNSUBSCRIBE_URL}}}`) to broadcast template footer
-- [ ] Contact form integration (FAQ page — currently mailto/tel links and ContactPopup only)
+- [ ] Contact form integration (currently mailto/tel links and ContactPopup only)
 
-### Nice-to-have
+### AllSecure onboarding & integration
 
-- [x] ~~Structured data (JSON-LD) for product, organization, breadcrumbs~~ — done (home, product, FAQ pages)
+- [ ] Initial sales meeting — confirm Apple Pay availability, settlement period, supported currencies
+- [ ] Submit KYC documents (APR izvod, PIB, MB, business bank account, beneficial owner ID)
+- [ ] Sign merchant agreement
+- [ ] Integrate hosted payment page (HPP) or drop-in widget with sandbox credentials
+- [ ] Configure Apple Pay (Merchant ID + domain verification file in `public/.well-known/`)
+- [ ] Configure Google Pay (Google Pay Console registration + SDK)
+- [ ] Replace placeholder payment icons with official AllSecure brand assets
+- [ ] PCI SAQ A submission
+- [ ] Switch to production credentials and smoke test
 
-### Done
+### Fiscalization (V-PFR) — mandatory by Serbian law
 
+- [ ] Register with Poreska uprava as e-commerce taxpayer
+- [ ] Apply for Bezbednosni element (security certificate)
+- [ ] Choose certified ESIR provider and integrate their API
+- [ ] Wire ESIR call into post-payment flow for fiscal receipt with QR code
+
+---
+
+## Done
+
+- [x] Full localization infrastructure — next-intl v4, `i18n/routing.ts`, `i18n/request.ts`, `i18n/navigation.ts`, `proxy.ts` (middleware)
+- [x] `next.config.ts` wrapped with `createNextIntlPlugin`
+- [x] `app/layout.tsx` reduced to passthrough; `app/[locale]/layout.tsx` created as full HTML shell
+- [x] All 12 pages moved to `app/[locale]/*/page.tsx` with locale-aware `generateMetadata` (hreflang alternates)
+- [x] `messages/en.json` — all English strings extracted across all namespaces
+- [x] `messages/sr.json` — placeholder (copy of en.json, ready for translation)
+- [x] `LanguageSwitcher` component — globe icon pill button; added to desktop nav and mobile menu
+- [x] All `Link` / `usePathname` / `useRouter` imports updated to `@/i18n/navigation` across all components
+- [x] Sitemap updated — two entries per route (SR + EN) with `alternates.languages`
+- [x] Legal content extracted to shared components (`TermsContent`, `PrivacyContent`, `ShippingContent`, `DisclaimerContent`)
+- [x] Research article extracted to `ResistantDextrinArticleContent` component
+- [x] `middleware.ts` renamed to `proxy.ts` (Next.js 16 convention)
 - [x] Newsletter signup integration
-- [x] Integrate email sending (transactional welcome email via Resend)
-- [x] Add PIB and Matični broj to footer
-- [x] Build Terms of Service page
-- [x] Build Privacy Policy page (with Vercel Web Analytics + Speed Insights named)
-- [x] Build Shipping & Returns page (with 14-day right of withdrawal)
-- [x] Build Disclaimer page (food supplement)
-- [x] Header CONTACT button popup
-- [x] ~~Cookie consent banner~~ — removed (Vercel Analytics + Speed Insights are cookieless, no banner needed)
-- [x] Payment method placeholder badges in footer
+- [x] Transactional welcome email via Resend
+- [x] Build `/how-it-works` page
+- [x] Build `/product` page with RSD pricing and 8 sections
+- [x] Build all 4 legal pages (Terms, Privacy, Shipping, Disclaimer)
 - [x] Shared `LegalPageLayout` and `.legal-prose` styles
 - [x] Centralized company info in `app/lib/company.ts`
-- [x] Build `/product` page with RSD pricing, package selection, ORDER NOW placeholder, and 8 sections
 - [x] Centralized product data in `app/lib/productData.ts`
-- [x] Testimonials and FAQ variant props for reuse across pages with different bg colors
-- [x] Build `/how-it-works` page (reuses `SimpleToAdd`, `HowToUse`, `FAQ` + 3 new components)
-- [x] Sitemap (`app/sitemap.ts`) and `robots.txt` (`app/robots.ts`)
-- [x] Footer PIB/MB labels translated to English (Tax ID / Registration No)
-- [x] Security headers in `next.config.ts` (HSTS, X-Frame-Options, CSP, etc.)
+- [x] Header CONTACT button popup (ContactPopup)
+- [x] Payment method placeholder badges in footer
+- [x] Sitemap + robots.txt routes
+- [x] Security headers in `next.config.ts`
 - [x] JSON-LD structured data — Organization (home), Product (product), FAQPage (faq), BreadcrumbList
-- [x] Research article page (`/research/resistant-dextrin`) with full PDF content, flowchart, nutritional tables, and product image
-- [x] Updated `FeaturedClinicalStudies` and `KeyScientificFindings` with real peer-reviewed study data
+- [x] Research article page with full PDF content, flowchart, nutritional tables
+- [x] Updated FeaturedClinicalStudies and KeyScientificFindings with real peer-reviewed study data
 - [x] Updated nutritional data in `productData.ts` to match research PDF values
+- [x] Vercel Web Analytics + Speed Insights (cookieless, no consent banner needed)
