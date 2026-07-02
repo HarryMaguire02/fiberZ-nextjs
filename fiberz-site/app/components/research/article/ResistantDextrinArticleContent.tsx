@@ -21,18 +21,25 @@ const references = [
   },
 ];
 
-export default function ResistantDextrinArticleContent() {
+interface ResistantDextrinArticleContentProps {
+  locale: string;
+}
+
+export default function ResistantDextrinArticleContent({ locale }: ResistantDextrinArticleContentProps) {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
-            getBreadcrumbJsonLd([
-              { name: 'Home', href: '/' },
-              { name: 'Research', href: '/research' },
-              { name: 'Resistant Dextrin', href: '/research/resistant-dextrin' },
-            ])
+            getBreadcrumbJsonLd(
+              [
+                { name: 'Home', href: '/' },
+                { name: 'Research', href: '/research' },
+                { name: 'Resistant Dextrin', href: '/research/resistant-dextrin' },
+              ],
+              locale
+            )
           ),
         }}
       />

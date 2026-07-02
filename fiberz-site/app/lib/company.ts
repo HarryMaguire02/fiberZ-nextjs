@@ -4,6 +4,10 @@
  *
  * Required to be public under Serbian commercial law (Zakon o privrednim društvima)
  * — name, address, PIB and Matični broj must appear on the website.
+ *
+ * NOTE: working hours is display text, not a legal fact, so it lives in
+ * messages/*.json (ContactPopup.workingHoursValue) instead of here — it's
+ * the one exception to "update company.ts, not components".
  */
 export const COMPANY = {
   legalName: 'Fidelinka Skrob d.o.o.',
@@ -17,7 +21,6 @@ export const COMPANY = {
   email: 'info@fiberz.com',
   phone: '+381 63 10777 08',
   phoneHref: '+381631077708',
-  workingHours: 'Mon-Fri: 9:00 - 17:00',
 } as const;
 
 export const fullAddress = `${COMPANY.addressLine}, ${COMPANY.postalCode} ${COMPANY.city}, ${COMPANY.country}`;

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { BlogCategory } from '@/content/blog/types';
 
@@ -15,16 +16,18 @@ const CATEGORY_ICONS: Record<BlogCategory, string> = {
   Tips: '/category-tips.png',
 };
 
-export default function CategoryCards({ categories }: CategoryCardsProps) {
+export default async function CategoryCards({ categories }: CategoryCardsProps) {
+  const t = await getTranslations('Blog.CategoryCards');
+
   return (
     <section className="bg-white">
       <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12 w-full py-12 lg:py-16">
         <div className="text-center mb-10">
           <h2 className="font-cormorant text-3xl lg:text-5xl font-bold text-heading leading-tight mb-3">
-            Browse by Categories
+            {t('title')}
           </h2>
           <p className="font-montserrat text-brand text-sm italic">
-            Find the articles that interest you the most
+            {t('subtitle')}
           </p>
         </div>
 
@@ -51,7 +54,7 @@ export default function CategoryCards({ categories }: CategoryCardsProps) {
                   {cat.name}
                 </span>
                 <span className="font-lato text-body text-sm">
-                  {cat.count} {cat.count === 1 ? 'article' : 'articles'}
+                  {t('articleCount', { count: cat.count })}
                 </span>
               </div>
             </Link>

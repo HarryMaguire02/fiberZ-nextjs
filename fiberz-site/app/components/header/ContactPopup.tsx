@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { COMPANY } from '@/app/lib/company';
 
 interface ContactPopupProps {
@@ -9,6 +10,8 @@ interface ContactPopupProps {
 }
 
 export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
+  const t = useTranslations('ContactPopup');
+
   // Close on Escape key
   useEffect(() => {
     if (!isOpen) return;
@@ -41,7 +44,7 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
       {/* Backdrop */}
       <button
         type="button"
-        aria-label="Close contact"
+        aria-label={t('close')}
         onClick={onClose}
         className="absolute inset-0 bg-black/60 backdrop-blur-sm"
       />
@@ -59,16 +62,16 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
                 id="contact-popup-title"
                 className="font-cormorant text-2xl lg:text-3xl text-white font-bold leading-tight"
               >
-                Get in Touch
+                {t('title')}
               </h2>
               <p className="text-white/90 text-sm mt-1">
-                We&apos;re here to help — reach out any time.
+                {t('subtitle')}
               </p>
             </div>
             <button
               type="button"
               onClick={onClose}
-              aria-label="Close"
+              aria-label={t('close')}
               className="shrink-0 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 transition-colors text-white flex items-center justify-center text-xl leading-none"
             >
               ×
@@ -80,7 +83,7 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
         <div className="px-6 py-6 space-y-5">
           <div>
             <p className="text-xs uppercase tracking-wider text-heading font-semibold mb-1">
-              Email
+              {t('email')}
             </p>
             <a
               href={`mailto:${COMPANY.email}`}
@@ -92,7 +95,7 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
 
           <div>
             <p className="text-xs uppercase tracking-wider text-heading font-semibold mb-1">
-              Phone
+              {t('phone')}
             </p>
             <a
               href={`tel:${COMPANY.phoneHref}`}
@@ -104,14 +107,14 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
 
           <div>
             <p className="text-xs uppercase tracking-wider text-heading font-semibold mb-1">
-              Working Hours
+              {t('workingHours')}
             </p>
-            <p className="text-body">{COMPANY.workingHours}</p>
+            <p className="text-body">{t('workingHoursValue')}</p>
           </div>
 
           <div>
             <p className="text-xs uppercase tracking-wider text-heading font-semibold mb-1">
-              Address
+              {t('address')}
             </p>
             <address className="not-italic text-body">
               {COMPANY.legalName}

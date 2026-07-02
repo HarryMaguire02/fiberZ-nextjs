@@ -6,9 +6,28 @@ function getResend() {
   return new Resend(process.env.RESEND_API_KEY);
 }
 
+const COPY = {
+  en: {
+    lang: 'en',
+    title: "Unsubscribed — FiberZ",
+    heading: "You've been unsubscribed",
+    body: 'You will no longer receive newsletter emails from FiberZ.',
+    back: 'Back to FiberZ',
+  },
+  sr: {
+    lang: 'sr',
+    title: 'Odjava sa liste — FiberZ',
+    heading: 'Uspešno ste se odjavili',
+    body: 'Više nećete primati newsletter poruke od FiberZ-a.',
+    back: 'Nazad na FiberZ',
+  },
+};
+
 export async function GET(request: NextRequest) {
   const email = request.nextUrl.searchParams.get('email') || '';
   const sanitized = sanitizeEmail(email);
+  const locale = request.nextUrl.searchParams.get('locale') === 'en' ? 'en' : 'sr';
+  const copy = COPY[locale];
 
   if (!isValidEmail(sanitized)) {
     return new NextResponse('Invalid email address.', { status: 400 });
@@ -36,11 +55,11 @@ export async function GET(request: NextRequest) {
 
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://fiberz.com';
     const html = `<!DOCTYPE html>
-<html lang="en">
+<html lang="${copy.lang}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unsubscribed — FiberZ</title>
+  <title>${copy.title}</title>
   <style>
     body { font-family: 'Montserrat', 'Helvetica Neue', sans-serif; background: #F6F2EA; margin: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
     .card { background: white; border-radius: 12px; padding: 48px; text-align: center; max-width: 400px; }
@@ -51,9 +70,9 @@ export async function GET(request: NextRequest) {
 </head>
 <body>
   <div class="card">
-    <h1>You've been unsubscribed</h1>
-    <p>You will no longer receive newsletter emails from FiberZ.</p>
-    <p style="margin-top: 24px;"><a href="${siteUrl}">Back to FiberZ</a></p>
+    <h1>${copy.heading}</h1>
+    <p>${copy.body}</p>
+    <p style="margin-top: 24px;"><a href="${siteUrl}">${copy.back}</a></p>
   </div>
 </body>
 </html>`;

@@ -22,6 +22,7 @@ npm run lint     # Run ESLint
 - **API Routes:** `app/api/newsletter/subscribe/` and `app/api/newsletter/unsubscribe/` — handle newsletter subscription via Resend. API routes do NOT use the `[locale]` prefix.
 - **Server components by default.** Client components (`'use client'`) only where interactivity is needed (Header, ScrollHeader, ContactPopup, ProductHero, FAQ accordion, Testimonials scroll, BlogListingSection, LanguageSwitcher).
 - **Layout:** `app/layout.tsx` is a passthrough (`return children`). `app/[locale]/layout.tsx` is the real shell — it sets `lang={locale}`, loads fonts, wraps content in `NextIntlClientProvider`, and renders `ScrollHeader` + `Footer` + `Analytics` + `SpeedInsights`.
+- **Two `not-found.tsx` files, and they are not interchangeable:** `app/[locale]/not-found.tsx` only renders for an explicit `notFound()` call thrown from *within* an already-matched `[locale]` segment (e.g. the invalid-locale check in `app/[locale]/layout.tsx`). Any URL that doesn't match a route pattern at all (e.g. `/blog/some-unknown-slug` — there's no `[slug]` page) never enters `app/[locale]/layout.tsx`, so Next.js falls back to the root `app/not-found.tsx` instead — which, because the root layout is a passthrough with no `<html>`/`<body>`, must provide its own self-contained HTML document (plain inline styles, no Tailwind/font dependency). If you add real 404s to more routes, keep both files in sync.
 - **Home hero overlaps header:** The home hero uses `-mt-16 md:-mt-20` to extend behind the header. `ScrollHeader` detects `pathname === '/'` (via `usePathname` from `@/i18n/navigation`, which strips the locale prefix) and renders transparent bg when not scrolled.
 - **Company info:** Single source of truth in `app/lib/company.ts` (`COMPANY` constant — legal name, address, PIB, MB, email, phone, hours). **Update here, not in components**, when company details change.
 
@@ -36,27 +37,32 @@ npm run lint     # Run ESLint
   - `i18n/request.ts` — `getRequestConfig`, loads `messages/[locale].json`
   - `i18n/navigation.ts` — `createNavigation` exports locale-aware `Link`, `useRouter`, `usePathname`
 - **Proxy (middleware):** `proxy.ts` at the project root — `createMiddleware(routing)` from next-intl. Handles locale detection and redirects. Named `proxy.ts` (Next.js 16 renamed `middleware.ts` → `proxy.ts`).
-- **Messages:** `messages/en.json` and `messages/sr.json` — namespace-structured translation files. **`sr.json` is currently a placeholder copy of `en.json`** — real Serbian translations still need to be added.
+- **Messages:** `messages/en.json` and `messages/sr.json` — namespace-structured translation files. **`sr.json` now has real Serbian translations** across all 14 namespaces (translated content, not a placeholder). ICU plurals (`FAQ.questionsCount`, `Blog.CategoryCards.articleCount`) use full Serbian CLDR plural categories (`one`/`few`/`many`/`other`), not just `one`/`other`. Study citations, author names, and brand name (`FiberZ`) are intentionally left untranslated (proper nouns / scientific references).
 - **CRITICAL — always import from `@/i18n/navigation`:** Never import `Link`, `usePathname`, or `useRouter` from `next/link` or `next/navigation` in components — always use `@/i18n/navigation`. This is what makes links locale-aware. `useSearchParams` is the only exception (kept from `next/navigation`).
 - **`usePathname` strips the locale prefix** — `pathname === '/'` correctly matches both `/` (SR) and `/en/` (EN).
 - **Server components** use `const t = await getTranslations('Namespace')` (must be `async`).
 - **Client components** use `const t = useTranslations('Namespace')`.
 - **`t.raw()`** returns `unknown` — always cast to the expected type.
+- **All components and pages are wired to `useTranslations()`/`getTranslations()`** — no more hardcoded English strings outside of the intentionally-excluded legal pages and research article (see below). `generateMetadata` on every page reads from `Metadata.<page>`.
 - **Translation namespaces in `messages/*.json`:** `Nav`, `Footer`, `ContactPopup`, `Home` (Hero/ModernDiets/WhatIsFiberZ/KeyBenefits/HowToUse/Testimonials/BackedByScience/FAQ), `Benefits`, `Research`, `FAQ` (all 6 categories + 50+ Q&A), `Blog`, `HowItWorks`, `Product` (packages/benefits/trustCards/stats/nutritionRows), `Newsletter`, `Metadata` (all 12 pages).
-- **Long-prose pages (legal + research article)** keep their content as JSX components, not in JSON — too much embedded markup (`<Link>`, `COMPANY` constants, tables, figures). Each locale page (`app/[locale]/terms-of-use/page.tsx` etc.) is a thin wrapper that renders the content component.
+- **FAQ and Product text live only in `messages/*.json`** — `app/components/faq/faqData.ts` and `app/lib/productData.ts` were reduced to structural-only data (ids, icons, prices, numeric values). Components merge structural data with translated text at render time, keyed by `id` (FAQ, via the shared `app/components/faq/useFAQCategories.ts` hook) or zipped by array index (Product stats/nutrition rows/trust card icons). `app/lib/jsonLd.ts`'s `getProductJsonLd()`/`getFAQJsonLd()` now accept pre-translated params instead of importing text directly.
+- **`company.ts` exception:** `COMPANY.workingHours` was removed — working hours is display text, not a legal fact, so it now lives in `messages/*.json` as `ContactPopup.workingHoursValue`. This is the one documented exception to "update company.ts, not components."
+- **Blog category names** (`Nutrition`/`Digestion`/etc., from `content/blog/types.ts`'s `BlogCategory` union) are **not** translated — left as English data labels. Open decision: add a `Blog.categoryNames.*` map if these should be localized later.
+- **Long-prose pages (legal + research article)** keep their content as JSX components, not in JSON — too much embedded markup (`<Link>`, `COMPANY` constants, tables, figures). Each locale page (`app/[locale]/terms-of-use/page.tsx` etc.) is a thin wrapper that renders the content component. **Intentionally left English-only** pending Serbian lawyer review — not wired to translations.
 - **`LanguageSwitcher`** (`app/components/header/LanguageSwitcher.tsx`) — pill button with globe icon (`/localization.png`), current locale name, `›` chevron. Toggles between SR and EN. Added to both desktop nav and mobile menu in `Header.tsx`.
 
 ---
 
 ## Blog
 
-- **Content storage:** MDX files with frontmatter in `content/blog/posts/`. No CMS — posts are added by editing files and deploying.
+- **Content storage:** MDX files with frontmatter in `content/blog/posts/<locale>/` (`en/` and `sr/`). No CMS — posts are added by editing files and deploying. **All 10 posts in both locales are currently stub placeholders** — frontmatter (title, excerpt, category, author, date, image) plus a single truncated intro line, no full article body yet. `sr/` frontmatter and intro lines are translated (not English copies); writing the actual full-length article bodies is still a future task for both locales.
 - **Data layer:** `content/blog/types.ts` (BlogPost, BlogCategory, BlogFilterCategory types), `content/blog/utils.ts` (server-only, reads files with `fs` + `gray-matter`), `content/blog/helpers.ts` (client-safe: searchPosts, paginatePosts, formatDate).
 - **Important:** `utils.ts` uses `fs` and can only be imported in server components. `helpers.ts` is safe for client components. Never mix them.
+- **Locale-aware:** `getAllPosts(locale)`, `getFeaturedPost(locale)`, `getPostsByCategory(locale, category)`, `getCategories(locale)` all take a `locale` param and read from `content/blog/posts/<locale>/`. `formatDate(dateString, locale?)` switches `toLocaleString` locale code (defaults to `'en'`).
 - **Categories:** Nutrition, Digestion, Recipes, Health, Lifestyle, Tips. `BlogFilterCategory` adds `'ALL'` for the filter UI.
 - **Blog listing page sections:** BlogHero → BlogListingSection (client, manages search/filter/pagination state) → CategoryCards (server) → NewsletterSignup (reused from research).
 - **BlogListingSection** derives `activeCategory` from URL search params (`useSearchParams`), not from state. Category changes use `router.replace({ pathname, query })` (object form required by next-intl's `useRouter`). Wrapped in `<Suspense>` in the page composer.
-- **Individual blog post page** (`/blog/[slug]`) is not yet built — planned as a separate task.
+- **Individual blog post page** (`/blog/[slug]`) is not yet built — planned as a separate task. Since no route matches `/blog/<slug>` at all, hitting one currently falls through to the root `app/not-found.tsx` (see the two-`not-found.tsx` note in Architecture above) rather than crashing.
 - **Blog images:** Stored in `public/blog/` as `.png` files. Category icons in `public/` with `category-` prefix (except Digestion which uses `icon-microbiota.png`).
 
 ---
@@ -172,8 +178,9 @@ Strict mode enabled. Path alias `@/*` maps to the project root.
 
 ## Important Things to Know
 
-- **`sr.json` translations are placeholder English.** The routing and switcher work, but both locales show English content until Serbian strings are added to `messages/sr.json`.
-- **Components still use hardcoded strings.** `messages/en.json` and `sr.json` exist, but `useTranslations()` / `getTranslations()` have not yet been wired into components — that is the next major localization task.
+- **`sr.json` has real Serbian translations** across all 14 namespaces (site copy, FAQ, product data, SEO metadata). Not yet reviewed by a native proofreader — spot-check before relying on it for launch.
+- **Blog posts are still stub placeholders in both locales** (frontmatter + one intro line, no full body) — `sr/` frontmatter is translated, but writing the actual articles is unstarted for both `en/` and `sr/`.
+- **Newsletter unsubscribe page (`/api/newsletter/unsubscribe`) SR copy is translated** — the `?locale=` mechanism, `lang` attribute, and Serbian text are all live.
 - **Legal page content is template English** drafted from Serbian law requirements. **Have a Serbian lawyer review** before going live.
 - **Payment method icons in the footer are text placeholders.** Swap after AllSecure onboarding.
 - **"Last updated" dates in legal pages are hardcoded** (currently 2026-04-07). Update whenever content changes.
@@ -185,17 +192,10 @@ Strict mode enabled. Path alias `@/*` maps to the project root.
 
 ## TODO
 
-### Localization — wiring translations (next priority)
+### Localization — remaining content
 
-- [ ] Wire `useTranslations()` / `getTranslations()` into all components — messages files exist but components still render hardcoded English strings
-- [ ] Add real Serbian translations to `messages/sr.json` (currently a placeholder copy of `en.json`)
-- [ ] Move blog posts from `content/blog/posts/*.mdx` → `content/blog/posts/sr/*.mdx`, create `content/blog/posts/en/` copies
-- [ ] Update `content/blog/utils.ts` — add `locale: string` param to all functions, change posts directory path
-- [ ] Update `content/blog/helpers.ts` — add optional `locale` param to `formatDate()` for Serbian date formatting
-- [ ] Update `NewsletterSignup.tsx` — send `locale` in POST body using `useLocale()`
-- [ ] Update `app/api/newsletter/subscribe/route.ts` — include `?locale=` in unsubscribe URL
-- [ ] Update `app/api/newsletter/unsubscribe/route.ts` — render Serbian or English HTML based on `?locale=` param
-- [ ] Update `app/lib/jsonLd.ts` — accept pre-translated strings as params instead of importing directly from productData/faqData
+- [ ] Have a native Serbian speaker proofread `messages/sr.json` (machine/AI-assisted translation, not yet reviewed by a native speaker)
+- [ ] Decide whether to translate blog category names (`Nutrition`/`Digestion`/etc. from `content/blog/types.ts`) — currently left as English data labels; if yes, add a `Blog.categoryNames.*` map and update `CategoryCards.tsx`/`SearchAndFilters.tsx`
 
 ### Before AllSecure merchant review
 
@@ -205,6 +205,7 @@ Strict mode enabled. Path alias `@/*` maps to the project root.
 
 ### Blog & content
 
+- [ ] Write full article bodies for the 10 blog post stubs, in both `en/` and `sr/` (currently frontmatter + one intro line only)
 - [ ] Create individual blog post page (`/blog/[slug]`)
 
 ### Newsletter / email
@@ -260,6 +261,13 @@ Strict mode enabled. Path alias `@/*` maps to the project root.
 - [x] Payment method placeholder badges in footer
 - [x] Sitemap + robots.txt routes
 - [x] Security headers in `next.config.ts`
+- [x] Wired `useTranslations()`/`getTranslations()` into all ~42 components and all 12 pages' `generateMetadata` — no more hardcoded English strings outside legal pages/research article (intentionally excluded)
+- [x] Consolidated FAQ and Product text into `messages/*.json` as single source of truth — `faqData.ts`/`productData.ts` reduced to structural-only data (ids, icons, prices), merged with translated text via `useFAQCategories()` hook (FAQ) and index-zipping (Product)
+- [x] `messages/sr.json` translated to real Serbian across all 14 namespaces, including full CLDR plural categories for ICU plurals (`one`/`few`/`many`/`other`)
+- [x] Blog locale split — MDX posts moved to `content/blog/posts/<locale>/`, `utils.ts` functions and `helpers.ts`'s `formatDate()` take a `locale` param; `sr/` frontmatter translated
+- [x] Newsletter locale wiring — `NewsletterSignup.tsx` sends `locale` in POST body, subscribe route appends `?locale=` to unsubscribe URL, unsubscribe route branches HTML response by `?locale=` param with real Serbian copy
+- [x] `app/lib/jsonLd.ts` — `getProductJsonLd()`/`getFAQJsonLd()` accept pre-translated params instead of importing text directly; `getBreadcrumbJsonLd()` accepts `locale` and fixes a bug where English-locale breadcrumb URLs were missing the `/en` prefix
+- [x] Added `app/[locale]/not-found.tsx` and root `app/not-found.tsx` (self-contained HTML) so unmatched routes (e.g. `/blog/[slug]` before that page exists) render a proper 404 instead of a "missing html/body" crash
 - [x] JSON-LD structured data — Organization (home), Product (product), FAQPage (faq), BreadcrumbList
 - [x] Research article page with full PDF content, flowchart, nutritional tables
 - [x] Updated FeaturedClinicalStudies and KeyScientificFindings with real peer-reviewed study data

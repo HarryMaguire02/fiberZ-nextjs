@@ -12,8 +12,11 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const honeypot = body[HONEYPOT_FIELD_NAME];
 
-    // Silent rejection for bots — return 200 so they think it worked
+    // Silent rejection for bots — return 200 so they think it worked.
+    // Logged (not silent server-side) so a real user tripping this via
+    // autofill is visible in logs instead of vanishing without a trace.
     if (honeypot) {
+      console.warn('Newsletter signup blocked by honeypot field:', { honeypot });
       return NextResponse.json({ success: true, message: "You're subscribed!" });
     }
 
@@ -34,6 +37,8 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    const locale = body.locale === 'en' ? 'en' : 'sr';
 
     const audienceId = process.env.RESEND_AUDIENCE_ID;
     if (!audienceId) {
@@ -62,7 +67,7 @@ export async function POST(request: NextRequest) {
 
     // Send welcome email
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://fiberz.com';
-    const unsubscribeUrl = `${siteUrl}/api/newsletter/unsubscribe?email=${encodeURIComponent(email)}`;
+    const unsubscribeUrl = `${siteUrl}/api/newsletter/unsubscribe?email=${encodeURIComponent(email)}&locale=${locale}`;
 
     const { error: emailError } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL || 'FiberZ <onboarding@resend.dev>',

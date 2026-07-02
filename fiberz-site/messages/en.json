@@ -1,4 +1,9 @@
 {
+  "NotFound": {
+    "title": "Page Not Found",
+    "body": "Sorry, we couldn't find the page you're looking for. It may have been moved or no longer exists.",
+    "cta": "Back to Home"
+  },
   "Nav": {
     "home": "HOME",
     "product": "PRODUCT",
@@ -6,7 +11,13 @@
     "research": "RESEARCH",
     "blog": "BLOG",
     "faq": "FAQ",
-    "contact": "CONTACT"
+    "contact": "CONTACT",
+    "toggleMenu": "Toggle menu",
+    "localeLabels": {
+      "sr": "Srpski",
+      "en": "English"
+    },
+    "switchTo": "Switch to {locale}"
   },
   "Footer": {
     "tagline": "Premium daily soluble fiber designed to support digestive health and help meet recommended daily fiber intake.",
@@ -28,7 +39,8 @@
     "phone": "Phone",
     "taxId": "Tax ID",
     "registrationNo": "Registration No",
-    "allRightsReserved": "All rights reserved."
+    "allRightsReserved": "All rights reserved.",
+    "weAccept": "We Accept"
   },
   "ContactPopup": {
     "title": "Get in Touch",
@@ -36,6 +48,7 @@
     "email": "Email",
     "phone": "Phone",
     "workingHours": "Working Hours",
+    "workingHoursValue": "Mon-Fri: 9:00 - 17:00",
     "address": "Address",
     "close": "Close"
   },
@@ -686,7 +699,8 @@
     },
     "SearchAndFilters": {
       "searchPlaceholder": "Search articles...",
-      "all": "All"
+      "all": "All",
+      "clearSearch": "Clear search"
     },
     "FeaturedArticle": {
       "label": "Featured",
@@ -695,6 +709,11 @@
     "ArticleCard": {
       "readMore": "Read more",
       "minRead": "min read"
+    },
+    "ArticleGrid": {
+      "noResults": "No articles found. Try a different search or category.",
+      "previousPage": "Previous page",
+      "nextPage": "Next page"
     }
   },
   "HowItWorks": {
@@ -747,7 +766,7 @@
       "orderNow": "Order Now",
       "recommended": "Recommended",
       "comingSoonTitle": "Online ordering is coming soon",
-      "comingSoonBody": "To place an order now, contact us at {email} or call {phone}",
+      "comingSoonBody": "To place an order now, contact us at <email>email</email> or call <phone>phone</phone>",
       "productView": "Product view {index}"
     },
     "WhatIsFiberZ": {
@@ -780,8 +799,7 @@
       },
       "triple": {
         "label": "3 boxes / 90 days of use",
-        "extras": "+shaker",
-        "recommended": "Recommended"
+        "extras": "+shaker"
       },
       "six-pack": {
         "label": "6 boxes / 120 days of use",

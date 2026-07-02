@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import HomeHero from '../components/home/HomeHero';
 import WhatIsFiberZ from '../components/home/WhatIsFiberZ';
 import KeyBenefits from '../components/home/KeyBenefits';
@@ -17,23 +18,22 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Metadata.home' });
   const srUrl = `${BASE_URL}/`;
   const enUrl = `${BASE_URL}/en/`;
   const canonical = locale === 'sr' ? srUrl : enUrl;
 
   return {
-    title: 'FiberZ - Premium Daily Soluble Fiber',
-    description:
-      'FiberZ is a premium daily soluble fiber designed to support digestive health, stable blood sugar levels, and weight management.',
+    title: t('title'),
+    description: t('description'),
     alternates: {
       canonical,
       languages: { sr: srUrl, en: enUrl, 'x-default': srUrl },
     },
     robots: { index: true, follow: true },
     openGraph: {
-      title: 'FiberZ - Premium Daily Soluble Fiber',
-      description:
-        'FiberZ is a premium daily soluble fiber designed to support digestive health, stable blood sugar levels, and weight management.',
+      title: t('title'),
+      description: t('description'),
       type: 'website',
       locale: locale === 'sr' ? 'sr_RS' : 'en_US',
       url: canonical,

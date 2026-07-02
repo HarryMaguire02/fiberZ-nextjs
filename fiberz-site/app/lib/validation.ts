@@ -1,7 +1,12 @@
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 const MAX_EMAIL_LENGTH = 254;
 
-export const HONEYPOT_FIELD_NAME = '_website';
+// Deliberately not named anything resembling "website"/"url"/"company" —
+// browser and password-manager autofill (LastPass, 1Password, Chrome) target
+// those field names by heuristic regardless of CSS visibility, which was
+// silently triggering the honeypot and short-circuiting real signups before
+// they ever reached Resend.
+export const HONEYPOT_FIELD_NAME = '_hp_confirm';
 
 export function isValidEmail(email: string): boolean {
   if (!email || email.length > MAX_EMAIL_LENGTH) return false;

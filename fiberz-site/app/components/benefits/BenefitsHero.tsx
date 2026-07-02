@@ -1,4 +1,8 @@
-export default function BenefitsHero() {
+import { getTranslations } from 'next-intl/server';
+
+export default async function BenefitsHero() {
+  const t = await getTranslations('Benefits.Hero');
+
   return (
     <section
       className="relative text-white py-14 lg:py-20 overflow-hidden"
@@ -20,13 +24,11 @@ export default function BenefitsHero() {
           className="font-playfair font-bold mb-6"
           style={{ fontSize: '56px', lineHeight: '67.2px' }}
         >
-          <span className="text-body block">Real Benefits.</span>
-          <span className="text-white italic block">Backed by Science.</span>
+          <span className="text-body block">{t('line1')}</span>
+          <span className="text-white italic block">{t('line2')}</span>
         </h1>
         <p className="font-montserrat text-white text-lg leading-relaxed max-w-xl mx-auto">
-          Soluble fiber is one of the most studied nutrients in digestive health.
-          Here is what daily fiber supplementation can do for you - no
-          exaggeration, no miracle claims.
+          {t('subtitle')}
         </p>
       </div>
     </section>

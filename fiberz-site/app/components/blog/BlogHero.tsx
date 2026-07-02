@@ -1,6 +1,9 @@
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 
-export default function BlogHero() {
+export default async function BlogHero() {
+  const t = await getTranslations('Blog.Hero');
+
   return (
     <section className="relative text-white overflow-hidden flex flex-col justify-end lg:min-h-125">
 
@@ -32,11 +35,10 @@ export default function BlogHero() {
       {/* Content */}
       <div className="relative z-10 max-w-content mx-auto px-6 sm:px-8 lg:px-12 w-full text-center pb-10 lg:pb-16 pt-20 lg:pt-32">
         <h1 className="font-cormorant font-bold mb-4 text-3xl lg:text-5xl leading-tight">
-          FiberZ Blog
+          {t('title')}
         </h1>
         <p className="font-montserrat text-white text-base leading-relaxed max-w-xl mx-auto">
-          Most adults do not meet recommended daily fiber intake, which affects
-          digestive regularity and overall gut health.
+          {t('subtitle')}
         </p>
       </div>
 

@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { BlogPost, BlogFilterCategory } from '@/content/blog/types';
 import { searchPosts, paginatePosts } from '@/content/blog/helpers';
@@ -17,6 +18,7 @@ interface BlogListingSectionProps {
 }
 
 export default function BlogListingSection({ allPosts, featuredPost }: BlogListingSectionProps) {
+  const t = useTranslations('Blog.Listing');
   const searchParams = useSearchParams();
   const router = useRouter();
   const categoryParam = searchParams.get('category');
@@ -83,10 +85,10 @@ export default function BlogListingSection({ allPosts, featuredPost }: BlogListi
         <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12 w-full py-12 lg:py-16">
           <div className="mb-8 text-center">
             <h2 className="font-cormorant text-3xl lg:text-5xl font-bold text-heading leading-tight mb-3">
-              Latest Articles
+              {t('title')}
             </h2>
             <p className="font-montserrat text-brand text-sm">
-              Explore our expert tips and guidelines for a better life
+              {t('subtitle')}
             </p>
           </div>
 

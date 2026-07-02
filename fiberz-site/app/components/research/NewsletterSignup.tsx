@@ -1,10 +1,14 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { HONEYPOT_FIELD_NAME } from '@/app/lib/validation';
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
 export default function NewsletterSignup() {
+  const t = useTranslations('Research.Newsletter');
+  const locale = useLocale();
   const [email, setEmail] = useState('');
   const [honeypot, setHoneypot] = useState('');
   const [status, setStatus] = useState<Status>('idle');
@@ -26,7 +30,7 @@ export default function NewsletterSignup() {
       const res = await fetch('/api/newsletter/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, _website: honeypot }),
+        body: JSON.stringify({ email, locale, [HONEYPOT_FIELD_NAME]: honeypot }),
       });
 
       const data = await res.json();
@@ -38,12 +42,12 @@ export default function NewsletterSignup() {
         clearStatus();
       } else {
         setStatus('error');
-        setMessage(data.message || 'We are having trouble connecting to the server. Please try again later.');
+        setMessage(data.message || t('errorDefault'));
         clearStatus();
       }
     } catch {
       setStatus('error');
-      setMessage('We are having trouble connecting to the server. Please try again later.');
+      setMessage(t('errorDefault'));
       clearStatus();
     }
   };
@@ -54,10 +58,10 @@ export default function NewsletterSignup() {
 
         <div className="text-center pb-12 lg:pb-16 pt-12 lg:pt-16">
           <h2 className="font-cormorant text-3xl lg:text-5xl font-bold text-heading leading-tight mb-4">
-            Stay Up to Date with the Latest Articles
+            {t('title')}
           </h2>
           <p className="font-montserrat text-body text-sm leading-relaxed mb-8">
-            Subscribe to our newsletter and receive the best tips directly in your inbox
+            {t('subtitle')}
           </p>
 
           {status === 'success' ? (
@@ -70,23 +74,25 @@ export default function NewsletterSignup() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 justify-center items-center max-w-md mx-auto">
-              {/* Honeypot field — hidden from humans, bots auto-fill it */}
+              {/* Honeypot field — hidden from humans, bots auto-fill it.
+                  Positioned off-screen (not opacity/size-zero) and named to
+                  avoid autofill heuristics — see HONEYPOT_FIELD_NAME comment. */}
               <input
                 type="text"
-                name="_website"
+                name={HONEYPOT_FIELD_NAME}
                 value={honeypot}
                 onChange={(e) => setHoneypot(e.target.value)}
                 tabIndex={-1}
                 autoComplete="off"
                 aria-hidden="true"
-                className="absolute opacity-0 h-0 w-0 overflow-hidden pointer-events-none"
+                className="absolute -left-[9999px] top-0 w-px h-px overflow-hidden pointer-events-none"
               />
 
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address"
+                placeholder={t('placeholder')}
                 required
                 disabled={status === 'loading'}
                 className="font-montserrat text-sm text-body placeholder:text-body/40 bg-white border border-body/20 rounded-full px-5 py-2.5 w-full sm:w-auto sm:flex-1 outline-none focus:border-brand transition-colors disabled:opacity-50"
@@ -96,7 +102,7 @@ export default function NewsletterSignup() {
                 disabled={status === 'loading'}
                 className="font-montserrat text-xs font-semibold tracking-widest uppercase bg-brand text-white rounded-full px-6 py-2.5 hover:bg-brand-dark transition-colors shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
+                {status === 'loading' ? t('subscribing') : t('button')}
               </button>
             </form>
           )}

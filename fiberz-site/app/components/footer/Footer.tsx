@@ -1,9 +1,28 @@
+import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { COMPANY } from '@/app/lib/company';
 import PaymentMethods from './PaymentMethods';
 
-export default function Footer() {
+export default async function Footer() {
+  const t = await getTranslations('Footer');
+  const tContact = await getTranslations('ContactPopup');
+
+  const shopLinks = [
+    { href: '/product', label: t('links.shopFiberZ') },
+    { href: '/how-it-works', label: t('links.howItWorks') },
+    { href: '/research', label: t('links.scientificResearch') },
+    { href: '/faq', label: t('links.faqs') },
+    { href: '/blog', label: t('links.blog') },
+  ];
+
+  const supportLinks = [
+    { href: '/shipping', label: t('links.shippingReturns') },
+    { href: '/terms-of-use', label: t('links.termsOfService') },
+    { href: '/privacy-policy', label: t('links.privacyPolicy') },
+    { href: '/disclaimer', label: t('links.disclaimer') },
+  ];
+
   return (
     <footer
       className="relative text-brand overflow-hidden font-roboto"
@@ -37,7 +56,7 @@ export default function Footer() {
                 style={{ width: 'auto' }}
               />
               <p className="mt-4 text-sm text-body leading-relaxed max-w-xs">
-                Premium daily soluble fiber designed to support digestive health and help meet recommended daily fiber intake.
+                {t('tagline')}
               </p>
               <div className="mt-6">
                 <PaymentMethods />
@@ -47,16 +66,10 @@ export default function Footer() {
             {/* Shop & Learn */}
             <div>
               <h3 className="text-sm font-semibold text-heading uppercase tracking-wider mb-5">
-                Shop &amp; Learn
+                {t('shopAndLearn')}
               </h3>
               <ul className="space-y-3">
-                {[
-                  { href: '/product', label: 'Shop FiberZ' },
-                  { href: '/how-it-works', label: 'How It Works' },
-                  { href: '/research', label: 'Scientific Research' },
-                  { href: '/faq', label: 'FAQs' },
-                  { href: '/blog', label: 'Blog' },
-                ].map((link) => (
+                {shopLinks.map((link) => (
                   <li key={link.href}>
                     <Link href={link.href} className="text-sm text-body hover:text-body/70 transition-colors">
                       {link.label}
@@ -69,15 +82,10 @@ export default function Footer() {
             {/* Support */}
             <div>
               <h3 className="text-sm font-semibold text-heading uppercase tracking-wider mb-5">
-                Support
+                {t('support')}
               </h3>
               <ul className="space-y-3">
-                {[
-                  { href: '/shipping', label: 'Shipping & Returns' },
-                  { href: '/terms-of-use', label: 'Terms of Service' },
-                  { href: '/privacy-policy', label: 'Privacy Policy' },
-                  { href: '/disclaimer', label: 'Disclaimer' },
-                ].map((link) => (
+                {supportLinks.map((link) => (
                   <li key={link.href}>
                     <Link href={link.href} className="text-sm text-body hover:text-body/70 transition-colors">
                       {link.label}
@@ -90,29 +98,29 @@ export default function Footer() {
             {/* Contact */}
             <div>
               <h3 className="text-sm font-semibold text-heading uppercase tracking-wider mb-5">
-                Contact
+                {t('contact')}
               </h3>
               <address className="not-italic space-y-2 text-sm text-body">
                 <p className="font-semibold text-heading">{COMPANY.legalName}</p>
                 <p>{COMPANY.addressLine}, {COMPANY.postalCode} {COMPANY.city}, {COMPANY.country}</p>
                 <p>
-                  Email:{' '}
+                  {t('email')}:{' '}
                   <a href={`mailto:${COMPANY.email}`} className="hover:text-body/70 transition-colors">
                     {COMPANY.email}
                   </a>
                 </p>
                 <p>
-                  Phone:{' '}
+                  {t('phone')}:{' '}
                   <a href={`tel:${COMPANY.phoneHref}`} className="hover:text-body/70 transition-colors">
                     {COMPANY.phone}
                   </a>
                 </p>
-                <p>{COMPANY.workingHours}</p>
+                <p>{tContact('workingHoursValue')}</p>
                 <p>
-                  Tax ID: {COMPANY.pib}
+                  {t('taxId')}: {COMPANY.pib}
                 </p>
-                <p>  
-                  Registration No: {COMPANY.matBr}
+                <p>
+                  {t('registrationNo')}: {COMPANY.matBr}
                 </p>
               </address>
             </div>
@@ -124,7 +132,7 @@ export default function Footer() {
         <div className="max-w-content mx-auto border-t border-body">
           <div className="px-6 sm:px-8 lg:px-12 py-5">
             <p className="text-center text-xs text-body">
-              &copy; {new Date().getFullYear()} {COMPANY.legalName}. All rights reserved.
+              &copy; {new Date().getFullYear()} {COMPANY.legalName}. {t('allRightsReserved')}
             </p>
           </div>
         </div>

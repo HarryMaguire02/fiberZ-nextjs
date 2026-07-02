@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import ResearchHero from '@/app/components/research/ResearchHero';
 import ResearchStats from '@/app/components/research/ResearchStats';
 import WhyFiberZScienceBased from '@/app/components/research/WhyFiberZScienceBased';
@@ -14,23 +15,22 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Metadata.research' });
   const srUrl = `${BASE_URL}/research`;
   const enUrl = `${BASE_URL}/en/research`;
   const canonical = locale === 'sr' ? srUrl : enUrl;
 
   return {
-    title: 'Research | FiberZ',
-    description:
-      'Explore the science behind FiberZ. Decades of peer-reviewed research on soluble fiber, resistant dextrin, and digestive health — with citations for every claim.',
+    title: t('title'),
+    description: t('description'),
     alternates: {
       canonical,
       languages: { sr: srUrl, en: enUrl },
     },
     robots: { index: true, follow: true },
     openGraph: {
-      title: 'Research | FiberZ',
-      description:
-        'Explore the science behind FiberZ. Decades of peer-reviewed research on soluble fiber, resistant dextrin, and digestive health.',
+      title: t('title'),
+      description: t('description'),
       type: 'website',
       locale: locale === 'sr' ? 'sr_RS' : 'en_US',
       url: canonical,

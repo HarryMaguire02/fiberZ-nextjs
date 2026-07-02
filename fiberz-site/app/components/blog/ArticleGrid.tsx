@@ -1,3 +1,6 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
 import { BlogPost } from '@/content/blog/types';
 import ArticleCard from './ArticleCard';
 
@@ -20,11 +23,13 @@ export default function ArticleGrid({
   totalPages,
   onPageChange,
 }: ArticleGridProps) {
+  const t = useTranslations('Blog.ArticleGrid');
+
   if (posts.length === 0) {
     return (
       <div className="text-center py-12">
         <p className="font-montserrat text-body/60 text-sm">
-          No articles found. Try a different search or category.
+          {t('noResults')}
         </p>
       </div>
     );
@@ -45,7 +50,7 @@ export default function ArticleGrid({
           <button
             onClick={() => handlePageClick(currentPage - 1, totalPages, onPageChange)}
             className={`w-11 h-11 rounded-full flex items-center justify-center bg-white text-brand hover:bg-brand/20 transition-colors ${currentPage === 1 ? 'opacity-50' : ''}`}
-            aria-label="Previous page"
+            aria-label={t('previousPage')}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="15 18 9 12 15 6" />
@@ -69,7 +74,7 @@ export default function ArticleGrid({
           <button
             onClick={() => handlePageClick(currentPage + 1, totalPages, onPageChange)}
             className={`w-11 h-11 rounded-full flex items-center justify-center bg-white text-brand hover:bg-brand/20 transition-colors ${currentPage === totalPages ? 'opacity-50' : ''}`}
-            aria-label="Next page"
+            aria-label={t('nextPage')}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="9 18 15 12 9 6" />

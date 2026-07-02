@@ -1,9 +1,15 @@
+'use client';
+
 import Image from 'next/image';
+import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { BlogPost } from '@/content/blog/types';
 import { formatDate } from '@/content/blog/helpers';
 
 export default function ArticleCard({ post }: { post: BlogPost }) {
+  const t = useTranslations('Blog.ArticleCard');
+  const locale = useLocale();
+
   return (
     <div className="relative bg-white rounded-2xl flex flex-col p-4">
       <span className="absolute z-1000 top-0 left-0 bg-brand text-white font-montserrat text-sm font-semibold px-4 py-1.5 rounded-tl-2xl rounded-br-lg">
@@ -30,7 +36,7 @@ export default function ArticleCard({ post }: { post: BlogPost }) {
             <line x1="8" y1="2" x2="8" y2="6" />
             <line x1="3" y1="10" x2="21" y2="10" />
           </svg>
-          <span className="font-lato text-brand text-xs">{formatDate(post.date)}</span>
+          <span className="font-lato text-brand text-xs">{formatDate(post.date, locale)}</span>
         </div>
 
         <h3 className="font-montserrat font-bold text-heading text-base leading-snug mb-3 line-clamp-2">
@@ -47,13 +53,13 @@ export default function ArticleCard({ post }: { post: BlogPost }) {
               <circle cx="12" cy="12" r="10" />
               <polyline points="12 6 12 12 16 14" />
             </svg>
-            {post.readTime} min read
+            {post.readTime} {t('minRead')}
           </span>
           <Link
             href={`/blog/${post.slug}`}
             className="font-montserrat text-brand text-sm font-semibold hover:text-brand-dark transition-colors"
           >
-            Read more
+            {t('readMore')}
           </Link>
         </div>
       </div>

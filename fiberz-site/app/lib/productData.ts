@@ -1,21 +1,19 @@
-export interface ProductPackage {
+export interface ProductPackageMeta {
   id: string;
   boxes: number;
   daysOfUse: number;
-  label: string;
   originalPrice: number;
   salePrice: number;
   discountPercent: number;
-  extras?: string;
+  hasExtras?: boolean;
   isRecommended?: boolean;
 }
 
-export const PACKAGES: ProductPackage[] = [
+export const PACKAGES: ProductPackageMeta[] = [
   {
     id: 'single',
     boxes: 1,
     daysOfUse: 30,
-    label: '1 box / 30 days of use',
     originalPrice: 4120,
     salePrice: 3300,
     discountPercent: 20,
@@ -24,38 +22,26 @@ export const PACKAGES: ProductPackage[] = [
     id: 'triple',
     boxes: 3,
     daysOfUse: 90,
-    label: '3 boxes / 90 days of use',
     originalPrice: 12360,
     salePrice: 9270,
     discountPercent: 25,
-    extras: '+shaker',
+    hasExtras: true,
     isRecommended: true,
   },
   {
     id: 'six-pack',
     boxes: 6,
     daysOfUse: 120,
-    label: '6 boxes / 120 days of use',
     originalPrice: 24720,
     salePrice: 17800,
     discountPercent: 28,
-    extras: '+shaker',
+    hasExtras: true,
   },
 ];
 
 export const SHIPPING_COST = 0;
 
-export const PROMO = {
-  text: '20% welcome discount on all orders until March 11.',
-  active: true,
-};
-
-export const PRODUCT_BENEFITS = [
-  'Supports digestive regularity',
-  'Helps maintain a healthy gut microbiome',
-  'Contributes to your daily fiber intake',
-  'Neutral taste and odor',
-];
+export const PROMO_ACTIVE = true;
 
 export const PRODUCT_IMAGES = [
   '/product-1.png',
@@ -64,46 +50,31 @@ export const PRODUCT_IMAGES = [
   '/product-4.png',
 ];
 
-export const TRUST_CARDS_DATA = [
-  {
-    icon: '/icon-science.png',
-    title: 'Scientifically Proven',
-    description:
-      'Uses clinically tested resistant dextrin with proven benefits for digestive health.',
-  },
-  {
-    icon: '/icon-easy-to-use.png',
-    title: 'Easy to Use',
-    description:
-      'Dissolves in any drink or food without changing the taste or texture.',
-  },
-  {
-    icon: '/icon-premium.png',
-    title: 'Premium Quality',
-    description:
-      'Produced to the highest quality standards, without artificial additives or preservatives.',
-  },
+// Icons only — ordered to match the Product.trustCards array in messages/*.json
+export const TRUST_CARDS_ICONS = [
+  '/icon-science.png',
+  '/icon-easy-to-use.png',
+  '/icon-premium.png',
 ];
 
-export const NUTRITION_ACTIVE_INGREDIENT = [
-  { name: 'Resistant wheat dextrin powder', perSachet: '4g' },
+// perSachet value for Product.nutritionRows[0] (active ingredient row)
+export const NUTRITION_ACTIVE_INGREDIENT_VALUE = '4g';
+
+// perSachet values ordered to match Product.nutritionRows[1..7]
+export const NUTRITION_VALUES_PER_SACHET = [
+  '48 kJ / 11 kcal',
+  '0.02g',
+  '1.8g',
+  '0.1g',
+  '2.1g',
+  '0.02g',
+  '< 0.0004g',
 ];
 
-export const NUTRITION_VALUES = [
-  { name: 'Energy', perSachet: '48 kJ / 11 kcal' },
-  { name: 'Fat', perSachet: '0.02g' },
-  { name: 'Carbohydrates', perSachet: '1.8g' },
-  { name: 'of which sugars', perSachet: '0.1g' },
-  { name: 'Fiber', perSachet: '2.1g' },
-  { name: 'Protein', perSachet: '0.02g' },
-  { name: 'Salt', perSachet: '< 0.0004g' },
-];
+// Numeric/display values ordered to match the Product.stats array in messages/*.json
+export const STATS_VALUES = ['4g', '30', '100%'];
 
-export const STATS = [
-  { value: '4g', label: 'Per sachet', sublabel: 'Optimal dose for daily use' },
-  { value: '30', label: 'Sachets', sublabel: 'Monthly supply for regular use' },
-  { value: '100%', label: 'Soluble', sublabel: 'In drinks or food' },
-];
+export const TRUST_CUSTOMER_COUNT = 1000;
 
 /** Format a number as Serbian RSD: dot thousands separator, e.g. 3.300 RSD */
 export function formatRSD(amount: number): string {

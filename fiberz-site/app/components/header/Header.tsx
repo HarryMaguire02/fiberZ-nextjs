@@ -1,19 +1,10 @@
 'use client';
 
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import Navigation from './Navigation';
 import LanguageSwitcher from './LanguageSwitcher';
-
-const navLinks = [
-  { href: '/', label: 'HOME' },
-  { href: '/product', label: 'PRODUCT' },
-  { href: '/benefits', label: 'BENEFITS' },
-  { href: '/research', label: 'RESEARCH' },
-  { href: '/blog', label: 'BLOG' },
-  { href: '/faq', label: 'FAQ' },
-  { href: '#contact', label: 'CONTACT', isContactButton: true },
-];
 
 interface HeaderProps {
   isMobileMenuOpen: boolean;
@@ -22,7 +13,18 @@ interface HeaderProps {
 }
 
 export default function Header({ isMobileMenuOpen, onMobileMenuToggle, onContactClick }: HeaderProps) {
+  const t = useTranslations('Nav');
   const pathname = usePathname();
+
+  const navLinks = [
+    { href: '/', label: t('home') },
+    { href: '/product', label: t('product') },
+    { href: '/benefits', label: t('benefits') },
+    { href: '/research', label: t('research') },
+    { href: '/blog', label: t('blog') },
+    { href: '/faq', label: t('faq') },
+    { href: '#contact', label: t('contact'), isContactButton: true },
+  ];
 
   const toggleMobileMenu = () => onMobileMenuToggle(!isMobileMenuOpen);
   const closeMobileMenu = () => onMobileMenuToggle(false);
@@ -59,7 +61,7 @@ export default function Header({ isMobileMenuOpen, onMobileMenuToggle, onContact
           <button
             onClick={toggleMobileMenu}
             className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
-            aria-label="Toggle menu"
+            aria-label={t('toggleMenu')}
             aria-expanded={isMobileMenuOpen}
           >
             <span

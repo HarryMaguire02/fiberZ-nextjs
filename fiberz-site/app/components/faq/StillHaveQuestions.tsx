@@ -1,11 +1,15 @@
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
+import { COMPANY } from '@/app/lib/company';
 
-export default function StillHaveQuestions() {
+export default async function StillHaveQuestions() {
+  const t = await getTranslations('FAQ.StillHaveQuestions');
+
   return (
     <section className="bg-white">
       <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-16">
         <h2 className="font-cormorant text-3xl lg:text-5xl font-bold text-heading text-center mb-10">
-          Still Have Questions?
+          {t('title')}
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
@@ -23,16 +27,16 @@ export default function StillHaveQuestions() {
               />
             </div>
             <h3 className="font-montserrat font-semibold text-heading text-lg mb-2">
-              Email Support
+              {t('emailSupport.title')}
             </h3>
             <p className="font-lato text-body text-sm leading-relaxed mb-6 flex-1">
-              Send us an email and we&apos;ll respond within 24 hours.
+              {t('emailSupport.body')}
             </p>
             <a
-              href="mailto:info@fiberz.com"
+              href={`mailto:${COMPANY.email}`}
               className="font-montserrat text-xs font-semibold tracking-widest uppercase bg-brand text-white rounded-full px-8 py-3 hover:bg-brand-dark transition-colors inline-block"
             >
-              Send Email
+              {t('emailSupport.cta')}
             </a>
           </div>
 
@@ -50,16 +54,16 @@ export default function StillHaveQuestions() {
               />
             </div>
             <h3 className="font-montserrat font-semibold text-heading text-lg mb-2">
-              Call Us
+              {t('callUs.title')}
             </h3>
             <p className="font-lato text-body text-sm leading-relaxed mb-6 flex-1">
-              Weekdays from 9:00 AM to 5:00 PM.
+              {t('callUs.body')}
             </p>
             <a
-              href="tel:+381631077708"
+              href={`tel:${COMPANY.phoneHref}`}
               className="font-montserrat text-xs font-semibold tracking-widest uppercase bg-brand text-white rounded-full px-8 py-3 hover:bg-brand-dark transition-colors inline-block"
             >
-              Call
+              {t('callUs.cta')}
             </a>
           </div>
         </div>

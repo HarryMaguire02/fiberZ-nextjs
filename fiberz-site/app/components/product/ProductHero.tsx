@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import {
   PACKAGES,
-  PRODUCT_BENEFITS,
   PRODUCT_IMAGES,
   SHIPPING_COST,
   formatRSD,
@@ -12,12 +12,20 @@ import {
 import { COMPANY } from '@/app/lib/company';
 
 export default function ProductHero() {
+  const t = useTranslations('Product');
   const [activeImage, setActiveImage] = useState(0);
   const [selectedPkgId, setSelectedPkgId] = useState(PACKAGES[0].id);
   const [quantity, setQuantity] = useState(1);
   const [showNotice, setShowNotice] = useState(false);
 
-  const selectedPkg = PACKAGES.find((p) => p.id === selectedPkgId) ?? PACKAGES[0];
+  const benefits = t.raw('benefits') as string[];
+  const packages = PACKAGES.map((pkg) => ({
+    ...pkg,
+    label: t(`packages.${pkg.id}.label`),
+    extras: pkg.hasExtras ? t(`packages.${pkg.id}.extras`) : undefined,
+  }));
+
+  const selectedPkg = packages.find((p) => p.id === selectedPkgId) ?? packages[0];
 
   const itemTotal = selectedPkg.salePrice * quantity;
   const originalTotal = selectedPkg.originalPrice * quantity;
@@ -54,7 +62,7 @@ export default function ProductHero() {
                 >
                   <Image
                     src={src}
-                    alt={`Product view ${i + 1}`}
+                    alt={t('Hero.productView', { index: i + 1 })}
                     fill
                     className="object-cover"
                     sizes="80px"
@@ -78,16 +86,16 @@ export default function ProductHero() {
               />
             </h1>
             <p className="font-montserrat text-heading text-base mt-1 mb-6">
-              Soluble dietary fiber powder
+              {t('Hero.subtitle')}
             </p>
 
             {/* Benefits box */}
             <div className="bg-white rounded-xl p-5 mb-4">
               <p className="font-montserrat font-bold text-heading text-sm mb-3">
-                Proven formula for visible results:
+                {t('Hero.benefitsTitle')}
               </p>
               <ul className="space-y-2">
-                {PRODUCT_BENEFITS.map((benefit) => (
+                {benefits.map((benefit) => (
                   <li key={benefit} className="flex items-start gap-2 font-lato text-body text-sm">
                     <span className="text-heading shrink-0 mt-0.5">&#10003;</span>
                     {benefit}
@@ -99,10 +107,10 @@ export default function ProductHero() {
             {/* Package selector */}
             <div className="bg-white rounded-xl p-5 mb-8">
               <p className="font-montserrat font-bold text-heading text-sm mb-3">
-                Choose a package:
+                {t('Hero.choosePackage')}
               </p>
               <div className="space-y-3 mb-4">
-                {PACKAGES.map((pkg) => {
+                {packages.map((pkg) => {
                   const isSelected = pkg.id === selectedPkgId;
                   return (
                     <label
@@ -128,7 +136,7 @@ export default function ProductHero() {
 
                       {pkg.isRecommended && (
                         <span className="absolute -top-3 left-4 bg-brand text-white text-[10px] font-montserrat font-bold uppercase tracking-wider px-3 py-0.5 rounded-full">
-                          Recommended
+                          {t('Hero.recommended')}
                         </span>
                       )}
 
@@ -141,7 +149,7 @@ export default function ProductHero() {
                             )}
                           </p>
                           <p className="text-brand text-xs font-semibold mt-0.5">
-                            {pkg.discountPercent}% savings
+                            {pkg.discountPercent}% {t('Hero.savings')}
                           </p>
                         </div>
                         <div className="text-right shrink-0">
@@ -161,7 +169,7 @@ export default function ProductHero() {
               {/* Quantity selector */}
               <div className="flex flex-col sm:flex-row items-center gap-4 mb-4">
                 <p className="font-montserrat font-bold text-heading text-sm shrink-0">
-                  Adjust number of boxes:
+                  {t('Hero.adjustQuantity')}
                 </p>
                 <div className="flex items-center gap-4">
                   <button
@@ -197,15 +205,15 @@ export default function ProductHero() {
                   <span>{formatRSD(originalTotal)}</span>
                 </div>
                 <div className="flex justify-between text-brand font-semibold">
-                  <span>Discount</span>
+                  <span>{t('Hero.discount')}</span>
                   <span>-{formatRSD(discount)}</span>
                 </div>
                 <div className="flex justify-between text-body">
-                  <span>Shipping</span>
+                  <span>{t('Hero.shipping')}</span>
                   <span>{formatRSD(SHIPPING_COST)}</span>
                 </div>
                 <div className="flex justify-between font-montserrat font-bold text-heading text-base pt-2 border-t border-brand">
-                  <span>TOTAL</span>
+                  <span>{t('Hero.total')}</span>
                   <span>{formatRSD(itemTotal)}</span>
                 </div>
               </div>
@@ -216,23 +224,27 @@ export default function ProductHero() {
                 onClick={() => setShowNotice(true)}
                 className="w-full bg-brand text-white font-montserrat text-xs font-semibold tracking-widest uppercase rounded-full py-4 hover:bg-brand-dark transition-colors"
               >
-                Order Now
+                {t('Hero.orderNow')}
               </button>
 
               {showNotice && (
                 <div className="mt-4 bg-linen rounded-xl p-4 text-center">
                   <p className="font-montserrat text-heading text-sm font-semibold mb-1">
-                    Online ordering is coming soon
+                    {t('Hero.comingSoonTitle')}
                   </p>
                   <p className="font-lato text-body text-sm">
-                    To place an order now, contact us at{' '}
-                    <a href={`mailto:${COMPANY.email}`} className="text-brand underline">
-                      {COMPANY.email}
-                    </a>{' '}
-                    or call{' '}
-                    <a href={`tel:${COMPANY.phoneHref}`} className="text-brand underline">
-                      {COMPANY.phone}
-                    </a>
+                    {t.rich('Hero.comingSoonBody', {
+                      email: () => (
+                        <a href={`mailto:${COMPANY.email}`} className="text-brand underline">
+                          {COMPANY.email}
+                        </a>
+                      ),
+                      phone: () => (
+                        <a href={`tel:${COMPANY.phoneHref}`} className="text-brand underline">
+                          {COMPANY.phone}
+                        </a>
+                      ),
+                    })}
                   </p>
                 </div>
               )}

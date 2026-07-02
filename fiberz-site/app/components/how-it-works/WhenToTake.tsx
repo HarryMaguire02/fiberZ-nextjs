@@ -1,49 +1,36 @@
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 
-const tips = [
-  {
-    icon: '/icon-fiber-intake.png',
-    title: 'Any Time of Day',
-    description:
-      'Morning, afternoon, or evening — FiberZ works whenever it fits your schedule. Many users prefer taking it with breakfast to start the day right.',
-  },
-  {
-    icon: '/icon-easy-integration.png',
-    title: 'Mix With Anything',
-    description:
-      'Water, coffee, tea, smoothies, yogurt, oatmeal, or soup. FiberZ dissolves completely with no change in taste, texture, or color.',
-  },
-  {
-    icon: '/icon-fiber-intake.png',
-    title: 'Stay Hydrated',
-    description:
-      'Drink plenty of water throughout the day. Adequate hydration helps soluble fiber work effectively and supports overall digestive comfort.',
-  },
-  {
-    icon: '/icon-digestive.png',
-    title: 'Be Consistent',
-    description:
-      'Fiber benefits build over time. Most users notice improvements in digestive regularity within 1-3 weeks of consistent daily use.',
-  },
+const ICONS = [
+  '/icon-fiber-intake.png',
+  '/icon-easy-integration.png',
+  '/icon-fiber-intake.png',
+  '/icon-digestive.png',
 ];
 
-export default function WhenToTake() {
+interface Tip {
+  title: string;
+  description: string;
+}
+
+export default async function WhenToTake() {
+  const t = await getTranslations('HowItWorks.WhenToTake');
+  const tips = t.raw('tips') as Tip[];
+
   return (
     <section className="py-12 lg:py-16 bg-white">
       <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12">
         <div className="text-center mb-10 lg:mb-14">
           <h2 className="font-cormorant text-3xl lg:text-5xl font-bold text-heading leading-tight mb-4">
-            Tips for{' '}
-            <span className="text-brand italic">Best Results</span>
+            {t('title')}
           </h2>
           <p className="font-montserrat text-body text-sm md:text-base leading-relaxed max-w-xl mx-auto">
-            Getting the most out of FiberZ is easy. Here are a few practical
-            tips to help you build a lasting habit.
+            {t('subtitle')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {tips.map((tip) => (
+          {tips.map((tip, i) => (
             <div
               key={tip.title}
               className="bg-linen rounded-2xl p-6 md:p-8 text-center"
@@ -53,7 +40,7 @@ export default function WhenToTake() {
                 style={{ background: 'linear-gradient(to right, #D4AC77, #A6813F)' }}
               >
                 <Image
-                  src={tip.icon}
+                  src={ICONS[i]}
                   alt={tip.title}
                   width={34}
                   height={34}

@@ -1,670 +1,683 @@
 {
+  "NotFound": {
+    "title": "Stranica nije pronađena",
+    "body": "Nažalost, nismo pronašli stranicu koju tražite. Možda je premeštena ili više ne postoji.",
+    "cta": "Nazad na početnu"
+  },
   "Nav": {
-    "home": "HOME",
-    "product": "PRODUCT",
-    "benefits": "BENEFITS",
-    "research": "RESEARCH",
+    "home": "POČETNA",
+    "product": "PROIZVOD",
+    "benefits": "PREDNOSTI",
+    "research": "ISTRAŽIVANJE",
     "blog": "BLOG",
-    "faq": "FAQ",
-    "contact": "CONTACT"
+    "faq": "PITANJA",
+    "contact": "KONTAKT",
+    "toggleMenu": "Otvori meni",
+    "localeLabels": {
+      "sr": "Srpski",
+      "en": "English"
+    },
+    "switchTo": "Pređi na {locale}"
   },
   "Footer": {
-    "tagline": "Premium daily soluble fiber designed to support digestive health and help meet recommended daily fiber intake.",
-    "shopAndLearn": "Shop & Learn",
-    "support": "Support",
-    "contact": "Contact",
+    "tagline": "Premium rastvorljiva vlakna za svakodnevnu upotrebu, dizajnirana da podrže zdravlje digestivnog trakta i pomognu u ostvarenju preporučenog dnevnog unosa vlakana.",
+    "shopAndLearn": "Kupovina i informacije",
+    "support": "Podrška",
+    "contact": "Kontakt",
     "links": {
-      "shopFiberZ": "Shop FiberZ",
-      "howItWorks": "How It Works",
-      "scientificResearch": "Scientific Research",
-      "faqs": "FAQs",
+      "shopFiberZ": "Kupite FiberZ",
+      "howItWorks": "Kako se koristi",
+      "scientificResearch": "Naučna istraživanja",
+      "faqs": "Česta pitanja",
       "blog": "Blog",
-      "shippingReturns": "Shipping & Returns",
-      "termsOfService": "Terms of Service",
-      "privacyPolicy": "Privacy Policy",
-      "disclaimer": "Disclaimer"
+      "shippingReturns": "Dostava i povraćaj",
+      "termsOfService": "Uslovi korišćenja",
+      "privacyPolicy": "Politika privatnosti",
+      "disclaimer": "Odricanje odgovornosti"
     },
     "email": "Email",
-    "phone": "Phone",
-    "taxId": "Tax ID",
-    "registrationNo": "Registration No",
-    "allRightsReserved": "All rights reserved."
+    "phone": "Telefon",
+    "taxId": "PIB",
+    "registrationNo": "Matični broj",
+    "allRightsReserved": "Sva prava zadržana.",
+    "weAccept": "Prihvatamo"
   },
   "ContactPopup": {
-    "title": "Get in Touch",
-    "subtitle": "We're here to help — reach out any time.",
+    "title": "Stupite u kontakt",
+    "subtitle": "Tu smo da pomognemo — javite nam se u svakom trenutku.",
     "email": "Email",
-    "phone": "Phone",
-    "workingHours": "Working Hours",
-    "address": "Address",
-    "close": "Close"
+    "phone": "Telefon",
+    "workingHours": "Radno vreme",
+    "workingHoursValue": "Pon-Pet: 9:00 - 17:00",
+    "address": "Adresa",
+    "close": "Zatvori"
   },
   "Home": {
     "Hero": {
-      "title": "Premium Dietary Fiber",
-      "subtitle": "FiberZ is a soluble plant-based fiber that supports digestion, stable blood sugar levels, and weight management. With a neutral taste and mild sweetness, it is ideal for everyday use.",
-      "cta1": "Buy Now",
-      "cta2": "Learn How It Works"
+      "title": "Premium dijetalna vlakna",
+      "subtitle": "FiberZ su rastvorljiva biljna vlakna koja podržavaju varenje, stabilan nivo šećera u krvi i kontrolu telesne težine. Zahvaljujući neutralnom ukusu i blagoj slatkoći, idealna su za svakodnevnu upotrebu.",
+      "cta1": "Kupite odmah",
+      "cta2": "Saznajte kako se koristi"
     },
     "ModernDiets": {
-      "title": "Modern Diets Lack Fiber",
-      "subtitle": "Most adults do not meet recommended daily fiber intake, which affects digestive regularity and overall gut health.",
+      "title": "Savremena ishrana ima malo vlakana",
+      "subtitle": "Većina odraslih ne ostvaruje preporučeni dnevni unos vlakana, što utiče na redovnost varenja i opšte zdravlje creva.",
       "items": [
         {
-          "title": "Bloating",
-          "description": "Low fiber intake can lead to uncomfortable digestive bloating"
+          "title": "Nadutost",
+          "description": "Nedovoljan unos vlakana može dovesti do neprijatne nadutosti"
         },
         {
-          "title": "Irregular Digestion",
-          "description": "Inconsistent digestive patterns affect daily comfort"
+          "title": "Neredovno varenje",
+          "description": "Neredovni obrasci varenja utiču na svakodnevni osećaj udobnosti"
         },
         {
-          "title": "Low Fiber Intake",
-          "description": "Average adult consumes only 15g of the recommended 25-38g daily"
+          "title": "Nizak unos vlakana",
+          "description": "Prosečna odrasla osoba unosi svega 15g od preporučenih 25-38g dnevno"
         },
         {
-          "title": "Gut Microbiome",
-          "description": "Insufficient fiber fails to support healthy gut bacteria"
+          "title": "Crevna mikrobiota",
+          "description": "Nedovoljan unos vlakana ne podržava zdrave crevne bakterije"
         }
       ]
     },
     "WhatIsFiberZ": {
-      "title": "What is FiberZ?",
-      "subtitle": "FiberZ is a water-soluble fiber supplement made from resistant dextrin, designed to help you meet your daily fiber needs with ease and convenience.",
+      "title": "Šta je FiberZ?",
+      "subtitle": "FiberZ je dodatak ishrani na bazi vodorastvorljivih vlakana, napravljen od rezistentnog dekstrina, dizajniran da vam lako i jednostavno pomogne da zadovoljite dnevne potrebe za vlaknima.",
       "features": [
         {
-          "title": "4g Per Pack",
-          "description": "Each serving provides 4 grams of soluble fiber"
+          "title": "4g po kesici",
+          "description": "Svaka porcija sadrži 4 grama rastvorljivih vlakana"
         },
         {
-          "title": "30 Sachets Per Box",
-          "description": "One month supply for consistent daily use"
+          "title": "30 kesica po kutiji",
+          "description": "Zaliha za mesec dana redovne dnevne upotrebe"
         },
         {
-          "title": "Dissolves Easily",
-          "description": "Mix into water, yogurt, oatmeal, or smoothies"
+          "title": "Lako se rastvara",
+          "description": "Umešajte u vodu, jogurt, ovsenu kašu ili smuti"
         },
         {
-          "title": "Neutral Taste",
-          "description": "Does not alter the flavor of your beverages or food"
+          "title": "Neutralan ukus",
+          "description": "Ne menja ukus vaših napitaka ili hrane"
         },
         {
-          "title": "1-3 Sachets Daily",
-          "description": "Flexible dosing to meet your individual needs"
+          "title": "1-3 kesice dnevno",
+          "description": "Fleksibilno doziranje prilagođeno vašim individualnim potrebama"
         }
       ]
     },
     "KeyBenefits": {
-      "title": "Key Benefit",
-      "subtitle": "Science-backed support for your digestive health and daily wellness",
+      "title": "Ključne prednosti",
+      "subtitle": "Naučno potvrđena podrška zdravlju vašeg digestivnog trakta i svakodnevnom blagostanju",
       "items": [
         {
-          "title": "Supports Digestive Regularity",
-          "description": "Helps maintain consistent and comfortable digestive patterns"
+          "title": "Podržava redovnost varenja",
+          "description": "Pomaže održavanju stabilnog i ugodnog rada digestivnog trakta"
         },
         {
-          "title": "Healthy Gut Microbiota",
-          "description": "Supports beneficial bacteria for optimal gut health"
+          "title": "Zdrava crevna mikrobiota",
+          "description": "Podržava korisne bakterije za optimalno zdravlje creva"
         },
         {
-          "title": "Daily Fiber Intake",
-          "description": "Helps you reach recommended fiber goals easily"
+          "title": "Dnevni unos vlakana",
+          "description": "Pomaže vam da lako ostvarite preporučeni unos vlakana"
         },
         {
-          "title": "Easy Integration",
-          "description": "Dissolves completely without altering taste or texture"
+          "title": "Laka primena",
+          "description": "Potpuno se rastvara bez uticaja na ukus ili teksturu"
         }
       ]
     },
     "HowToUse": {
-      "title": "How to Use FiberZ",
-      "subtitle": "Simple integration into your daily routine",
+      "title": "Kako koristiti FiberZ",
+      "subtitle": "Jednostavno uklapanje u svakodnevnu rutinu",
       "steps": [
         {
-          "title": "Start Small",
-          "description": "Begin with 1 sachet per day to allow your digestive system to adjust gradually"
+          "title": "Počnite postepeno",
+          "description": "Počnite sa 1 kesicom dnevno kako bi se vaš digestivni sistem postepeno prilagodio"
         },
         {
-          "title": "Mix & Dissolve",
-          "description": "Add to water, smoothies, yogurt, or oatmeal. Stir until completely dissolved"
+          "title": "Umešajte i rastvorite",
+          "description": "Dodajte u vodu, smuti, jogurt ili ovsenu kašu. Mešajte dok se potpuno ne rastvori"
         },
         {
-          "title": "Build Up",
-          "description": "Gradually increase to 1-3 sachets daily based on your fiber needs and tolerance"
+          "title": "Postepeno povećavajte",
+          "description": "Postepeno povećajte na 1-3 kesice dnevno u zavisnosti od vaših potreba i tolerancije"
         }
       ]
     },
     "Testimonials": {
-      "title": "What Our Customers Say",
-      "badge": "100+ Satisfied Customers",
+      "title": "Šta kažu naši kupci",
+      "badge": "Preko 100 zadovoljnih kupaca",
       "items": [
         {
-          "quote": "\"As someone who struggles to get enough fiber from diet alone, FiberZ has been a game-changer. It dissolves completely in my morning coffee.\"",
+          "quote": "„Kao neko ko ima poteškoća da unese dovoljno vlakana samo putem ishrane, FiberZ mi je potpuno promenio navike. Potpuno se rastvara u mojoj jutarnjoj kafi.”",
           "author": "— Michael R."
         },
         {
-          "quote": "\"As someone who struggles to get enough fiber from diet alone, FiberZ has been a game-changer. It dissolves completely in my morning coffee.\"",
+          "quote": "„Kao neko ko ima poteškoća da unese dovoljno vlakana samo putem ishrane, FiberZ mi je potpuno promenio navike. Potpuno se rastvara u mojoj jutarnjoj kafi.”",
           "author": "— Michael R."
         },
         {
-          "quote": "\"As someone who struggles to get enough fiber from diet alone, FiberZ has been a game-changer. It dissolves completely in my morning coffee.\"",
+          "quote": "„Kao neko ko ima poteškoća da unese dovoljno vlakana samo putem ishrane, FiberZ mi je potpuno promenio navike. Potpuno se rastvara u mojoj jutarnjoj kafi.”",
           "author": "— Michael R."
         },
         {
-          "quote": "\"As someone who struggles to get enough fiber from diet alone, FiberZ has been a game-changer. It dissolves completely in my morning coffee.\"",
+          "quote": "„Kao neko ko ima poteškoća da unese dovoljno vlakana samo putem ishrane, FiberZ mi je potpuno promenio navike. Potpuno se rastvara u mojoj jutarnjoj kafi.”",
           "author": "— Michael R."
         },
         {
-          "quote": "\"As someone who struggles to get enough fiber from diet alone, FiberZ has been a game-changer. It dissolves completely in my morning coffee.\"",
+          "quote": "„Kao neko ko ima poteškoća da unese dovoljno vlakana samo putem ishrane, FiberZ mi je potpuno promenio navike. Potpuno se rastvara u mojoj jutarnjoj kafi.”",
           "author": "— Michael R."
         }
       ]
     },
     "BackedByScience": {
-      "title": "Backed by Science",
-      "subtitle": "Dietary fiber plays a crucial role in digestive health, supporting regular bowel movements, promoting beneficial gut bacteria, and contributing to overall wellness. FiberZ uses resistant dextrin, a clinically studied form of soluble fiber that is well-tolerated and effective.",
-      "cta": "View Scientific Research"
+      "title": "Podržano naukom",
+      "subtitle": "Dijetalna vlakna imaju ključnu ulogu u zdravlju digestivnog trakta — podržavaju redovnu peristaltiku, podstiču rast korisnih crevnih bakterija i doprinose opštem blagostanju. FiberZ sadrži rezistentni dekstrin, klinički ispitan oblik rastvorljivih vlakana koji se dobro podnosi i efikasan je.",
+      "cta": "Pogledajte naučna istraživanja"
     },
     "FAQ": {
-      "title": "Frequently Asked Questions",
+      "title": "Često postavljana pitanja",
       "items": [
         {
-          "question": "Is FiberZ safe for daily use?",
-          "answer": "Yes, FiberZ is made from resistant dextrin, a well-studied and safe form of soluble fiber. It is suitable for daily consumption as part of a balanced diet."
+          "question": "Da li je FiberZ bezbedan za svakodnevnu upotrebu?",
+          "answer": "Da, FiberZ je napravljen od rezistentnog dekstrina, dobro istraženog i bezbednog oblika rastvorljivih vlakana. Pogodan je za svakodnevnu upotrebu kao deo uravnotežene ishrane."
         },
         {
-          "question": "Can FiberZ cause bloating?",
-          "answer": "When starting any fiber supplement, some people may experience mild bloating. We recommend starting with one sachet per day and gradually increasing to allow your digestive system to adjust."
+          "question": "Da li FiberZ može izazvati nadutost?",
+          "answer": "Prilikom uvođenja bilo kog dodatka vlaknima, pojedinci mogu osetiti blagu nadutost. Preporučujemo da počnete sa jednom kesicom dnevno i postepeno povećavate unos kako bi se digestivni sistem prilagodio."
         },
         {
-          "question": "Can I take FiberZ with medication?",
-          "answer": "FiberZ is generally safe to take alongside most medications. However, we recommend consulting your healthcare provider if you are on prescription medication, as fiber can affect absorption rates."
+          "question": "Da li mogu uzimati FiberZ uz lekove?",
+          "answer": "FiberZ je generalno bezbedan za upotrebu uz većinu lekova. Ipak, preporučujemo konsultaciju sa lekarom ukoliko koristite lekove na recept, jer vlakna mogu uticati na brzinu njihove apsorpcije."
         },
         {
-          "question": "When will I notice effects?",
-          "answer": "Many users report improved digestive regularity within the first week. For optimal results, consistent daily use over 2-4 weeks is recommended."
+          "question": "Kada ću primetiti efekte?",
+          "answer": "Mnogi korisnici primećuju poboljšanu redovnost varenja već u prvoj nedelji. Za optimalne rezultate preporučuje se redovna dnevna upotreba u trajanju od 2 do 4 nedelje."
         },
         {
-          "question": "How much fiber do I need daily?",
-          "answer": "Dietary fiber plays a crucial role in digestive health, supporting regular bowel movements, promoting beneficial gut bacteria, and contributing to overall wellness. FiberZ uses resistant dextrin, a clinically studied form of soluble fiber that is well tolerated and effective."
+          "question": "Koliko vlakana mi je potrebno dnevno?",
+          "answer": "Dijetalna vlakna imaju ključnu ulogu u zdravlju digestivnog trakta — podržavaju redovnu peristaltiku, podstiču rast korisnih crevnih bakterija i doprinose opštem blagostanju. FiberZ sadrži rezistentni dekstrin, klinički ispitan oblik rastvorljivih vlakana koji se dobro podnosi i efikasan je."
         }
       ]
     }
   },
   "Benefits": {
     "Hero": {
-      "line1": "Real Benefits.",
-      "line2": "Backed by Science.",
-      "subtitle": "Soluble fiber is one of the most studied nutrients in digestive health. Here is what daily fiber supplementation can do for you - no exaggeration, no miracle claims."
+      "line1": "Stvarne prednosti.",
+      "line2": "Potvrđene naukom.",
+      "subtitle": "Rastvorljiva vlakna spadaju među najviše istraživane nutrijente kada je reč o zdravlju digestivnog trakta. Evo šta svakodnevno unošenje vlakana zaista može učiniti za vas — bez preterivanja i čudesnih obećanja."
     },
     "StatsBar": {
       "items": [
-        { "label": "Of soluble fiber per sachet" },
-        { "label": "Sachets per box" },
-        { "label": "Daily fiber recommended by WHO" },
-        { "label": "Of adults fall short of fiber goals" }
+        { "label": "Rastvorljivih vlakana po kesici" },
+        { "label": "Kesica po kutiji" },
+        { "label": "Dnevni unos vlakana preporučen od SZO" },
+        { "label": "Odraslih ne ostvaruje preporučeni unos vlakana" }
       ]
     },
     "WhatFiberDoes": {
-      "title": "What Soluble Fiber Does for Your Body",
-      "subtitle": "FiberZ contains resistant dextrin - a water-soluble dietary fiber with a well-documented role in supporting digestive function.",
+      "title": "Šta rastvorljiva vlakna čine za vaše telo",
+      "subtitle": "FiberZ sadrži rezistentni dekstrin — vodorastvorljivo dijetalno vlakno sa dobro dokumentovanom ulogom u podršci funkciji varenja.",
       "items": [
         {
-          "title": "Supports Digestive Regularity",
-          "description": "Soluble fiber dissolves in water to form a gel-like substance in the digestive tract. This softens stool and supports regular bowel movements - one of the most widely recognized benefits of adequate dietary fiber intake. Consistent daily fiber intake helps maintain a predictable, comfortable digestive rhythm without harsh stimulants or laxatives.",
-          "tags": ["Regularity", "Gut comfort", "Natural function"]
+          "title": "Podržava redovnost varenja",
+          "description": "Rastvorljiva vlakna se u vodi rastvaraju i formiraju supstancu nalik gelu u digestivnom traktu. Ovo omekšava stolicu i podržava redovnu peristaltiku — jednu od najpoznatijih prednosti dovoljnog unosa dijetalnih vlakana. Redovan dnevni unos vlakana pomaže održavanju predvidljivog i ugodnog ritma varenja bez agresivnih stimulansa ili laksativa.",
+          "tags": ["Redovnost", "Udobnost creva", "Prirodna funkcija"]
         },
         {
-          "title": "Supports a Healthy Gut Microbiome",
-          "description": "Soluble fibers like resistant dextrin act as prebiotics - they serve as a food source for beneficial gut bacteria. A well-nourished microbiome is associated with improved digestive comfort and overall gut health. Supporting your microbiome with daily fiber is a foundational, evidence-based approach.",
-          "tags": ["Prebiotic effect", "Microbiome"]
+          "title": "Podržava zdravu crevnu mikrobiotu",
+          "description": "Rastvorljiva vlakna poput rezistentnog dekstrina deluju kao prebiotici — služe kao izvor hrane za korisne crevne bakterije. Dobro ishranjena mikrobiota povezana je sa boljom udobnošću varenja i opštim zdravljem creva. Podrška mikrobioti putem dnevnog unosa vlakana predstavlja osnovni, naučno potvrđen pristup.",
+          "tags": ["Prebiotski efekat", "Mikrobiota"]
         },
         {
-          "title": "Contributes to Your Daily Fiber Intake",
-          "description": "Health authorities including EFSA and WHO recommend 25-38g of fiber per day for adults. The average person consumes significantly less. Each FiberZ sachet provides 4g of fiber, offering a simple, tasteless way to meaningfully close that gap alongside a balanced diet.",
-          "tags": ["EFSA guideline", "WHO recommended"]
+          "title": "Doprinosi dnevnom unosu vlakana",
+          "description": "Zdravstvene institucije poput EFSA i SZO preporučuju unos od 25 do 38g vlakana dnevno za odrasle osobe. Prosečna osoba unosi znatno manje. Svaka kesica FiberZ-a sadrži 4g vlakana, nudeći jednostavan i bezukusan način da se ta razlika značajno smanji uz uravnoteženu ishranu.",
+          "tags": ["EFSA smernica", "Preporuka SZO"]
         },
         {
-          "title": "Dissolves Completely Without Altering Taste",
-          "description": "Resistant dextrin dissolves fully in water, coffee, yogurt, oatmeal, or any beverage - leaving no texture, no clumps, and no noticeable flavor. This makes it easy to incorporate into any part of your day, consistently, without modifying what you enjoy eating or drinking.",
-          "tags": ["Neutral taste", "Versatile", "Easy habit"]
+          "title": "Potpuno se rastvara bez promene ukusa",
+          "description": "Rezistentni dekstrin se potpuno rastvara u vodi, kafi, jogurtu, ovsenoj kaši ili bilo kom napitku — bez ostavljanja teksture, grudvica ili primetnog ukusa. To ga čini lakim za uklapanje u bilo koji deo dana, redovno, bez menjanja onoga što volite da jedete ili pijete.",
+          "tags": ["Neutralan ukus", "Svestrano", "Laka navika"]
         },
         {
-          "title": "Supports Feelings of Satiety",
-          "description": "Soluble fiber forms a viscous gel in the stomach, which may slow gastric emptying and contribute to a prolonged feeling of fullness. This makes fiber a natural and well-studied component of a balanced approach to appetite management - without appetite suppressants or stimulants.",
-          "tags": ["Satiety", "Natural support"]
+          "title": "Podržava osećaj sitosti",
+          "description": "Rastvorljiva vlakna formiraju viskozan gel u želucu, što može usporiti pražnjenje želuca i doprineti dužem osećaju sitosti. To čini vlakna prirodnim i dobro istraženim delom uravnoteženog pristupa kontroli apetita — bez supresora apetita ili stimulansa.",
+          "tags": ["Sitost", "Prirodna podrška"]
         },
         {
-          "title": "Simple, Clean Formulation",
-          "description": "FiberZ contains resistant dextrin - and nothing unnecessary. No artificial flavors, no fillers, no added sugars. Just soluble fiber in a clean sachet format that fits easily into any routine. Transparency in formulation is a core part of what we stand for.",
-          "tags": ["Clean label", "No additives", "Transparent"]
+          "title": "Jednostavan, čist sastav",
+          "description": "FiberZ sadrži rezistentni dekstrin — i ništa suvišno. Bez veštačkih aroma, punila ili dodatih šećera. Samo rastvorljiva vlakna u praktičnoj kesici koja se lako uklapa u svaku rutinu. Transparentnost sastava je osnova onoga za šta se zalažemo.",
+          "tags": ["Čista deklaracija", "Bez aditiva", "Transparentno"]
         }
       ]
     },
     "SimpleToAdd": {
-      "title": "Simple to Add.",
-      "titleItalic": "Easy to Stay Consistent.",
-      "subtitle": "The most effective supplement is the one you actually take. FiberZ is designed to make daily fiber intake effortless.",
+      "title": "Jednostavno za dodavanje.",
+      "titleItalic": "Lako za redovnu upotrebu.",
+      "subtitle": "Najefikasniji dodatak ishrani je onaj koji zaista koristite. FiberZ je osmišljen da svakodnevni unos vlakana učini bez napora.",
       "labels": {
-        "perSachet": "4g per sachet",
-        "sachets": "30 sachets",
-        "neutralTaste": "Neutral taste"
+        "perSachet": "4g po kesici",
+        "sachets": "30 kesica",
+        "neutralTaste": "Neutralan ukus"
       },
       "steps": [
         {
-          "title": "Open One Sachet",
-          "description": "The most effective supplement is the one you actually take. FiberZ is designed to make daily fiber intake effortless."
+          "title": "Otvorite jednu kesicu",
+          "description": "Najefikasniji dodatak ishrani je onaj koji zaista koristite. FiberZ je osmišljen da svakodnevni unos vlakana učini bez napora."
         },
         {
-          "title": "Mix Into Any Drink or Food",
-          "description": "Stir into water, coffee, tea, smoothie, yogurt, or oatmeal. It dissolves completely — no residue, no change in texture or taste. Any time of day works."
+          "title": "Umešajte u bilo koje piće ili hranu",
+          "description": "Umešajte u vodu, kafu, čaj, smuti, jogurt ili ovsenu kašu. Potpuno se rastvara — bez taloga, bez promene teksture ili ukusa. Pogodno u bilo koje doba dana."
         },
         {
-          "title": "Increase Gradually if Needed",
-          "description": "Up to 1–3 sachets per day. Gradual increases allow your gut microbiome to adapt comfortably and help minimize any initial digestive adjustment."
+          "title": "Postepeno povećavajte po potrebi",
+          "description": "Do 1–3 kesice dnevno. Postepeno povećanje omogućava crevnoj mikrobioti da se lakše prilagodi i pomaže da se svede na minimum početna adaptacija digestivnog sistema."
         },
         {
-          "title": "Stay Consistent",
-          "description": "Fiber benefits build with consistency. Most users notice improvements in digestive regularity and comfort within 1–3 weeks of daily use. Drink adequate water throughout the day."
+          "title": "Budite dosledni",
+          "description": "Prednosti vlakana se ispoljavaju uz doslednu upotrebu. Većina korisnika primeti poboljšanje redovnosti i udobnosti varenja u roku od 1 do 3 nedelje svakodnevne upotrebe. Unosite dovoljno tečnosti tokom dana."
         }
       ]
     },
     "ResearchSection": {
-      "title": "Fiber is One of the Best-Studied Nutrients",
-      "subtitle": "Decades of peer-reviewed research support the role of dietary fiber in digestive health. Here are some key reference points.",
-      "ctaTitle": "Want the Full Research Picture?",
-      "ctaBody": "Our Science & Research page compiles peer-reviewed studies, EFSA and WHO guidelines, and detailed explanations of how soluble fiber and resistant dextrin work — with citations for every claim.",
-      "ctaResearch": "View Scientific Research",
-      "ctaFAQ": "Read Our FAQ",
+      "title": "Vlakna spadaju među najistraživanije nutrijente",
+      "subtitle": "Decenije recenziranih naučnih istraživanja potvrđuju ulogu dijetalnih vlakana u zdravlju digestivnog trakta. Evo nekoliko ključnih referentnih tačaka.",
+      "ctaTitle": "Želite kompletnu sliku istraživanja?",
+      "ctaBody": "Naša stranica Nauka i istraživanja objedinjuje recenzirane studije, smernice EFSA i SZO, kao i detaljna objašnjenja načina delovanja rastvorljivih vlakana i rezistentnog dekstrina — sa referencama za svaku tvrdnju.",
+      "ctaResearch": "Pogledajte naučna istraživanja",
+      "ctaFAQ": "Pročitajte česta pitanja",
       "points": [
         {
-          "title": "EFSA Recommendation",
-          "description": "The European Food Safety Authority recommends 25g of dietary fiber per day for normal bowel function in healthy adults."
+          "title": "Preporuka EFSA",
+          "description": "Evropska agencija za bezbednost hrane preporučuje unos od 25g dijetalnih vlakana dnevno za normalnu funkciju creva kod zdravih odraslih osoba."
         },
         {
-          "title": "Prebiotic Properties",
-          "description": "Resistant dextrin has been studied for its ability to selectively stimulate beneficial gut bacteria, supporting a healthy microbiome environment."
+          "title": "Prebiotska svojstva",
+          "description": "Rezistentni dekstrin je istraživan zbog svoje sposobnosti da selektivno podstiče rast korisnih crevnih bakterija, podržavajući zdravo okruženje mikrobiote."
         },
         {
-          "title": "The Fiber Gap Is Real",
-          "description": "Studies consistently find that most adults in developed countries consume 50-70% less fiber than recommended by health authorities."
+          "title": "Nedostatak vlakana je stvaran problem",
+          "description": "Istraživanja dosledno pokazuju da većina odraslih u razvijenim zemljama unosi 50 do 70% manje vlakana od preporučenog od strane zdravstvenih institucija."
         },
         {
-          "title": "Resistant Dextrin Safety",
-          "description": "Resistant dextrin has a well-established safety profile and is generally recognized as safe (GRAS) for use as a dietary fiber supplement."
+          "title": "Bezbednost rezistentnog dekstrina",
+          "description": "Rezistentni dekstrin ima dobro utvrđen bezbednosni profil i opšte je priznat kao bezbedan (GRAS) za upotrebu kao dodatak ishrani na bazi vlakana."
         }
       ]
     },
     "WhoBenefits": {
-      "title": "What Soluble Fiber Does for Your Body",
-      "subtitle": "Anyone looking to support their digestive health through consistent, adequate fiber intake can benefit from FiberZ as part of a balanced diet.",
-      "disclaimer": "Note: If you are pregnant, breastfeeding, taking medication, or have a digestive health condition, please consult your doctor before starting any supplement. This product is not intended to diagnose, treat, cure, or prevent any disease.",
-      "ctaLine1": "Start Supporting Your",
-      "ctaLine2": "Digestive Health Today",
-      "ctaBody": "4g of soluble fiber per sachet. 30 sachets per box.\nSimple to use. Backed by science.",
-      "ctaBuy": "Buy FiberZ Now",
-      "ctaResearch": "View Research",
+      "title": "Šta rastvorljiva vlakna čine za vaše telo",
+      "subtitle": "Svako ko želi da podrži zdravlje svog digestivnog trakta putem doslednog i dovoljnog unosa vlakana može imati koristi od FiberZ-a kao dela uravnotežene ishrane.",
+      "disclaimer": "Napomena: Ukoliko ste trudni, dojite, koristite lekove ili imate zdravstveno stanje vezano za digestivni trakt, konsultujte se sa lekarom pre uvođenja bilo kog dodatka ishrani. Ovaj proizvod nije namenjen dijagnostikovanju, lečenju, izlečenju ili prevenciji bilo koje bolesti.",
+      "ctaLine1": "Počnite da podržavate svoje",
+      "ctaLine2": "digestivno zdravlje već danas",
+      "ctaBody": "4g rastvorljivih vlakana po kesici. 30 kesica po kutiji.\nJednostavno za upotrebu. Potvrđeno naukom.",
+      "ctaBuy": "Kupite FiberZ odmah",
+      "ctaResearch": "Pogledajte istraživanja",
       "groups": [
         {
-          "title": "People with Low Dietary Fiber",
-          "description": "If your diet is low in fruits, vegetables, or whole grains, FiberZ provides a practical daily supplement to help close the fiber gap without overhauling your entire diet."
+          "title": "Osobe sa niskim unosom vlakana",
+          "description": "Ukoliko vaša ishrana sadrži malo voća, povrća ili integralnih žitarica, FiberZ predstavlja praktičan svakodnevni dodatak koji pomaže da se nadoknadi nedostatak vlakana bez potpune promene ishrane."
         },
         {
-          "title": "Active & Health-Conscious Adults",
-          "description": "Those focused on gut health, digestive comfort, and overall wellness often prioritize fiber intake. FiberZ makes it easy to meet daily targets regardless of training or meal timing."
+          "title": "Aktivne osobe koje vode računa o zdravlju",
+          "description": "Oni koji vode računa o zdravlju creva, udobnosti varenja i opštem blagostanju često daju prioritet unosu vlakana. FiberZ olakšava ostvarenje dnevnih ciljeva bez obzira na treninge ili raspored obroka."
         },
         {
-          "title": "Busy People with Irregular Eating",
-          "description": "Travel, work schedules, and irregular meals can disrupt fiber intake and digestive regularity. FiberZ fits into any routine without requiring dietary change — just add it to whatever you're drinking."
+          "title": "Zauzete osobe sa nepravilnom ishranom",
+          "description": "Putovanja, poslovne obaveze i nepravilni obroci mogu poremetiti unos vlakana i redovnost varenja. FiberZ se uklapa u bilo koju rutinu bez potrebe za promenom ishrane — samo ga dodajte u piće koje već pijete."
         }
       ]
     }
   },
   "Research": {
     "Hero": {
-      "title": "Backed by Science",
-      "subtitle": "FiberZ is supported by decades of scientific research on the benefits of dietary fiber. Discover clinically proven effects."
+      "title": "Podržano naukom",
+      "subtitle": "FiberZ je zasnovan na decenijama naučnih istraživanja o prednostima dijetalnih vlakana. Otkrijte klinički dokazane efekte."
     },
     "Stats": {
       "items": [
-        { "label": "Clinical studies", "sub": "Peer-reviewed research" },
-        { "label": "Participants", "sub": "In clinical trials" },
-        { "label": "Years", "sub": "Of scientific research" },
-        { "label": "Tolerance", "sub": "Without side effects" }
+        { "label": "Kliničke studije", "sub": "Recenzirana istraživanja" },
+        { "label": "Učesnika", "sub": "U kliničkim ispitivanjima" },
+        { "label": "Godina", "sub": "Naučnih istraživanja" },
+        { "label": "Tolerancija", "sub": "Bez neželjenih efekata" }
       ]
     },
     "WhyScienceBased": {
-      "title": "Why Is FiberZ Science-Based?",
-      "subtitle": "Resistant dextrin, the active component of FiberZ, is one of the most thoroughly researched forms of dietary fiber. It is recognized and approved by leading health organizations worldwide."
+      "title": "Zašto je FiberZ naučno zasnovan?",
+      "subtitle": "Rezistentni dekstrin, aktivni sastojak FiberZ-a, jedan je od najtemeljnije istraženih oblika dijetalnih vlakana. Priznat je i odobren od strane vodećih svetskih zdravstvenih organizacija."
     },
     "KeyFindings": {
-      "title": "Key Scientific Findings",
-      "sourcePrefix": "Source:",
+      "title": "Ključni naučni nalazi",
+      "sourcePrefix": "Izvor:",
       "items": [
         {
-          "title": "Prebiotic Fermentation & SCFA Production",
-          "description": "Resistant dextrins are fermented in the colon, producing short-chain fatty acids (SCFAs) — butyrate, propionate, and acetate — which regulate appetite, stimulate immune cells, and enhance fatty acid oxidation in muscle tissue.",
+          "title": "Prebiotska fermentacija i proizvodnja SCFA",
+          "description": "Rezistentni dekstrini se fermentišu u debelom crevu, proizvodeći kratkolančane masne kiseline (SCFA) — butirat, propionat i acetat — koje regulišu apetit, stimulišu imunske ćelije i pojačavaju oksidaciju masnih kiselina u mišićnom tkivu.",
           "source": "Włodarczyk & Śliżewska, Nutrients, 2021"
         },
         {
-          "title": "Improved Insulin Sensitivity",
-          "description": "In clinical trials involving women with type 2 diabetes, 10g of daily resistant dextrin supplementation significantly decreased fasting insulin levels and reduced markers of inflammation and oxidative stress.",
+          "title": "Poboljšana osetljivost na insulin",
+          "description": "U kliničkim ispitivanjima sa ženama obolelim od dijabetesa tipa 2, dnevni unos od 10g rezistentnog dekstrina značajno je smanjio nivo insulina našte i markere zapaljenja i oksidativnog stresa.",
           "source": "Hu F. et al., 2020"
         },
         {
-          "title": "Gut Microbiota Modulation",
-          "description": "Resistant dextrin specifically increases the abundance of metabolically beneficial bacteria such as Prevotella and Akkermansia — primary drivers behind systemic improvements in glucose and lipid metabolism.",
+          "title": "Modulacija crevne mikrobiote",
+          "description": "Rezistentni dekstrin specifično povećava zastupljenost metabolički korisnih bakterija poput Prevotella i Akkermansia — ključnih pokretača sistemskih poboljšanja u metabolizmu glukoze i lipida.",
           "source": "Hu F. et al., 2020; Włodarczyk & Śliżewska, 2021"
         },
         {
-          "title": "Cardiovascular & Blood Pressure Benefits",
-          "description": "A 12-week randomized, double-blind, placebo-controlled trial in elderly T2DM patients showed significant reductions in both systolic and diastolic blood pressure, as well as improved postprandial glucose levels.",
+          "title": "Kardiovaskularne koristi i uticaj na krvni pritisak",
+          "description": "Dvanaestonedeljno randomizovano, dvostruko slepo, placebo-kontrolisano ispitivanje kod starijih pacijenata sa dijabetesom tipa 2 pokazalo je značajno smanjenje sistolnog i dijastolnog krvnog pritiska, kao i poboljšanje postprandijalnog nivoa glukoze.",
           "source": "Cai X. et al., 2018"
         }
       ]
     },
     "FeaturedStudies": {
-      "title": "Featured Clinical Studies",
-      "keyResults": "Key Results:",
-      "readFullArticle": "READ FULL RESEARCH ARTICLE",
+      "title": "Izdvojene kliničke studije",
+      "keyResults": "Ključni rezultati:",
+      "readFullArticle": "PROČITAJTE CEO ISTRAŽIVAČKI ČLANAK",
       "studies": [
         {
-          "title": "Milk Powder Co-supplemented with Inulin and Resistant Dextrin Improves Glycemic Control and Insulin Resistance in Elderly Type 2 Diabetes Mellitus",
-          "participants": "Elderly T2DM patients",
-          "duration": "12 weeks",
-          "description": "A randomized, double-blind, placebo-controlled trial examining the effects of milk powder co-supplemented with inulin and resistant dextrin (MPCIR) on glycemic control in elderly patients with type 2 diabetes mellitus.",
+          "title": "Mleko u prahu obogaćeno inulinom i rezistentnim dekstrinom poboljšava glikemijsku kontrolu i insulinsku rezistenciju kod starijih obolelih od dijabetesa tipa 2",
+          "participants": "Stariji pacijenti sa dijabetesom tipa 2",
+          "duration": "12 nedelja",
+          "description": "Randomizovano, dvostruko slepo, placebo-kontrolisano ispitivanje koje je ispitivalo efekte mleka u prahu obogaćenog inulinom i rezistentnim dekstrinom (MPCIR) na glikemijsku kontrolu kod starijih pacijenata sa dijabetesom tipa 2.",
           "results": [
-            "Significant reductions in both systolic and diastolic blood pressure",
-            "Improved postprandial glucose levels",
-            "Enhanced insulin sensitivity markers"
+            "Značajno smanjenje sistolnog i dijastolnog krvnog pritiska",
+            "Poboljšan nivo glukoze posle obroka",
+            "Poboljšani markeri osetljivosti na insulin"
           ],
           "citation": "Cai X., Yu H., Liu L., Lu T., Li J., Ji Y., Le Z., Bao L., Ma W., Xiao R., Yang Y. (2018)"
         },
         {
-          "title": "Efficiency of Resistant Starch and Dextrins as Prebiotics: A Review of the Existing Evidence and Clinical Trials",
-          "participants": "Comprehensive review",
-          "duration": "Multi-study",
-          "description": "A comprehensive review evaluating the prebiotic efficiency of resistant starch and dextrins, their mechanisms of action through SCFA production, and their role in metabolic regulation, immune support, and fat oxidation.",
+          "title": "Efikasnost rezistentnog skroba i dekstrina kao prebiotika: pregled postojećih dokaza i kliničkih ispitivanja",
+          "participants": "Sveobuhvatan pregled",
+          "duration": "Više studija",
+          "description": "Sveobuhvatan pregled koji procenjuje prebiotsku efikasnost rezistentnog skroba i dekstrina, njihove mehanizme delovanja putem proizvodnje SCFA, kao i njihovu ulogu u metaboličkoj regulaciji, podršci imunitetu i oksidaciji masti.",
           "results": [
-            "SCFAs from fermentation regulate appetite via PYY and GLP-1 hormones",
-            "Stimulation of immune cells including T-helper cells and macrophages",
-            "Butyrate enhances fatty acid oxidation, reducing insulin resistance",
-            "~75% of resistant dextrin reaches the large intestine for fermentation",
-            "Better tolerated than other fibers with less gas and bloating"
+            "SCFA nastale fermentacijom regulišu apetit putem hormona PYY i GLP-1",
+            "Stimulacija imunskih ćelija, uključujući T-pomoćničke ćelije i makrofage",
+            "Butirat pojačava oksidaciju masnih kiselina, smanjujući insulinsku rezistenciju",
+            "Oko 75% rezistentnog dekstrina dospeva do debelog creva radi fermentacije",
+            "Bolje se podnosi od drugih vlakana, uz manje gasova i nadutosti"
           ],
           "citation": "Włodarczyk M., Śliżewska K. Nutrients (2021)"
         },
         {
-          "title": "Combination of Inulin and Resistant Dextrin Has Superior Prebiotic Effects and Reduces Gas Production During In Vitro Fermentation",
-          "participants": "Fecal samples from older adults",
+          "title": "Kombinacija inulina i rezistentnog dekstrina ima superiorne prebiotske efekte i smanjuje proizvodnju gasova tokom in vitro fermentacije",
+          "participants": "Fekalni uzorci starijih osoba",
           "duration": "In vitro",
-          "description": "An in vitro fermentation study using fecal samples from older people to evaluate the synergistic prebiotic effects of combining inulin with resistant dextrin, focusing on gas production and microbiota diversity.",
+          "description": "In vitro studija fermentacije koja je koristila fekalne uzorke starijih osoba za procenu sinergijskih prebiotskih efekata kombinovanja inulina sa rezistentnim dekstrinom, sa fokusom na proizvodnju gasova i raznovrsnost mikrobiote.",
           "results": [
-            "Combined inulin + resistant dextrin significantly reduced gas production",
-            "Maintained or increased microbiota diversity",
-            "Stimulated Bifidobacterium growth while minimizing bloating",
-            "Superior prebiotic effect compared to either fiber alone"
+            "Kombinacija inulina i rezistentnog dekstrina značajno je smanjila proizvodnju gasova",
+            "Održana ili povećana raznovrsnost mikrobiote",
+            "Podstaknut rast bakterija Bifidobacterium uz minimalnu nadutost",
+            "Superiorniji prebiotski efekat u poređenju sa svakim vlaknom pojedinačno"
           ],
           "citation": "Yoshida K., Kokubo E., Morita S., Sonoki H., Miyaji K. (2024)"
         },
         {
-          "title": "Resistant Dextrin Improves High-Fat-High-Fructose Diet Induced Insulin Resistance",
-          "participants": "Animal model + T2DM patients",
-          "duration": "Multi-phase",
-          "description": "A study examining how resistant dextrin ameliorates insulin resistance induced by high-fat-high-fructose diets, with clinical validation in women with type 2 diabetes using 10g daily supplementation.",
+          "title": "Rezistentni dekstrin poboljšava insulinsku rezistenciju izazvanu ishranom bogatom mastima i fruktozom",
+          "participants": "Životinjski model + pacijenti sa dijabetesom tipa 2",
+          "duration": "Višefazno",
+          "description": "Studija koja ispituje kako rezistentni dekstrin ublažava insulinsku rezistenciju izazvanu ishranom bogatom mastima i fruktozom, sa kliničkom potvrdom kod žena sa dijabetesom tipa 2 uz dnevni unos od 10g.",
           "results": [
-            "Decreased fasting insulin levels in women with T2DM",
-            "Reduced markers of inflammation and oxidative stress",
-            "Promoted fatty acid β-oxidation in the liver",
-            "Reduced triglyceride (TG) and total cholesterol (TC) levels",
-            "Increased abundance of beneficial bacteria (Prevotella, Akkermansia)"
+            "Smanjen nivo insulina našte kod žena sa dijabetesom tipa 2",
+            "Smanjeni markeri zapaljenja i oksidativnog stresa",
+            "Podstaknuta β-oksidacija masnih kiselina u jetri",
+            "Smanjen nivo triglicerida (TG) i ukupnog holesterola (TC)",
+            "Povećana zastupljenost korisnih bakterija (Prevotella, Akkermansia)"
           ],
           "citation": "Hu F., Niu Y., Xu X., Hu Q., Su Q., Zhang H. (2020)"
         }
       ]
     },
     "Newsletter": {
-      "title": "Stay Up to Date with the Latest Articles",
-      "subtitle": "Subscribe to our newsletter and receive the best tips directly in your inbox",
-      "placeholder": "Enter your email address",
-      "button": "Subscribe",
-      "subscribing": "Subscribing...",
-      "errorDefault": "We are having trouble connecting to the server. Please try again later."
+      "title": "Budite u toku sa najnovijim člancima",
+      "subtitle": "Pretplatite se na naš newsletter i primajte najbolje savete direktno u svoje sanduče",
+      "placeholder": "Unesite svoju email adresu",
+      "button": "Pretplati se",
+      "subscribing": "Pretplata u toku...",
+      "errorDefault": "Došlo je do problema sa povezivanjem na server. Pokušajte ponovo kasnije."
     }
   },
   "FAQ": {
     "Hero": {
-      "title": "Frequently Asked Questions",
-      "subtitle": "Find answers to the most common questions about FiberZ, dietary fiber, and digestive health."
+      "title": "Često postavljana pitanja",
+      "subtitle": "Pronađite odgovore na najčešća pitanja o FiberZ-u, dijetalnim vlaknima i zdravlju digestivnog trakta."
     },
-    "questionsCount": "{count} {count, plural, one {question} other {questions}}",
+    "questionsCount": "{count} {count, plural, one {pitanje} few {pitanja} many {pitanja} other {pitanja}}",
     "StillHaveQuestions": {
-      "title": "Still Have Questions?",
+      "title": "Imate još pitanja?",
       "emailSupport": {
-        "title": "Email Support",
-        "body": "Send us an email and we'll respond within 24 hours.",
-        "cta": "Send Email"
+        "title": "Podrška putem email-a",
+        "body": "Pošaljite nam email i odgovorićemo u roku od 24 časa.",
+        "cta": "Pošaljite email"
       },
       "callUs": {
-        "title": "Call Us",
-        "body": "Weekdays from 9:00 AM to 5:00 PM.",
-        "cta": "Call"
+        "title": "Pozovite nas",
+        "body": "Radnim danima od 9 do 17 časova.",
+        "cta": "Pozovite"
       }
     },
     "categories": {
       "about-the-product": {
-        "name": "About the Product",
-        "description": "Everything about the ingredients, quality, and production of FiberZ.",
+        "name": "O proizvodu",
+        "description": "Sve o sastojcima, kvalitetu i proizvodnji FiberZ-a.",
         "items": [
           {
-            "question": "What is FiberZ and what is it made of?",
-            "answer": "FiberZ is a premium dietary fiber supplement made from resistant dextrin, a soluble fiber derived from non-GMO wheat starch. Each sachet contains a precisely measured dose of fiber designed to help you meet your recommended daily intake easily and conveniently."
+            "question": "Šta je FiberZ i od čega je napravljen?",
+            "answer": "FiberZ je premium dodatak ishrani na bazi dijetalnih vlakana, napravljen od rezistentnog dekstrina — rastvorljivih vlakana dobijenih iz nemodifikovanog (non-GMO) pšeničnog skroba. Svaka kesica sadrži precizno odmerenu dozu vlakana, osmišljenu da vam lako i jednostavno pomogne da ostvarite preporučeni dnevni unos."
           },
           {
-            "question": "Where is FiberZ produced?",
-            "answer": "FiberZ is produced in Serbia by Fidelinka Skrob d.o.o., a company with decades of experience in starch and fiber processing. Our production facility follows strict quality control standards to ensure every sachet meets the highest safety and purity requirements."
+            "question": "Gde se proizvodi FiberZ?",
+            "answer": "FiberZ se proizvodi u Srbiji, u kompaniji Fidelinka Skrob d.o.o., koja ima decenije iskustva u preradi skroba i vlakana. Naš proizvodni pogon poštuje stroge standarde kontrole kvaliteta kako bi svaka kesica ispunila najviše zahteve bezbednosti i čistoće."
           },
           {
-            "question": "Does FiberZ contain GMO?",
-            "answer": "No, FiberZ is made from non-GMO wheat starch. We are committed to using only high-quality, non-genetically modified ingredients in our products."
+            "question": "Da li FiberZ sadrži GMO?",
+            "answer": "Ne, FiberZ je napravljen od nemodifikovanog (non-GMO) pšeničnog skroba. Posvećeni smo upotrebi isključivo kvalitetnih, genetski nemodifikovanih sastojaka u našim proizvodima."
           },
           {
-            "question": "Does FiberZ contain allergens?",
-            "answer": "FiberZ is free from the most common allergens including gluten, dairy, soy, nuts, and eggs. It is suitable for people with most food sensitivities. However, if you have specific allergies, we recommend reviewing the full ingredient list on the packaging."
+            "question": "Da li FiberZ sadrži alergene?",
+            "answer": "FiberZ ne sadrži najčešće alergene poput glutena, mlečnih proizvoda, soje, orašastih plodova i jaja. Pogodan je za osobe sa većinom prehrambenih preosetljivosti. Ipak, ukoliko imate specifične alergije, preporučujemo da proverite kompletan spisak sastojaka na pakovanju."
           },
           {
-            "question": "What is the shelf life of FiberZ?",
-            "answer": "FiberZ has a shelf life of 12 months from the date of production when stored in a cool, dry place away from direct sunlight. Each package is clearly labeled with an expiration date for your convenience."
+            "question": "Koliki je rok trajanja FiberZ-a?",
+            "answer": "FiberZ ima rok trajanja od 12 meseci od datuma proizvodnje ukoliko se čuva na hladnom, suvom mestu, zaštićen od direktne sunčeve svetlosti. Svako pakovanje jasno je označeno datumom isteka roka trajanja."
           },
           {
-            "question": "Is FiberZ suitable for vegans and vegetarians?",
-            "answer": "Yes, FiberZ is 100% plant-based and suitable for both vegans and vegetarians. It contains no animal-derived ingredients or by-products."
+            "question": "Da li je FiberZ pogodan za vegane i vegetarijance?",
+            "answer": "Da, FiberZ je 100% biljnog porekla i pogodan je i za vegane i za vegetarijance. Ne sadrži sastojke niti nusproizvode životinjskog porekla."
           }
         ]
       },
       "usage": {
-        "name": "Usage",
-        "description": "How, when, and how much FiberZ to use.",
+        "name": "Upotreba",
+        "description": "Kako, kada i u kojoj količini koristiti FiberZ.",
         "items": [
           {
-            "question": "What is the recommended daily dose of FiberZ?",
-            "answer": "The recommended daily dose is 1-3 sachets per day. We suggest starting with one sachet daily and gradually increasing to three if needed. Each sachet provides a significant portion of your recommended daily fiber intake."
+            "question": "Koja je preporučena dnevna doza FiberZ-a?",
+            "answer": "Preporučena dnevna doza je 1 do 3 kesice dnevno. Predlažemo da počnete sa jednom kesicom dnevno i postepeno povećavate do tri, ukoliko je potrebno. Svaka kesica obezbeđuje značajan deo preporučenog dnevnog unosa vlakana."
           },
           {
-            "question": "How do you prepare FiberZ?",
-            "answer": "Simply dissolve one sachet of FiberZ in a glass of water (200-300ml), juice, or any beverage of your choice. Stir well until fully dissolved. FiberZ is tasteless and odorless, so it won't change the flavor of your drink."
+            "question": "Kako se priprema FiberZ?",
+            "answer": "Jednostavno rastvorite jednu kesicu FiberZ-a u čaši vode (200-300ml), soka ili bilo kog napitka po izboru. Dobro promešajte dok se potpuno ne rastvori. FiberZ je bez ukusa i mirisa, tako da neće promeniti ukus vašeg napitka."
           },
           {
-            "question": "When is the best time to take FiberZ?",
-            "answer": "FiberZ can be taken at any time of day. Many users prefer taking it with breakfast or before meals to support digestive comfort. The most important thing is to take it consistently at a time that fits your routine."
+            "question": "Koje je najbolje vreme za uzimanje FiberZ-a?",
+            "answer": "FiberZ se može uzimati u bilo koje doba dana. Mnogi korisnici ga radije uzimaju uz doručak ili pre obroka radi bolje udobnosti varenja. Najvažnije je da ga uzimate redovno, u vreme koje odgovara vašoj rutini."
           },
           {
-            "question": "How long can I use FiberZ continuously?",
-            "answer": "FiberZ is safe for continuous, long-term daily use. Resistant dextrin is a well-studied dietary fiber with an excellent safety profile. Consistent daily use is recommended for the best results."
+            "question": "Koliko dugo mogu neprekidno da koristim FiberZ?",
+            "answer": "FiberZ je bezbedan za neprekidnu, dugotrajnu svakodnevnu upotrebu. Rezistentni dekstrin je dobro istraženo dijetalno vlakno sa odličnim bezbednosnim profilom. Za najbolje rezultate preporučuje se redovna svakodnevna upotreba."
           },
           {
-            "question": "Do I need to drink more water while using FiberZ?",
-            "answer": "While FiberZ dissolves completely in water, maintaining good hydration is always beneficial when increasing your fiber intake. We recommend drinking at least 6-8 glasses of water throughout the day."
+            "question": "Da li treba da pijem više vode dok koristim FiberZ?",
+            "answer": "Iako se FiberZ potpuno rastvara u vodi, dobra hidratacija je uvek korisna prilikom povećanja unosa vlakana. Preporučujemo unos najmanje 6 do 8 čaša vode tokom dana."
           },
           {
-            "question": "Can I mix FiberZ with hot beverages?",
-            "answer": "Yes, FiberZ can be mixed with both hot and cold beverages. It dissolves easily in coffee, tea, smoothies, and other drinks without affecting their taste or texture."
+            "question": "Da li mogu da mešam FiberZ sa toplim napicima?",
+            "answer": "Da, FiberZ se može mešati i sa toplim i sa hladnim napicima. Lako se rastvara u kafi, čaju, smutijima i drugim napicima, bez uticaja na njihov ukus ili teksturu."
           },
           {
-            "question": "Can I add FiberZ to food?",
-            "answer": "Absolutely! FiberZ can be added to soups, yogurt, oatmeal, sauces, and many other foods. Its neutral taste means it blends seamlessly into your meals."
+            "question": "Da li mogu da dodam FiberZ u hranu?",
+            "answer": "Naravno! FiberZ se može dodati u supe, jogurt, ovsenu kašu, sosove i mnoge druge namirnice. Zahvaljujući neutralnom ukusu, savršeno se uklapa u vaše obroke."
           },
           {
-            "question": "Can children take FiberZ?",
-            "answer": "FiberZ is formulated for adults. For children, we recommend consulting with a pediatrician before introducing any fiber supplement to their diet."
+            "question": "Da li deca mogu da koriste FiberZ?",
+            "answer": "FiberZ je formulisan za odrasle osobe. Za decu preporučujemo konsultaciju sa pedijatrom pre uvođenja bilo kog dodatka vlaknima u ishranu."
           },
           {
-            "question": "Can pregnant or nursing women use FiberZ?",
-            "answer": "While FiberZ contains only natural dietary fiber, we recommend that pregnant or nursing women consult their healthcare provider before starting any new supplement."
+            "question": "Da li trudnice i dojilje mogu da koriste FiberZ?",
+            "answer": "Iako FiberZ sadrži isključivo prirodna dijetalna vlakna, preporučujemo trudnicama i dojiljama da se konsultuju sa svojim lekarom pre uvođenja bilo kog novog dodatka ishrani."
           },
           {
-            "question": "Is it better to take FiberZ in the morning or in the evening?",
-            "answer": "Both times work well. Taking it in the morning can help set a healthy routine, while taking it in the evening may help with overnight digestion. Choose whichever time is most convenient for you."
+            "question": "Da li je bolje uzimati FiberZ ujutru ili uveče?",
+            "answer": "Oba vremena su podjednako dobra. Uzimanje ujutru pomaže uspostavljanju zdrave rutine, dok uzimanje uveče može pomoći noćnom varenju. Izaberite vreme koje vama najviše odgovara."
           }
         ]
       },
       "health-and-safety": {
-        "name": "Health & Safety",
-        "description": "Questions about health effects and contraindications.",
+        "name": "Zdravlje i bezbednost",
+        "description": "Pitanja o zdravstvenim efektima i kontraindikacijama.",
         "items": [
           {
-            "question": "Who should not use FiberZ?",
-            "answer": "People with bowel obstruction, acute inflammatory bowel conditions, or those who have been advised by their doctor to follow a low-fiber diet should not use FiberZ without medical consultation."
+            "question": "Ko ne bi trebalo da koristi FiberZ?",
+            "answer": "Osobe sa opstrukcijom creva, akutnim inflamatornim oboljenjima creva, kao i oni kojima je lekar preporučio ishranu sa malo vlakana, ne bi trebalo da koriste FiberZ bez prethodne konsultacije sa lekarom."
           },
           {
-            "question": "Can FiberZ cause side effects?",
-            "answer": "FiberZ is generally well-tolerated. Some people may experience mild bloating or gas when first starting, which typically resolves within a few days as your digestive system adjusts. Starting with a lower dose can help minimize these effects."
+            "question": "Da li FiberZ može izazvati neželjene efekte?",
+            "answer": "FiberZ se generalno dobro podnosi. Pojedinci mogu osetiti blagu nadutost ili gasove prilikom prvog uvođenja, što obično prolazi u roku od nekoliko dana dok se digestivni sistem prilagođava. Počinjanje sa manjom dozom može pomoći da se ovi efekti svedu na minimum."
           },
           {
-            "question": "Can I use FiberZ if I have diabetes?",
-            "answer": "Resistant dextrin has been studied for its potential to help manage blood sugar levels. However, if you have diabetes, we recommend consulting your healthcare provider before starting FiberZ, as it may affect how your body processes glucose."
+            "question": "Da li mogu da koristim FiberZ ako imam dijabetes?",
+            "answer": "Rezistentni dekstrin je istraživan zbog potencijala da pomogne u regulaciji nivoa šećera u krvi. Ipak, ukoliko imate dijabetes, preporučujemo konsultaciju sa lekarom pre uvođenja FiberZ-a, jer može uticati na način na koji vaš organizam obrađuje glukozu."
           },
           {
-            "question": "Can FiberZ help with weight loss?",
-            "answer": "Dietary fiber can support weight management by promoting feelings of fullness and supporting healthy digestion. While FiberZ is not a weight loss product, incorporating adequate fiber into your diet is a recognized part of a healthy weight management strategy."
+            "question": "Da li FiberZ može pomoći u mršavljenju?",
+            "answer": "Dijetalna vlakna mogu podržati kontrolu telesne težine podstičući osećaj sitosti i zdravo varenje. Iako FiberZ nije proizvod za mršavljenje, dovoljan unos vlakana u ishrani predstavlja priznat deo zdrave strategije kontrole telesne težine."
           },
           {
-            "question": "Can I take FiberZ with medications?",
-            "answer": "Fiber can potentially affect the absorption of certain medications. We recommend taking FiberZ at least 2 hours before or after taking medications. Always consult your healthcare provider if you are on prescription medication."
+            "question": "Da li mogu da uzimam FiberZ sa lekovima?",
+            "answer": "Vlakna mogu potencijalno uticati na apsorpciju određenih lekova. Preporučujemo da FiberZ uzimate najmanje 2 časa pre ili posle uzimanja lekova. Uvek se konsultujte sa lekarom ukoliko koristite lekove na recept."
           },
           {
-            "question": "Does FiberZ affect nutrient absorption?",
-            "answer": "Resistant dextrin, the type of fiber in FiberZ, does not significantly interfere with the absorption of vitamins and minerals when taken as directed. It is one of the best-tolerated forms of supplemental fiber."
+            "question": "Da li FiberZ utiče na apsorpciju hranljivih materija?",
+            "answer": "Rezistentni dekstrin, vrsta vlakana koja se nalazi u FiberZ-u, ne ometa značajno apsorpciju vitamina i minerala kada se koristi prema uputstvu. To je jedan od najbolje podnošljivih oblika dodatnih vlakana."
           },
           {
-            "question": "Is FiberZ safe for people with IBS?",
-            "answer": "Many people with IBS find soluble fiber beneficial. However, since IBS symptoms vary widely, we recommend starting with a small dose and consulting your gastroenterologist before use."
+            "question": "Da li je FiberZ bezbedan za osobe sa IBS-om?",
+            "answer": "Mnoge osobe sa sindromom iritabilnog creva (IBS) smatraju da su im rastvorljiva vlakna korisna. Ipak, s obzirom na to da se simptomi IBS-a značajno razlikuju, preporučujemo da počnete sa manjom dozom i konsultujete gastroenterologa pre upotrebe."
           },
           {
-            "question": "Can FiberZ help with cholesterol?",
-            "answer": "Research suggests that soluble fiber, including resistant dextrin, may help support healthy cholesterol levels as part of a balanced diet. FiberZ can be a convenient way to increase your soluble fiber intake."
+            "question": "Da li FiberZ može pomoći kod holesterola?",
+            "answer": "Istraživanja pokazuju da rastvorljiva vlakna, uključujući rezistentni dekstrin, mogu pomoći u održavanju zdravog nivoa holesterola kao deo uravnotežene ishrane. FiberZ predstavlja praktičan način za povećanje unosa rastvorljivih vlakana."
           },
           {
-            "question": "Can FiberZ cause allergic reactions?",
-            "answer": "Allergic reactions to resistant dextrin are extremely rare. FiberZ contains in small amount gluten as allergen. Not suitable for people with gluten allergy. If you experience any unusual symptoms, discontinue use and consult your healthcare provider."
+            "question": "Da li FiberZ može izazvati alergijske reakcije?",
+            "answer": "Alergijske reakcije na rezistentni dekstrin su izuzetno retke. FiberZ sadrži gluten u malim količinama kao alergen. Nije pogodan za osobe sa alergijom na gluten. Ukoliko primetite bilo kakve neuobičajene simptome, prekinite upotrebu i konsultujte se sa lekarom."
           },
           {
-            "question": "Does FiberZ interact with blood thinners?",
-            "answer": "There are no known interactions between resistant dextrin and blood thinners. However, as with any supplement, we recommend discussing with your doctor if you take anticoagulant medications."
+            "question": "Da li FiberZ stupa u interakciju sa lekovima za razređivanje krvi?",
+            "answer": "Nisu poznate interakcije između rezistentnog dekstrina i lekova za razređivanje krvi. Ipak, kao i sa svakim dodatkom ishrani, preporučujemo razgovor sa lekarom ukoliko koristite antikoagulantne lekove."
           },
           {
-            "question": "Can FiberZ improve gut health?",
-            "answer": "Yes, resistant dextrin acts as a prebiotic, feeding beneficial gut bacteria and supporting a healthy microbiome. Regular use can contribute to improved digestive health and overall wellbeing."
+            "question": "Da li FiberZ može poboljšati zdravlje creva?",
+            "answer": "Da, rezistentni dekstrin deluje kao prebiotik, hraneći korisne crevne bakterije i podržavajući zdravu mikrobiotu. Redovna upotreba može doprineti boljem zdravlju digestivnog trakta i opštem blagostanju."
           }
         ]
       },
       "shipping-and-payment": {
-        "name": "Shipping & Payment",
-        "description": "Information about ordering and delivery.",
+        "name": "Dostava i plaćanje",
+        "description": "Informacije o poručivanju i dostavi.",
         "items": [
           {
-            "question": "How long does delivery take?",
-            "answer": "Standard delivery within Serbia takes 2-4 business days. For international orders, delivery typically takes 5-10 business days depending on the destination country and customs processing."
+            "question": "Koliko traje dostava?",
+            "answer": "Standardna dostava unutar Srbije traje 2 do 4 radna dana. Za međunarodne porudžbine, dostava obično traje 5 do 10 radnih dana, u zavisnosti od zemlje odredišta i carinskog postupka."
           },
           {
-            "question": "How much does shipping cost?",
-            "answer": "Shipping costs vary depending on your location and order size. We offer free shipping on orders above a certain threshold. Exact shipping costs are calculated at checkout based on your delivery address."
+            "question": "Koliko košta dostava?",
+            "answer": "Cena dostave zavisi od vaše lokacije i veličine porudžbine. Nudimo besplatnu dostavu za porudžbine iznad određenog iznosa. Tačna cena dostave izračunava se prilikom plaćanja, na osnovu vaše adrese isporuke."
           },
           {
-            "question": "What payment methods are available?",
-            "answer": "We accept all major credit and debit cards (Visa, MasterCard, Maestro), bank transfers, and cash on delivery for orders within Serbia. Additional payment options may be available at checkout."
+            "question": "Koji načini plaćanja su dostupni?",
+            "answer": "Prihvatamo sve veće kreditne i debitne kartice (Visa, MasterCard, Maestro), bankovni prenos, kao i plaćanje pouzećem za porudžbine unutar Srbije. Dodatne opcije plaćanja mogu biti dostupne prilikom plaćanja."
           },
           {
-            "question": "Do you ship internationally?",
-            "answer": "Yes, we ship to most European countries. International shipping rates and delivery times vary by destination. Check our shipping page for a full list of supported countries and estimated delivery times."
+            "question": "Da li dostavljate u inostranstvo?",
+            "answer": "Da, dostavljamo u većinu evropskih zemalja. Cena i vreme međunarodne dostave zavise od odredišta. Proverite našu stranicu o dostavi za kompletan spisak podržanih zemalja i procenjeno vreme isporuke."
           },
           {
-            "question": "Can I track my order?",
-            "answer": "Yes, once your order is shipped, you will receive a tracking number via email. You can use this number to track your package through our courier partner's website."
+            "question": "Da li mogu da pratim svoju porudžbinu?",
+            "answer": "Da, čim vaša porudžbina bude poslata, dobićete broj za praćenje putem email-a. Ovaj broj možete koristiti za praćenje pošiljke na sajtu naše kurirske službe."
           },
           {
-            "question": "What happens if my package is damaged during shipping?",
-            "answer": "If your package arrives damaged, please contact our support team within 48 hours of delivery with photos of the damage. We will arrange a replacement or refund at no additional cost to you."
+            "question": "Šta se dešava ako je paket oštećen tokom dostave?",
+            "answer": "Ukoliko vaš paket stigne oštećen, molimo vas da kontaktirate naš tim za podršku u roku od 48 časova od isporuke i priložite fotografije oštećenja. Organizovaćemo zamenu ili povraćaj novca, bez dodatnih troškova za vas."
           }
         ]
       },
       "returns-and-guarantee": {
-        "name": "Returns & Guarantee",
-        "description": "Our customer satisfaction policy.",
+        "name": "Povraćaj i garancija",
+        "description": "Naša politika zadovoljstva kupaca.",
         "items": [
           {
-            "question": "What is your return policy?",
-            "answer": "We offer a 30-day satisfaction guarantee. If you are not happy with your purchase, you can return unopened products within 30 days of delivery for a full refund, minus shipping costs."
+            "question": "Kakva je vaša politika povraćaja?",
+            "answer": "Nudimo garanciju zadovoljstva u trajanju od 30 dana. Ukoliko niste zadovoljni kupovinom, možete vratiti neotvorene proizvode u roku od 30 dana od isporuke i ostvariti pun povraćaj novca, umanjen za troškove dostave."
           },
           {
-            "question": "How do I initiate a return?",
-            "answer": "To initiate a return, contact our customer support team at info@fiberz.com with your order number. We will provide you with return instructions and a return authorization number."
+            "question": "Kako da pokrenem postupak povraćaja?",
+            "answer": "Da biste pokrenuli postupak povraćaja, kontaktirajte naš tim za podršku korisnicima na info@fiberz.com i navedite broj porudžbine. Poslaćemo vam uputstva za povraćaj i broj odobrenja za povraćaj."
           },
           {
-            "question": "Can I return opened products?",
-            "answer": "For hygiene and safety reasons, we can only accept returns of unopened, sealed products. If you received a defective product, please contact us and we will arrange a replacement."
+            "question": "Da li mogu da vratim otvorene proizvode?",
+            "answer": "Iz higijenskih i bezbednosnih razloga, možemo prihvatiti samo povraćaj neotvorenih, zapečaćenih proizvoda. Ukoliko ste dobili neispravan proizvod, kontaktirajte nas i organizovaćemo zamenu."
           },
           {
-            "question": "How long does it take to process a refund?",
-            "answer": "Once we receive your returned product, refunds are processed within 5-7 business days. The refund will be credited to your original payment method."
+            "question": "Koliko traje obrada povraćaja novca?",
+            "answer": "Nakon što primimo vraćeni proizvod, povraćaj novca se obrađuje u roku od 5 do 7 radnih dana. Sredstva se vraćaju na način plaćanja koji ste prvobitno koristili."
           },
           {
-            "question": "Do you offer a money-back guarantee?",
-            "answer": "Yes, we stand behind the quality of FiberZ. If you are not satisfied with your purchase for any reason, contact us within 30 days and we will work with you to resolve the issue."
+            "question": "Da li nudite garanciju povraćaja novca?",
+            "answer": "Da, stojimo iza kvaliteta FiberZ-a. Ukoliko iz bilo kog razloga niste zadovoljni kupovinom, kontaktirajte nas u roku od 30 dana i zajedno ćemo rešiti problem."
           }
         ]
       },
       "tips-and-recommendations": {
-        "name": "Tips & Recommendations",
-        "description": "Expert tips for the best results.",
+        "name": "Saveti i preporuke",
+        "description": "Stručni saveti za najbolje rezultate.",
         "items": [
           {
-            "question": "How can I maximize the effects of FiberZ?",
-            "answer": "For the best results, take FiberZ consistently every day, stay well-hydrated, and pair it with a balanced diet rich in fruits, vegetables, and whole grains. Regular physical activity also supports healthy digestion."
+            "question": "Kako mogu da maksimalno iskoristim efekte FiberZ-a?",
+            "answer": "Za najbolje rezultate, koristite FiberZ redovno svakog dana, unosite dovoljno tečnosti i kombinujte ga sa uravnoteženom ishranom bogatom voćem, povrćem i integralnim žitaricama. Redovna fizička aktivnost takođe podržava zdravo varenje."
           },
           {
-            "question": "What foods pair well with FiberZ?",
-            "answer": "FiberZ pairs well with smoothies, yogurt, oatmeal, soups, and juices. Since it's tasteless and odorless, it can be added to virtually any food or drink without altering the flavor."
+            "question": "Sa kojom hranom se FiberZ dobro slaže?",
+            "answer": "FiberZ se dobro slaže sa smutijima, jogurtom, ovsenom kašom, supama i sokovima. Budući da je bez ukusa i mirisa, može se dodati u gotovo bilo koju hranu ili piće bez promene ukusa."
           },
           {
-            "question": "How can I prevent bloating?",
-            "answer": "Start with one sachet per day and gradually increase to the full recommended dose over a week. Drink plenty of water throughout the day and avoid taking FiberZ with carbonated beverages to minimize bloating."
+            "question": "Kako mogu da sprečim nadutost?",
+            "answer": "Počnite sa jednom kesicom dnevno i tokom nedelju dana postepeno povećajte do pune preporučene doze. Pijte dovoljno vode tokom dana i izbegavajte uzimanje FiberZ-a sa gaziranim napicima kako biste sveli nadutost na minimum."
           },
           {
-            "question": "Is it better to take FiberZ in the morning or in the evening?",
-            "answer": "Both options work equally well. Morning intake can help kickstart your digestion for the day, while evening intake may support overnight digestive processes. Choose the time that best fits your daily routine."
+            "question": "Da li je bolje uzimati FiberZ ujutru ili uveče?",
+            "answer": "Obe opcije su podjednako dobre. Uzimanje ujutru pomaže pokretanju varenja tokom dana, dok uzimanje uveče može podržati noćne procese varenja. Izaberite vreme koje najbolje odgovara vašoj dnevnoj rutini."
           },
           {
-            "question": "Can I take FiberZ before exercise?",
-            "answer": "Yes, taking FiberZ 30-60 minutes before exercise is fine. It dissolves quickly and should not cause any discomfort during physical activity. Stay hydrated as you normally would during your workout."
+            "question": "Da li mogu da uzmem FiberZ pre vežbanja?",
+            "answer": "Da, uzimanje FiberZ-a 30 do 60 minuta pre vežbanja je u redu. Brzo se rastvara i ne bi trebalo da izazove nelagodnost tokom fizičke aktivnosti. Unosite tečnost kao i inače tokom treninga."
           },
           {
-            "question": "How do I store FiberZ properly?",
-            "answer": "Store FiberZ in a cool, dry place away from direct sunlight and moisture. Keep the sachets sealed until use. There is no need to refrigerate the product."
+            "question": "Kako pravilno čuvati FiberZ?",
+            "answer": "Čuvajte FiberZ na hladnom, suvom mestu, zaštićenom od direktne sunčeve svetlosti i vlage. Kesice čuvajte zatvorene do upotrebe. Nije potrebno čuvati proizvod u frižideru."
           },
           {
-            "question": "Can I take FiberZ while intermittent fasting?",
-            "answer": "FiberZ contains minimal calories and can generally be consumed during a fasting window without breaking your fast. However, check with your healthcare provider if you follow a strict fasting protocol."
+            "question": "Da li mogu da koristim FiberZ tokom intervalnog posta?",
+            "answer": "FiberZ sadrži minimalnu količinu kalorija i generalno se može konzumirati tokom perioda posta bez prekidanja posta. Ipak, konsultujte se sa lekarom ukoliko se pridržavate strogog protokola posta."
           }
         ]
       }
@@ -673,227 +686,232 @@
   "Blog": {
     "Hero": {
       "title": "FiberZ Blog",
-      "subtitle": "Most adults do not meet recommended daily fiber intake, which affects digestive regularity and overall gut health."
+      "subtitle": "Većina odraslih ne ostvaruje preporučeni dnevni unos vlakana, što utiče na redovnost varenja i opšte zdravlje creva."
     },
     "Listing": {
-      "title": "Latest Articles",
-      "subtitle": "Explore our expert tips and guidelines for a better life"
+      "title": "Najnoviji članci",
+      "subtitle": "Istražite naše stručne savete i smernice za bolji život"
     },
     "CategoryCards": {
-      "title": "Browse by Categories",
-      "subtitle": "Find the articles that interest you the most",
-      "articleCount": "{count, plural, one {# article} other {# articles}}"
+      "title": "Pregledajte po kategorijama",
+      "subtitle": "Pronađite članke koji vas najviše interesuju",
+      "articleCount": "{count, plural, one {# članak} few {# članka} many {# članaka} other {# članaka}}"
     },
     "SearchAndFilters": {
-      "searchPlaceholder": "Search articles...",
-      "all": "All"
+      "searchPlaceholder": "Pretražite članke...",
+      "all": "Sve",
+      "clearSearch": "Obriši pretragu"
     },
     "FeaturedArticle": {
-      "label": "Featured",
-      "cta": "Read the Article"
+      "label": "Izdvojeno",
+      "cta": "Pročitajte članak"
     },
     "ArticleCard": {
-      "readMore": "Read more",
-      "minRead": "min read"
+      "readMore": "Pročitajte više",
+      "minRead": "min čitanja"
+    },
+    "ArticleGrid": {
+      "noResults": "Nema pronađenih članaka. Pokušajte sa drugom pretragom ili kategorijom.",
+      "previousPage": "Prethodna stranica",
+      "nextPage": "Sledeća stranica"
     }
   },
   "HowItWorks": {
     "Hero": {
-      "title": "How to Use FiberZ",
-      "subtitle": "A simple, step-by-step guide to making FiberZ part of your daily routine for better digestive health."
+      "title": "Kako koristiti FiberZ",
+      "subtitle": "Jednostavan vodič korak po korak kako da FiberZ uklopite u svakodnevnu rutinu radi boljeg zdravlja digestivnog trakta."
     },
     "WhenToTake": {
-      "title": "Tips for Best Results",
-      "titleItalic": "Best Results",
-      "subtitle": "Getting the most out of FiberZ is easy. Here are a few practical tips to help you build a lasting habit.",
+      "title": "Saveti za najbolje rezultate",
+      "titleItalic": "najbolje rezultate",
+      "subtitle": "Lako je izvući maksimum iz FiberZ-a. Evo nekoliko praktičnih saveta koji će vam pomoći da izgradite trajnu naviku.",
       "tips": [
         {
-          "title": "Any Time of Day",
-          "description": "Morning, afternoon, or evening — FiberZ works whenever it fits your schedule. Many users prefer taking it with breakfast to start the day right."
+          "title": "Bilo koje doba dana",
+          "description": "Ujutru, popodne ili uveče — FiberZ deluje kad god vam odgovara. Mnogi korisnici ga radije uzimaju uz doručak kako bi pravilno započeli dan."
         },
         {
-          "title": "Mix With Anything",
-          "description": "Water, coffee, tea, smoothies, yogurt, oatmeal, or soup. FiberZ dissolves completely with no change in taste, texture, or color."
+          "title": "Umešajte u bilo šta",
+          "description": "Voda, kafa, čaj, smuti, jogurt, ovsena kaša ili supa. FiberZ se potpuno rastvara bez promene ukusa, teksture ili boje."
         },
         {
-          "title": "Stay Hydrated",
-          "description": "Drink plenty of water throughout the day. Adequate hydration helps soluble fiber work effectively and supports overall digestive comfort."
+          "title": "Unosite dovoljno tečnosti",
+          "description": "Pijte dovoljno vode tokom dana. Dobra hidratacija pomaže rastvorljivim vlaknima da deluju efikasno i podržava opštu udobnost varenja."
         },
         {
-          "title": "Be Consistent",
-          "description": "Fiber benefits build over time. Most users notice improvements in digestive regularity within 1-3 weeks of consistent daily use."
+          "title": "Budite dosledni",
+          "description": "Prednosti vlakana se ispoljavaju tokom vremena. Većina korisnika primeti poboljšanje redovnosti varenja u roku od 1 do 3 nedelje redovne svakodnevne upotrebe."
         }
       ]
     },
     "CTA": {
-      "title": "Ready to Get Started?",
-      "subtitle": "Start your journey to better digestive health today. Choose the package that fits your needs.",
-      "cta": "SHOP FIBERZ"
+      "title": "Spremni da počnete?",
+      "subtitle": "Započnite put ka boljem zdravlju digestivnog trakta već danas. Izaberite paket koji odgovara vašim potrebama.",
+      "cta": "KUPITE FIBERZ"
     }
   },
   "Product": {
     "PromoBanner": {
-      "text": "20% welcome discount on all orders until March 11."
+      "text": "20% popusta dobrodošlice na sve porudžbine do 11. marta."
     },
     "Hero": {
-      "subtitle": "Soluble dietary fiber powder",
-      "benefitsTitle": "Proven formula for visible results:",
-      "choosePackage": "Choose a package:",
-      "adjustQuantity": "Adjust number of boxes:",
-      "savings": "savings",
-      "discount": "Discount",
-      "shipping": "Shipping",
-      "total": "TOTAL",
-      "orderNow": "Order Now",
-      "recommended": "Recommended",
-      "comingSoonTitle": "Online ordering is coming soon",
-      "comingSoonBody": "To place an order now, contact us at {email} or call {phone}",
-      "productView": "Product view {index}"
+      "subtitle": "Rastvorljiva dijetalna vlakna u prahu",
+      "benefitsTitle": "Dokazana formula za vidljive rezultate:",
+      "choosePackage": "Izaberite paket:",
+      "adjustQuantity": "Podesite broj kutija:",
+      "savings": "uštede",
+      "discount": "Popust",
+      "shipping": "Dostava",
+      "total": "UKUPNO",
+      "orderNow": "Poruči odmah",
+      "recommended": "Preporučeno",
+      "comingSoonTitle": "Online poručivanje uskoro stiže",
+      "comingSoonBody": "Za poručivanje odmah, kontaktirajte nas na <email>email</email> ili pozovite <phone>telefon</phone>",
+      "productView": "Prikaz proizvoda {index}"
     },
     "WhatIsFiberZ": {
-      "title": "What Is FiberZ?",
-      "intro": "FiberZ is a soluble dietary fiber supplement made from resistant dextrin, designed to help you meet your daily fiber needs with ease and convenience.",
-      "simplyPut": "Simply put:",
+      "title": "Šta je FiberZ?",
+      "intro": "FiberZ je dodatak ishrani na bazi rastvorljivih dijetalnih vlakana, napravljen od rezistentnog dekstrina, osmišljen da vam lako i jednostavno pomogne da zadovoljite dnevne potrebe za vlaknima.",
+      "simplyPut": "Jednostavno rečeno:",
       "points": [
-        "If you struggle with irregular digestion, FiberZ helps restore regularity.",
-        "If you experience bloating and discomfort after meals, FiberZ helps support smoother digestion.",
-        "If you're not getting enough fiber from your diet, FiberZ helps you bridge the gap in a simple way.",
-        "Unlike synthetic products, FiberZ is natural, works gently, and gradually helps your body find balance — without harsh chemicals."
+        "Ukoliko imate problema sa neredovnim varenjem, FiberZ pomaže da se redovnost ponovo uspostavi.",
+        "Ukoliko osećate nadutost i nelagodnost posle obroka, FiberZ pomaže da varenje bude lakše.",
+        "Ukoliko ne unosite dovoljno vlakana putem ishrane, FiberZ vam pomaže da tu razliku jednostavno nadoknadite.",
+        "Za razliku od sintetičkih proizvoda, FiberZ je prirodan, deluje blago i postepeno pomaže vašem telu da pronađe ravnotežu — bez agresivnih hemikalija."
       ]
     },
     "TrustCards": {
-      "title": "Why Do Over {count} People Trust FiberZ?"
+      "title": "Zašto nam veruje preko {count} ljudi?"
     },
     "ScientificallyProven": {
-      "title": "Scientifically Proven"
+      "title": "Naučno dokazano"
     },
     "NutritionalInfo": {
-      "title": "Nutritional Information",
-      "activeIngredient": "Active Ingredient Content",
-      "nutritionalValues": "Nutritional Values",
-      "ingredient": "Ingredient",
-      "perSachet": "Per sachet"
+      "title": "Nutritivne informacije",
+      "activeIngredient": "Sadržaj aktivnog sastojka",
+      "nutritionalValues": "Nutritivne vrednosti",
+      "ingredient": "Sastojak",
+      "perSachet": "Po kesici"
     },
     "packages": {
       "single": {
-        "label": "1 box / 30 days of use"
+        "label": "1 kutija / 30 dana upotrebe"
       },
       "triple": {
-        "label": "3 boxes / 90 days of use",
-        "extras": "+shaker",
-        "recommended": "Recommended"
+        "label": "3 kutije / 90 dana upotrebe",
+        "extras": "+šejker"
       },
       "six-pack": {
-        "label": "6 boxes / 120 days of use",
-        "extras": "+shaker"
+        "label": "6 kutija / 120 dana upotrebe",
+        "extras": "+šejker"
       }
     },
     "benefits": [
-      "Supports digestive regularity",
-      "Helps maintain a healthy gut microbiome",
-      "Contributes to your daily fiber intake",
-      "Neutral taste and odor"
+      "Podržava redovnost varenja",
+      "Pomaže održavanju zdrave crevne mikrobiote",
+      "Doprinosi dnevnom unosu vlakana",
+      "Neutralan ukus i miris"
     ],
     "trustCards": [
       {
-        "title": "Scientifically Proven",
-        "description": "Uses clinically tested resistant dextrin with proven benefits for digestive health."
+        "title": "Naučno dokazano",
+        "description": "Sadrži klinički testiran rezistentni dekstrin sa dokazanim koristima za zdravlje digestivnog trakta."
       },
       {
-        "title": "Easy to Use",
-        "description": "Dissolves in any drink or food without changing the taste or texture."
+        "title": "Jednostavan za upotrebu",
+        "description": "Rastvara se u bilo kom piću ili hrani bez promene ukusa ili teksture."
       },
       {
-        "title": "Premium Quality",
-        "description": "Produced to the highest quality standards, without artificial additives or preservatives."
+        "title": "Premium kvalitet",
+        "description": "Proizveden prema najvišim standardima kvaliteta, bez veštačkih aditiva ili konzervansa."
       }
     ],
     "stats": [
       {
-        "label": "Per sachet",
-        "sublabel": "Optimal dose for daily use"
+        "label": "Po kesici",
+        "sublabel": "Optimalna doza za svakodnevnu upotrebu"
       },
       {
-        "label": "Sachets",
-        "sublabel": "Monthly supply for regular use"
+        "label": "Kesica",
+        "sublabel": "Mesečna zaliha za redovnu upotrebu"
       },
       {
-        "label": "Soluble",
-        "sublabel": "In drinks or food"
+        "label": "Rastvorljivo",
+        "sublabel": "U pićima ili hrani"
       }
     ],
     "nutritionRows": [
-      "Resistant wheat dextrin powder",
-      "Energy",
-      "Fat",
-      "Carbohydrates",
-      "of which sugars",
-      "Fiber",
-      "Protein",
-      "Salt"
+      "Rezistentni pšenični dekstrin u prahu",
+      "Energetska vrednost",
+      "Masti",
+      "Ugljeni hidrati",
+      "od čega šećeri",
+      "Vlakna",
+      "Proteini",
+      "So"
     ]
   },
   "Newsletter": {
     "unsubscribe": {
-      "title": "You've been unsubscribed",
-      "body": "You will no longer receive newsletter emails from FiberZ.",
-      "back": "Back to FiberZ"
+      "title": "Uspešno ste se odjavili",
+      "body": "Više nećete primati newsletter poruke od FiberZ-a.",
+      "back": "Nazad na FiberZ"
     }
   },
   "Metadata": {
     "home": {
-      "title": "FiberZ - Premium Daily Soluble Fiber",
-      "description": "FiberZ is a premium daily soluble fiber designed to support digestive health, stable blood sugar levels, and weight management."
+      "title": "FiberZ - Premium dnevna rastvorljiva vlakna",
+      "description": "FiberZ su premium dnevna rastvorljiva vlakna osmišljena da podrže zdravlje digestivnog trakta, stabilan nivo šećera u krvi i kontrolu telesne težine."
     },
     "product": {
-      "title": "Shop FiberZ | Premium Soluble Fiber Supplement",
-      "description": "Order FiberZ premium soluble dietary fiber powder. 100% natural resistant dextrin. Supports digestive health. Free shipping. Prices from 3,300 RSD.",
-      "ogTitle": "Shop FiberZ | Premium Soluble Fiber Supplement",
-      "ogDescription": "Order FiberZ premium soluble dietary fiber powder. 100% natural resistant dextrin. Free shipping."
+      "title": "Kupite FiberZ | Premium dodatak ishrani na bazi vlakana",
+      "description": "Poručite FiberZ, premium rastvorljiva dijetalna vlakna u prahu. 100% prirodan rezistentni dekstrin. Podržava zdravlje digestivnog trakta. Besplatna dostava. Cene od 3.300 RSD.",
+      "ogTitle": "Kupite FiberZ | Premium dodatak ishrani na bazi vlakana",
+      "ogDescription": "Poručite FiberZ, premium rastvorljiva dijetalna vlakna u prahu. 100% prirodan rezistentni dekstrin. Besplatna dostava."
     },
     "benefits": {
-      "title": "Benefits | FiberZ",
-      "description": "Discover the real, science-backed benefits of FiberZ soluble fiber for digestive health, gut microbiome, and daily fiber intake."
+      "title": "Prednosti | FiberZ",
+      "description": "Otkrijte stvarne, naučno potvrđene prednosti FiberZ rastvorljivih vlakana za zdravlje digestivnog trakta, crevnu mikrobiotu i dnevni unos vlakana."
     },
     "research": {
-      "title": "Scientific Research | FiberZ",
-      "description": "Explore the peer-reviewed research behind FiberZ. Resistant dextrin, fiber science, and clinical evidence for digestive health."
+      "title": "Naučna istraživanja | FiberZ",
+      "description": "Istražite recenzirana naučna istraživanja iza FiberZ-a. Rezistentni dekstrin, nauka o vlaknima i klinički dokazi za zdravlje digestivnog trakta."
     },
     "resistantDextrin": {
-      "title": "Resistant Dextrin as a Prebiotic | FiberZ Research",
-      "description": "A comprehensive review of resistant dextrin's role as a prebiotic fiber. Clinical evidence, mechanism of action, and digestive health benefits."
+      "title": "Rezistentni dekstrin kao prebiotik | FiberZ istraživanja",
+      "description": "Sveobuhvatan pregled uloge rezistentnog dekstrina kao prebiotskog vlakna. Klinički dokazi, mehanizam delovanja i koristi za zdravlje digestivnog trakta."
     },
     "blog": {
       "title": "Blog | FiberZ",
-      "description": "Expert tips and articles on fiber, nutrition, digestive health, and wellness. Stay informed with the latest insights from FiberZ.",
+      "description": "Stručni saveti i članci o vlaknima, ishrani, zdravlju digestivnog trakta i blagostanju. Budite u toku sa najnovijim uvidima od FiberZ-a.",
       "ogTitle": "Blog | FiberZ",
-      "ogDescription": "Expert tips and articles on fiber, nutrition, digestive health, and wellness."
+      "ogDescription": "Stručni saveti i članci o vlaknima, ishrani, zdravlju digestivnog trakta i blagostanju."
     },
     "faq": {
-      "title": "FAQ | FiberZ",
-      "description": "Find answers to frequently asked questions about FiberZ, dietary fiber, usage, shipping, and more.",
-      "ogTitle": "FAQ | FiberZ",
-      "ogDescription": "Find answers to frequently asked questions about FiberZ."
+      "title": "Česta pitanja | FiberZ",
+      "description": "Pronađite odgovore na često postavljana pitanja o FiberZ-u, dijetalnim vlaknima, upotrebi, dostavi i mnogo čemu drugom.",
+      "ogTitle": "Česta pitanja | FiberZ",
+      "ogDescription": "Pronađite odgovore na često postavljana pitanja o FiberZ-u."
     },
     "howItWorks": {
-      "title": "How It Works | FiberZ",
-      "description": "Learn how to use FiberZ soluble fiber supplement for the best digestive health results. Step-by-step guide and tips."
+      "title": "Kako se koristi | FiberZ",
+      "description": "Saznajte kako da koristite FiberZ dodatak ishrani na bazi rastvorljivih vlakana za najbolje rezultate za zdravlje digestivnog trakta. Vodič korak po korak i saveti."
     },
     "termsOfUse": {
-      "title": "Terms of Service | FiberZ",
-      "description": "Read FiberZ's Terms of Service covering purchases, returns, user rights, and our policies."
+      "title": "Uslovi korišćenja | FiberZ",
+      "description": "Pročitajte Uslove korišćenja FiberZ-a koji obuhvataju kupovinu, povraćaj, prava korisnika i naše politike."
     },
     "privacyPolicy": {
-      "title": "Privacy Policy | FiberZ",
-      "description": "Read how FiberZ collects, uses, and protects your personal data in accordance with GDPR."
+      "title": "Politika privatnosti | FiberZ",
+      "description": "Pročitajte kako FiberZ prikuplja, koristi i štiti vaše lične podatke u skladu sa GDPR-om."
     },
     "shipping": {
-      "title": "Shipping & Returns | FiberZ",
-      "description": "Learn about FiberZ's shipping options, delivery times, return policy, and 14-day right of withdrawal."
+      "title": "Dostava i povraćaj | FiberZ",
+      "description": "Saznajte više o opcijama dostave FiberZ-a, vremenu isporuke, politici povraćaja i pravu na odustanak u roku od 14 dana."
     },
     "disclaimer": {
-      "title": "Disclaimer | FiberZ",
-      "description": "Important health and liability disclaimers for FiberZ dietary fiber supplement."
+      "title": "Odricanje odgovornosti | FiberZ",
+      "description": "Važna zdravstvena upozorenja i odricanje odgovornosti za FiberZ dodatak ishrani na bazi vlakana."
     }
   }
 }

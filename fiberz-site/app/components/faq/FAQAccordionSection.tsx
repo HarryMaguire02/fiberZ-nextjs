@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { FAQ_CATEGORIES } from './faqData';
+import { useFAQCategories } from './useFAQCategories';
 
 export default function FAQAccordionSection() {
+  const categories = useFAQCategories();
   const [openKey, setOpenKey] = useState<string | null>(null);
 
   const toggleItem = (key: string) => {
@@ -15,7 +16,7 @@ export default function FAQAccordionSection() {
     <section className="bg-white">
       <div className="max-w-content mx-auto px-6 sm:px-8 lg:px-12 w-full pt-12 lg:pt-16">
         <div className="max-w-3xl mx-auto space-y-12 lg:space-y-16">
-          {FAQ_CATEGORIES.map((category) => (
+          {categories.map((category) => (
             <div
               key={category.id}
               id={category.id}

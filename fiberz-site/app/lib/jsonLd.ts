@@ -1,6 +1,5 @@
 import { COMPANY, fullAddress } from './company';
 import { PACKAGES } from './productData';
-import { FAQ_CATEGORIES } from '@/app/components/faq/faqData';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://fiberz.com';
 
@@ -31,13 +30,16 @@ export function getOrganizationJsonLd() {
   };
 }
 
-export function getProductJsonLd() {
+export function getProductJsonLd(params: {
+  name: string;
+  description: string;
+  packageLabels: Record<string, string>;
+}) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: 'FiberZ — Premium Daily Soluble Fiber',
-    description:
-      'Premium dietary fiber supplement made from resistant dextrin. 30 sachets per box, 4g soluble fiber per sachet. Neutral taste, dissolves in any drink or food.',
+    name: params.name,
+    description: params.description,
     image: `${BASE_URL}/product-1.png`,
     brand: {
       '@type': 'Brand',
@@ -50,7 +52,7 @@ export function getProductJsonLd() {
     },
     offers: PACKAGES.map((pkg) => ({
       '@type': 'Offer',
-      name: pkg.label,
+      name: params.packageLabels[pkg.id],
       price: pkg.salePrice,
       priceCurrency: 'RSD',
       availability: 'https://schema.org/InStock',
@@ -71,12 +73,11 @@ export function getProductJsonLd() {
   };
 }
 
-export function getFAQJsonLd() {
-  const allQuestions = FAQ_CATEGORIES.flatMap((cat) => cat.items);
+export function getFAQJsonLd(items: { question: string; answer: string }[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: allQuestions.map((item) => ({
+    mainEntity: items.map((item) => ({
       '@type': 'Question',
       name: item.question,
       acceptedAnswer: {
@@ -88,8 +89,10 @@ export function getFAQJsonLd() {
 }
 
 export function getBreadcrumbJsonLd(
-  items: { name: string; href: string }[]
+  items: { name: string; href: string }[],
+  locale: string
 ) {
+  const prefix = locale === 'en' ? '/en' : '';
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -97,7 +100,7 @@ export function getBreadcrumbJsonLd(
       '@type': 'ListItem',
       position: i + 1,
       name: item.name,
-      item: `${BASE_URL}${item.href}`,
+      item: `${BASE_URL}${prefix}${item.href === '/' ? '' : item.href}`,
     })),
   };
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import HowItWorksHero from '@/app/components/how-it-works/HowItWorksHero';
 import SimpleToAdd from '@/app/components/benefits/SimpleToAdd';
 import HowToUse from '@/app/components/home/HowToUse';
@@ -14,23 +15,22 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Metadata.howItWorks' });
   const srUrl = `${BASE_URL}/how-it-works`;
   const enUrl = `${BASE_URL}/en/how-it-works`;
   const canonical = locale === 'sr' ? srUrl : enUrl;
 
   return {
-    title: 'How to Use FiberZ | Step-by-Step Guide',
-    description:
-      'Learn how to use FiberZ soluble fiber supplement. Simple steps to mix, dissolve, and build a daily fiber habit for better digestive health.',
+    title: t('title'),
+    description: t('description'),
     alternates: {
       canonical,
       languages: { sr: srUrl, en: enUrl },
     },
     robots: { index: true, follow: true },
     openGraph: {
-      title: 'How to Use FiberZ | Step-by-Step Guide',
-      description:
-        'A simple guide to making FiberZ part of your daily routine. Mix into any drink or food — neutral taste, no texture change.',
+      title: t('title'),
+      description: t('description'),
       type: 'website',
       locale: locale === 'sr' ? 'sr_RS' : 'en_US',
       url: canonical,

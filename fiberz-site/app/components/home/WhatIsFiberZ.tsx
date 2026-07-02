@@ -1,33 +1,14 @@
-const features = [
-  {
-    title: '4g Per Pack',
-    description: 'Each serving provides 4 grams of soluble fiber',
-    icon: '✓',
-  },
-  {
-    title: '30 Sachets Per Box',
-    description: 'One month supply for consistent daily use',
-    icon: '✓',
-  },
-  {
-    title: 'Dissolves Easily',
-    description: 'Mix into water, yogurt, oatmeal, or smoothies',
-    icon: '✓',
-  },
-  {
-    title: 'Neutral Taste',
-    description: 'Does not alter the flavor of your beverages or food',
-    icon: '✓',
+import { getTranslations } from 'next-intl/server';
 
-  },
-  {
-    title: '1-3 Sachets Daily',
-    description: 'Flexible dosing to meet your individual needs',
-    icon: '✓',
-  },
-];
+interface Feature {
+  title: string;
+  description: string;
+}
 
-export default function WhatIsFiberZ() {
+export default async function WhatIsFiberZ() {
+  const t = await getTranslations('Home.WhatIsFiberZ');
+  const features = t.raw('features') as Feature[];
+
   return (
     <section
       className="relative py-12 lg:py-20 overflow-hidden"
@@ -49,11 +30,10 @@ export default function WhatIsFiberZ() {
           <h2
             className="font-cormorant text-white font-bold text-3xl lg:text-5xl mb-4"
           >
-            What is FiberZ?
+            {t('title')}
           </h2>
           <p className="font-roboto text-white text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
-            FiberZ is a water-soluble fiber supplement made from resistant dextrin, designed to help you meet your daily
-            fiber needs with ease and convenience.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -64,7 +44,7 @@ export default function WhatIsFiberZ() {
               className="bg-white rounded-xl px-6 py-5 text-center shadow-sm"
             >
               <h3 className="font-roboto font-bold text-heading text-sm md:text-base mb-1">
-                {feature.icon && <span className="mr-1">{feature.icon}</span>}
+                <span className="mr-1">&#10003;</span>
                 {feature.title}
               </h3>
               <p className="font-roboto text-body text-sm leading-relaxed">
